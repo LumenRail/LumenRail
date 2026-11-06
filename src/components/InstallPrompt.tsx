@@ -12,7 +12,7 @@ interface BeforeInstallPromptEvent extends Event {
 /**
  * PWA install prompt.
  * Shows a banner when the browser fires the `beforeinstallprompt` event,
- * allowing users to install OphirPay as a standalone app.
+ * allowing users to install LumenRail as a standalone app.
  */
 export function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] =
@@ -83,7 +83,7 @@ export function InstallPrompt() {
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-gray-900 dark:text-white">
-              Install OphirPay
+              Install LumenRail
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
               Add to your home screen for quick access and offline support.

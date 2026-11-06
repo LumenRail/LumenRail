@@ -1,8 +1,8 @@
-# OphirPay Architecture
+# LumenRail Architecture
 
 ## System Overview
 
-OphirPay is a payment orchestration layer built on the Stellar blockchain. It consists of four layers:
+LumenRail is a payment orchestration layer built on the Stellar blockchain. It consists of four layers:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
@@ -37,7 +37,7 @@ OphirPay is a payment orchestration layer built on the Stellar blockchain. It co
 │                       CONTRACT LAYER (Soroban)                       │
 │                                                                      │
 │  ┌─────────────────────────────────┐    ┌──────────────────────────┐│
-│  │       OphirPayContract          │    │     PaymentEventEmitter  ││
+│  │       LumenRailContract          │    │     PaymentEventEmitter  ││
 │  │  ─────────────────────────────  │    │  ─────────────────────── ││
 │  │  Payments · Escrows · Streams   │    │  emit_payment()          ││
 │  │  Batches · Recurring · Refunds  │◄───│  pause() / unpause()     ││
@@ -78,15 +78,15 @@ OphirPay is a payment orchestration layer built on the Stellar blockchain. It co
 
 | Contract | Purpose | Key Functions |
 |---|---|---|
-| **OphirPayContract** | Core payment logic | `record_payment`, `create_escrow`, `create_stream`, `create_batch`, `request_refund`, `propose_payment`, `create_proposal`, `emergency_pause_all` |
+| **LumenRailContract** | Core payment logic | `record_payment`, `create_escrow`, `create_stream`, `create_batch`, `request_refund`, `propose_payment`, `create_proposal`, `emergency_pause_all` |
 | **PaymentEventEmitter** | Event broadcasting | `emit_payment`, `pause`, `unpause` |
 
-**Cross-contract communication**: OphirPayContract calls `env.invoke_contract()` on Emitter for `emergency_pause_all`/`emergency_unpause_all`, pausing both contracts atomically.
+**Cross-contract communication**: LumenRailContract calls `env.invoke_contract()` on Emitter for `emergency_pause_all`/`emergency_unpause_all`, pausing both contracts atomically.
 
 ### 2. Data Flow
 
 ```
-User Action → Freighter Signing → Soroban TX → OphirPayContract
+User Action → Freighter Signing → Soroban TX → LumenRailContract
                                                     │
                                           ┌─────────┴─────────┐
                                           │   Native Events    │
@@ -127,9 +127,9 @@ All writes call `extend_ttl(5000, 50000)` to prevent archival.
 ## Directory Structure
 
 ```
-ophirpay/
+lumenrail/
 ├── contracts/              # Soroban smart contracts (Rust)
-│   ├── ophirpay/           # Core payment contract (4800+ lines, 300 error variants)
+│   ├── lumenrail/           # Core payment contract (4800+ lines, 300 error variants)
 │   └── emitter/            # Event emission contract
 ├── src/
 │   ├── app/                # Next.js App Router pages (15 routes)

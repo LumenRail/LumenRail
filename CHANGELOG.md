@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to OphirPay will be documented in this file.
+All notable changes to LumenRail will be documented in this file.
 
 ## [Unreleased] — 2026-08-26
 
@@ -40,7 +40,7 @@ All notable changes to OphirPay will be documented in this file.
 - **Min proposal deposit**: `create_proposal` now requires `deposit_asset` + `deposit_amount` params, validated against `config.min_proposal_deposit`. Deposit transferred to contract and tracked in `LOCKED_BALANCE`. `execute_proposal` refunds deposit regardless of outcome.
 
 ### Changed
-- **Error code expansion**: OphirPay PaymentError from 52 → 94 variants (grouped, 100-255 reserved). Emitter EmitterError from 7 → 14 variants. TypeScript `CONTRACT_ERROR_MAP` updated with human-readable messages for all 94 codes.
+- **Error code expansion**: LumenRail PaymentError from 52 → 94 variants (grouped, 100-255 reserved). Emitter EmitterError from 7 → 14 variants. TypeScript `CONTRACT_ERROR_MAP` updated with human-readable messages for all 94 codes.
 - **CI/CD pipeline**: 12 → 20 jobs. Added Rust Clippy, Rust Format, Secrets Scan (Gitleaks), Docker Build, Bundle Size, Accessibility Audit (axe-core), OpenAPI Validation (Redocly), Spell Check (typos-cli).
 - **React Query**: Added `@tanstack/react-query` with `QueryProvider`, `useApiQuery` (typed GET), `useApiMutation` (typed POST with auto-invalidation). Wired into `AppShell`.
 - **Zod validation**: Added shared `validation-schemas.ts` with 15 schemas and `validateBody()` helper. Wired into governance vote route.
@@ -49,7 +49,7 @@ All notable changes to OphirPay will be documented in this file.
 
 ### Changed
 - **Next.js 16 upgrade**: bumped `next` + `eslint-config-next` to 16.3 — removed the removed `instrumentationHook` config option (enabled by default in 16), migrated `eslint.config.mjs` to the native flat configs exported by `eslint-config-next` 16, and documented the suppressed react-hooks v6 opinionated rules
-- **Test suite**: 154 → 184 app tests (13 suites) and 62 contract tests (56 OphirPay + 6 Emitter); corrected stale test/CI counts across README, docs, and PR templates
+- **Test suite**: 154 → 184 app tests (13 suites) and 62 contract tests (56 LumenRail + 6 Emitter); corrected stale test/CI counts across README, docs, and PR templates
 
 ### Fixed
 - **Startup bootstrap**: `bootstrap()` now called via Next.js instrumentation hook; env validation with Zod
@@ -90,10 +90,10 @@ All notable changes to OphirPay will be documented in this file.
 
 ## [0.1.0-alpha] — 2026-08-06
 - **Structured refund system**: `RefundReasonCode` enum (6 variant codes), `RefundStatus` lifecycle (Requested→Approved→Rejected→Processed), `request_refund`/`approve_refund`/`process_refund` with SAC token transfers, `get_reason_code_analytics()` for on-chain analytics
-- **Cross-contract orchestration**: Emitter contract `pause`/`unpause`/`is_paused`, OphirPay `set_emitter`/`get_emitter`, `emergency_pause_all()` and `emergency_unpause_all()` atomically pause both contracts via `env.invoke_contract()`
+- **Cross-contract orchestration**: Emitter contract `pause`/`unpause`/`is_paused`, LumenRail `set_emitter`/`get_emitter`, `emergency_pause_all()` and `emergency_unpause_all()` atomically pause both contracts via `env.invoke_contract()`
 - **On-chain notification hooks**: `NotificationHook` struct, `register_hook`/`unregister_hook`, `get_hooks_by_event` (off-chain relayer queryable), `get_subscriber_hooks`, per-subscriber indexing
 - **Policy versioning**: `FeeConfigVersion` and `MultisigVersion` immutable snapshots, `get_fee_config_history`/`get_multisig_config_history`, `get_fee_config_at_version` for rollback support
-- **Two-step admin rotation**: 24h timelock on ownership transfer, `accept_ownership` by new owner, `cancel_ownership_transfer` by current owner, applied to both OphirPay and Emitter
+- **Two-step admin rotation**: 24h timelock on ownership transfer, `accept_ownership` by new owner, `cancel_ownership_transfer` by current owner, applied to both LumenRail and Emitter
 - **Atomic check-and-spend**: `SpendingLimit.expires_at` field, `atomic_spend()` validates limit+expiry then records payment in one Soroban call, error code 46: `SpendingLimitExpired`
 - **Multisig approvals**: N-of-M signer configuration, payment proposal → approve → execute workflow, threshold validation
 - **Spending limits + escalation**: Per-user daily/monthly caps, auto-reset, escalation tiers (small/medium/large), `SpendCheckResult` enum
@@ -162,7 +162,7 @@ All notable changes to OphirPay will be documented in this file.
 - Wallet connect/disconnect with Freighter browser extension
 - Send XLM payments on Stellar Testnet
 - Batch payments (multi-recipient in single transaction)
-- Soroban smart contract deployment (OphirPay + Emitter)
+- Soroban smart contract deployment (LumenRail + Emitter)
 - Cross-contract communication between contracts
 - SSE event streaming from on-chain events
 - Mobile-responsive UI with dark mode toggle

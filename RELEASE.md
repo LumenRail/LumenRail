@@ -1,10 +1,10 @@
 # Release Process
 
-This document describes how to cut a new release of OphirPay.
+This document describes how to cut a new release of LumenRail.
 
 ## Versioning
 
-OphirPay follows [Semantic Versioning](https://semver.org/):
+LumenRail follows [Semantic Versioning](https://semver.org/):
 
 - **MAJOR** (x.0.0): Breaking contract API changes, storage layout changes
 - **MINOR** (0.x.0): New features, new contract functions, new pages
@@ -19,7 +19,7 @@ OphirPay follows [Semantic Versioning](https://semver.org/):
 npm run ci
 
 # Contract tests (46 Rust tests)
-cd contracts/ophirpay && cargo test
+cd contracts/lumenrail && cargo test
 cd contracts/emitter && cargo test
 
 # Frontend tests (68 tests)
@@ -33,7 +33,7 @@ npx playwright test
 
 - [ ] Update `CHANGELOG.md` — move [Unreleased] section to new version
 - [ ] Update version in `package.json`
-- [ ] Update `CONTRACT_VERSION` in `contracts/ophirpay/src/lib.rs`
+- [ ] Update `CONTRACT_VERSION` in `contracts/lumenrail/src/lib.rs`
 - [ ] Verify README badges and test counts are accurate
 - [ ] Update Roadmap section if features moved from Planned → Done
 
@@ -55,7 +55,7 @@ git push origin v0.X.0
 
 ### 5. GitHub Release
 
-1. Go to [GitHub Releases](https://github.com/OphirPay/OphirPay/releases)
+1. Go to [GitHub Releases](https://github.com/Abolax123/OphirPay/releases)
 2. Click "Draft a new release"
 3. Choose the tag `v0.X.0`
 4. Copy the relevant section from `CHANGELOG.md` as the release notes
@@ -64,7 +64,7 @@ git push origin v0.X.0
 
 ### 6. Post-Release
 
-- [ ] Verify the release appears on the [Releases page](https://github.com/OphirPay/OphirPay/releases)
+- [ ] Verify the release appears on the [Releases page](https://github.com/Abolax123/OphirPay/releases)
 - [ ] Announce in community channels
 - [ ] Update demo deployment if applicable
 

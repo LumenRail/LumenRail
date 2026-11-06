@@ -123,8 +123,8 @@ export function MultiWalletProvider({ children }: { children: React.ReactNode })
         const walletNet = network.toUpperCase();
         if (walletNet !== configuredNetwork) {
           console.warn(
-            `[OphirPay] Wallet network (${walletNet}) doesn't match app config (${configuredNetwork}). ` +
-            `Switch your wallet to ${configuredNetwork} to use OphirPay.`
+            `[LumenRail] Wallet network (${walletNet}) doesn't match app config (${configuredNetwork}). ` +
+            `Switch your wallet to ${configuredNetwork} to use LumenRail.`
           );
         }
 
@@ -167,7 +167,7 @@ export function MultiWalletProvider({ children }: { children: React.ReactNode })
           // issued (proof is required), so wallet-based contract signing
           // still works but API routes stay unauthenticated.
           console.warn(
-            `[OphirPay] Session not established — ${connector.name} has no signMessage support. Use Freighter, xBull, or Albedo for full API access.`
+            `[LumenRail] Session not established — ${connector.name} has no signMessage support. Use Freighter, xBull, or Albedo for full API access.`
           );
         }
       } catch (err) {

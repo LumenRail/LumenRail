@@ -1,6 +1,6 @@
 # 🛠 Local Development Guide
 
-> **Goal:** get a fully working OphirPay instance running on your machine — with
+> **Goal:** get a fully working LumenRail instance running on your machine — with
 > either **SQLite** (zero-setup, file-based) or **Neon** (hosted PostgreSQL,
 > closest to production) — including seed data and Testnet funding.
 
@@ -18,7 +18,7 @@
 
 ```bash
 # 1. Clone and enter
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 
 # 2. Install dependencies (matches CI: uses package-lock.json)
 npm ci
@@ -145,7 +145,7 @@ npm run dev
 
 | Data | Details |
 |---|---|
-| **1 demo user** | `seed-user-1` — "OphirPay Demo", Stellar address `GACZ7ZEL…QM2U` (upserted — safe to re-run) |
+| **1 demo user** | `seed-user-1` — "LumenRail Demo", Stellar address `GACZ7ZEL…QM2U` (upserted — safe to re-run) |
 | **5 payments** | 3 `COMPLETED`, 1 `PENDING`, 1 `FAILED` — with amounts, descriptions, and a placeholder `transactionHash` |
 | **1 batch** | "Demo Batch — Monthly Payroll" (`COMPLETED`) |
 | **4 refunds** | Linked to the seeded payments, with realistic `reason`/`reasonCode`/`status` values |
@@ -171,7 +171,7 @@ npm run db:seed
 
 ## 5. Testnet funding (free XLM)
 
-OphirPay runs against **Stellar Testnet** by default (`.env.example` defaults:
+LumenRail runs against **Stellar Testnet** by default (`.env.example` defaults:
 `NEXT_PUBLIC_STELLAR_NETWORK=TESTNET`). Testnet XLM has no value — you get it
 for free from the **Friendbot** faucet.
 
@@ -234,7 +234,7 @@ A `200` with a `balances` array means you're funded.
 6. **Node version** — the repo pins Node 20 (`.nvmrc`). Newer majors usually
    work, but if `next build` or Prisma acts up, switch: `nvm use`.
 7. **Default contract IDs work out of the box** — `.env.example` ships with
-   community Testnet contract IDs for OphirPay + Emitter, so you don't need to
+   community Testnet contract IDs for LumenRail + Emitter, so you don't need to
    deploy contracts locally. To deploy your own: `./scripts/deploy-all.sh`
    and paste the returned IDs.
 8. **Rate limiting is on by default** — the proxy limits API traffic to

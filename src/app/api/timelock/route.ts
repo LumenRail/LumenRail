@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/timelock — list pending timelocked actions from the Soroban contract.
- * Reads total count from OphirPayContract.get_timelock_count().
+ * Reads total count from LumenRailContract.get_timelock_count().
  * Use query param `id` to look up a specific action.
  */
 export const GET = withMetrics("GET /api/timelock", withRequestLogging(async function GET(request: Request) {

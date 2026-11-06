@@ -2,7 +2,7 @@
 #
 # scripts/demo-seed.sh
 #
-# One-click demo seeding for OphirPay.
+# One-click demo seeding for LumenRail.
 # Provisions the database with demo data, starts the dev server,
 # and opens the browser in demo mode.
 #
@@ -11,7 +11,7 @@
 set -euo pipefail
 
 echo "═══════════════════════════════════════════"
-echo "  OphirPay — Demo Seed"
+echo "  LumenRail — Demo Seed"
 echo "═══════════════════════════════════════════"
 echo ""
 
@@ -55,7 +55,7 @@ fi
 # ── 6. Start dev server ───────────────────────────────────
 echo ""
 echo "═══════════════════════════════════════════"
-echo "  Starting OphirPay in demo mode..."
+echo "  Starting LumenRail in demo mode..."
 echo "  Open http://localhost:3000"
 echo "═══════════════════════════════════════════"
 echo ""

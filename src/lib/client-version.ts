@@ -32,11 +32,11 @@ export function getAppVersion(): string {
 
 /** Check if the deployed version differs from what the user has cached. */
 export function checkVersionMismatch(): boolean {
-  const stored = localStorage.getItem("ophirpay-version");
+  const stored = localStorage.getItem("lumenrail-version");
   const current = getAppVersion();
 
   if (stored !== current) {
-    localStorage.setItem("ophirpay-version", current);
+    localStorage.setItem("lumenrail-version", current);
     return true;
   }
 

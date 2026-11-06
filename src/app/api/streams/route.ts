@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/streams — list streams or fetch single by ?id=N
- * Reads from OphirPayContract on-chain.
+ * Reads from LumenRailContract on-chain.
  */
 export const GET = withMetrics("GET /api/streams", withRequestLogging(async function GET(request: Request) {
   try {

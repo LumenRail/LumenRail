@@ -137,10 +137,10 @@ describe("CSV builder output", () => {
 describe("buildPaymentExportFilename", () => {
   it("includes the date", () => {
     expect(buildPaymentExportFilename(new Date("2026-08-26T23:59:00.000Z"))).toBe(
-      "ophirpay-payments-2026-08-26.csv"
+      "lumenrail-payments-2026-08-26.csv"
     );
     expect(buildPaymentExportFilename()).toMatch(
-      /^ophirpay-payments-\d{4}-\d{2}-\d{2}\.csv$/
+      /^lumenrail-payments-\d{4}-\d{2}-\d{2}\.csv$/
     );
   });
 });
@@ -154,7 +154,7 @@ describe("createCsvResponse", () => {
     );
     expect(res.headers.get("Content-Type")).toBe("text/csv; charset=utf-8");
     expect(res.headers.get("Content-Disposition")).toContain(
-      "ophirpay-payments-2026-08-26.csv"
+      "lumenrail-payments-2026-08-26.csv"
     );
     expect(res.headers.get("X-Export-Truncated")).toBe("true");
   });

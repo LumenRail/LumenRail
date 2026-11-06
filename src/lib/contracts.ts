@@ -41,7 +41,7 @@ export function getEmitterContractId(): string {
   return id;
 }
 
-export const OPHIRPAY_CONTRACT_ID =
+export const LUMENRAIL_CONTRACT_ID =
   process.env.NEXT_PUBLIC_CONTRACT_ID || "";
 export const EMITTER_CONTRACT_ID =
   process.env.NEXT_PUBLIC_EMITTER_CONTRACT_ID || "";
@@ -50,7 +50,7 @@ export const CHAIN_READ_SOURCE =
   "GACNKEDGJYLLVQDXWYEEPB47Y3JEV5JNZ3RQANTJIVKKEOXX4NC4YWHU";
 
 // Legacy alias
-export const DEFAULT_CONTRACT_ID = OPHIRPAY_CONTRACT_ID;
+export const DEFAULT_CONTRACT_ID = LUMENRAIL_CONTRACT_ID;
 
 // ── 3 Error Types ──────────────────────────────────────────────
 
@@ -330,7 +330,7 @@ export interface RecordOnChainResult {
 }
 
 /**
- * Record a completed XLM payment on-chain via `OphirPayContract.record_payment`.
+ * Record a completed XLM payment on-chain via `LumenRailContract.record_payment`.
  *
  * Best-effort by design: a failure here does NOT throw — the Horizon payment is
  * already settled, so the UI can show a non-blocking warning instead. The caller
@@ -426,7 +426,7 @@ export interface OnChainPayment {
 }
 
 /**
- * Read the most recent on-chain payment records from OphirPayContract.
+ * Read the most recent on-chain payment records from LumenRailContract.
  * Public chain data — reads via Soroban simulation, no wallet signature required.
  */
 export async function fetchOnChainPayments(
@@ -434,7 +434,7 @@ export async function fetchOnChainPayments(
   sourcePublicKey?: string
 ): Promise<{ payments: OnChainPayment[]; total: number }> {
   const src = sourcePublicKey || CHAIN_READ_SOURCE;
-  const contractId = OPHIRPAY_CONTRACT_ID;
+  const contractId = LUMENRAIL_CONTRACT_ID;
   const server = getSorobanServer();
   const contract = new Contract(contractId);
   const account = await server.getAccount(src);

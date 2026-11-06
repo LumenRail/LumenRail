@@ -87,9 +87,9 @@ export function useNotifications() {
       }
     };
 
-    window.addEventListener("ophirpay:notification", handleCustomEvent);
+    window.addEventListener("lumenrail:notification", handleCustomEvent);
     return () => {
-      window.removeEventListener("ophirpay:notification", handleCustomEvent);
+      window.removeEventListener("lumenrail:notification", handleCustomEvent);
     };
   }, [addNotification]);
 

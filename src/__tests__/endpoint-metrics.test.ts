@@ -94,14 +94,14 @@ describe("per-endpoint metrics", () => {
     const text = await res.text();
 
     expect(text).toContain(
-      'ophirpay_endpoint_request_duration_seconds_bucket{method="GET",endpoint="/api/payments",status_class="2xx"'
+      'lumenrail_endpoint_request_duration_seconds_bucket{method="GET",endpoint="/api/payments",status_class="2xx"'
     );
     expect(text).toContain(
-      'ophirpay_endpoint_request_duration_seconds_count{method="GET",endpoint="/api/payments",status_class="2xx"} 1'
+      'lumenrail_endpoint_request_duration_seconds_count{method="GET",endpoint="/api/payments",status_class="2xx"} 1'
     );
     expect(text).toContain(
-      'ophirpay_endpoint_errors_total{method="POST",endpoint="/api/payments",status_class="5xx"} 1'
+      'lumenrail_endpoint_errors_total{method="POST",endpoint="/api/payments",status_class="5xx"} 1'
     );
-    expect(text).toContain("# TYPE ophirpay_endpoint_errors_total counter");
+    expect(text).toContain("# TYPE lumenrail_endpoint_errors_total counter");
   });
 });

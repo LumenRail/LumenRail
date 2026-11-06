@@ -1,8 +1,8 @@
 [package]
-name = "ophirpay-formal-verification"
+name = "lumenrail-formal-verification"
 version = "0.1.0"
 edition = "2021"
-description = "Kani formal verification proofs for OphirPay contract invariants"
+description = "Kani formal verification proofs for LumenRail contract invariants"
 
 [dependencies]
 # The model functions are pure Rust — no Soroban SDK dependency needed.

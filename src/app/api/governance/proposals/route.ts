@@ -13,7 +13,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/governance/proposals — list governance proposals
- * Reads from OphirPayContract.get_proposal() on-chain.
+ * Reads from LumenRailContract.get_proposal() on-chain.
  * Cached for 30 seconds to reduce RPC load.
  */
 export const GET = withMetrics("GET /api/governance/proposals", withRequestLogging(async function GET(request: Request) {
@@ -74,7 +74,7 @@ export const GET = withMetrics("GET /api/governance/proposals", withRequestLoggi
 
 /**
  * POST /api/governance/proposals — create a new proposal
- * Calls OphirPayContract.create_proposal() on-chain.
+ * Calls LumenRailContract.create_proposal() on-chain.
  */
 export const POST = withMetrics("POST /api/governance/proposals", withRequestLogging(async function POST(request: Request) {
   try {

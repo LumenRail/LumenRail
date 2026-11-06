@@ -48,7 +48,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const setTheme = useCallback(
     (t: Theme) => {
       setThemeState(t);
-      localStorage.setItem("ophirpay-theme", t);
+      localStorage.setItem("lumenrail-theme", t);
       applyTheme(t);
     },
     [applyTheme]
@@ -59,7 +59,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [resolved, setTheme]);
 
   useEffect(() => {
-    const stored = localStorage.getItem("ophirpay-theme") as Theme | null;
+    const stored = localStorage.getItem("lumenrail-theme") as Theme | null;
     const initial = stored ?? "system";
     setThemeState(initial);
     applyTheme(initial);

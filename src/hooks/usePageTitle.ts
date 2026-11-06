@@ -4,28 +4,28 @@
 import { useEffect } from "react";
 
 /**
- * Title suffix mirroring the `"%s | OphirPay"` metadata template declared in
+ * Title suffix mirroring the `"%s | LumenRail"` metadata template declared in
  * `src/app/layout.tsx`. Client components cannot export Next.js `metadata`
  * (route-specific server metadata lives in each route's `layout.tsx`), so
  * this hook keeps the browser tab (document.title) in sync with the template
  * during client-side navigation.
  */
-const TITLE_SUFFIX = " | OphirPay";
+const TITLE_SUFFIX = " | LumenRail";
 
 /**
  * The root layout's default title (`title.default` in `src/app/layout.tsx`).
  * Restored when a route unmounts so error boundaries never display a stale
  * route title.
  */
-const DEFAULT_TITLE = "OphirPay — Stellar Payment Orchestration";
+const DEFAULT_TITLE = "LumenRail — Stellar Payment Orchestration";
 
-/** Format a page title like the layout's `"%s | OphirPay"` template. */
+/** Format a page title like the layout's `"%s | LumenRail"` template. */
 function formatTitle(title: string): string {
-  return title.includes("OphirPay") ? title : `${title}${TITLE_SUFFIX}`;
+  return title.includes("LumenRail") ? title : `${title}${TITLE_SUFFIX}`;
 }
 
 /**
- * Set the document title to `${title} | OphirPay` (matching the layout's
+ * Set the document title to `${title} | LumenRail` (matching the layout's
  * metadata template). Pass a key from `PAGE_TITLES` in `@/lib/page-titles`
  * or any short page-specific label, e.g. `usePageTitle(PAGE_TITLES.BATCHES)`.
  *

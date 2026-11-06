@@ -928,10 +928,10 @@ fn compute_vested(total_amount: i128, start_time: u64, end_time: u64, now: u64) 
 // ── Contract ───────────────────────────────────────────────────
 
 #[contract]
-pub struct OphirPayContract;
+pub struct LumenRailContract;
 
 #[contractimpl]
-impl OphirPayContract {
+impl LumenRailContract {
     // ═══════════════════════════════════════════════════════════
     //  ADMIN
     // ═══════════════════════════════════════════════════════════
@@ -2159,15 +2159,15 @@ impl OphirPayContract {
         env.storage().instance().get(&EMITTER_ADDR)
     }
 
-    /// Emergency pause: pauses BOTH OphirPay AND the linked Emitter contract
+    /// Emergency pause: pauses BOTH LumenRail AND the linked Emitter contract
     /// in a single atomic transaction. If the Emitter is not linked, only
-    /// OphirPay is paused. This mirrors FacilPay's cross-contract pause_all.
+    /// LumenRail is paused. This mirrors FacilPay's cross-contract pause_all.
     pub fn emergency_pause_all(env: Env, caller: Address) -> Result<(), PaymentError> {
         let _guard = acquire_reentrancy_lock(&env)?;
         caller.require_auth();
         require_owner(&env, &caller)?;
 
-        // Pause OphirPay
+        // Pause LumenRail
         env.storage().instance().set(&PAUSED, &true);
         env.storage().instance().extend_ttl(5000, 50000);
 
@@ -2194,14 +2194,14 @@ impl OphirPayContract {
         Ok(())
     }
 
-    /// Emergency unpause: unpauses BOTH OphirPay AND the linked Emitter contract
+    /// Emergency unpause: unpauses BOTH LumenRail AND the linked Emitter contract
     /// in a single atomic transaction.
     pub fn emergency_unpause_all(env: Env, caller: Address) -> Result<(), PaymentError> {
         let _guard = acquire_reentrancy_lock(&env)?;
         caller.require_auth();
         require_owner(&env, &caller)?;
 
-        // Unpause OphirPay
+        // Unpause LumenRail
         env.storage().instance().set(&PAUSED, &false);
         env.storage().instance().extend_ttl(5000, 50000);
 
@@ -3871,8 +3871,8 @@ mod tests {
     fn test_init_and_owner() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let version = client.init(&owner);
@@ -3885,8 +3885,8 @@ mod tests {
     fn test_init_twice_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let _ = client.init(&owner);
@@ -3901,8 +3901,8 @@ mod tests {
     fn test_transfer_ownership() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let new_owner = Address::generate(&env);
 
@@ -3924,8 +3924,8 @@ mod tests {
     fn test_unauthorized_transfer_ownership_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let rando = Address::generate(&env);
 
@@ -3940,8 +3940,8 @@ mod tests {
         let env = Env::default();
         env.mock_all_auths();
         env.ledger().set_timestamp(1000);
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -3972,8 +3972,8 @@ mod tests {
     fn test_record_payment_zero_amount_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -3997,8 +3997,8 @@ mod tests {
     fn test_cancel_payment_by_owner() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4026,8 +4026,8 @@ mod tests {
     fn test_create_and_release_escrow() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
@@ -4066,8 +4066,8 @@ mod tests {
     fn test_claim_escrow_after_deadline() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
@@ -4102,8 +4102,8 @@ mod tests {
         // subsequent operations in the same transaction are not blocked.
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
@@ -4158,8 +4158,8 @@ mod tests {
     fn test_claim_escrow_before_deadline_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
@@ -4189,8 +4189,8 @@ mod tests {
     fn test_create_and_claim_stream() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
@@ -4235,8 +4235,8 @@ mod tests {
     fn test_cancel_stream_returns_unvested() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
@@ -4271,8 +4271,8 @@ mod tests {
     fn test_create_batch() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
@@ -4314,8 +4314,8 @@ mod tests {
     fn test_empty_batch_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
@@ -4340,8 +4340,8 @@ mod tests {
     fn test_pause_blocks_record_payment() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4384,8 +4384,8 @@ mod tests {
     fn test_pause_blocks_create_escrow() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
         let beneficiary = Address::generate(&env);
@@ -4412,8 +4412,8 @@ mod tests {
     fn test_pause_blocks_create_stream() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
         let recipient = Address::generate(&env);
@@ -4443,8 +4443,8 @@ mod tests {
     fn test_cancel_already_cancelled_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4473,8 +4473,8 @@ mod tests {
     fn test_multisig_configure_and_propose() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let signer1 = Address::generate(&env);
         let signer2 = Address::generate(&env);
@@ -4511,8 +4511,8 @@ mod tests {
     fn test_multisig_approve_and_execute() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let signer1 = Address::generate(&env);
         let signer2 = Address::generate(&env);
@@ -4550,8 +4550,8 @@ mod tests {
     fn test_spending_limit_approved() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let user = Address::generate(&env);
 
@@ -4573,8 +4573,8 @@ mod tests {
     fn test_spending_limit_rejected() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let user = Address::generate(&env);
 
@@ -4589,8 +4589,8 @@ mod tests {
     fn test_escalation_rules() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let user = Address::generate(&env);
 
@@ -4607,8 +4607,8 @@ mod tests {
     fn test_grant_and_revoke_role() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let operator = Address::generate(&env);
 
@@ -4629,8 +4629,8 @@ mod tests {
     fn test_audit_log_after_payment() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4659,8 +4659,8 @@ mod tests {
     fn test_create_recurring_payment() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4688,8 +4688,8 @@ mod tests {
     fn test_execute_recurring_payment() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4718,8 +4718,8 @@ mod tests {
     fn test_cancel_recurring_payment() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let creator = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4747,8 +4747,8 @@ mod tests {
     fn test_set_and_get_fee_config() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let _ = client.init(&owner);
@@ -4765,8 +4765,8 @@ mod tests {
     fn test_calculate_fee() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let fee = client.calculate_fee(&1000i128, &100u32);
         assert_eq!(fee, 10);
@@ -4781,8 +4781,8 @@ mod tests {
     fn test_timelocked_action_propose_and_execute() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let now = env.ledger().timestamp();
@@ -4811,8 +4811,8 @@ mod tests {
     fn test_timelocked_action_cancel() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let _ = client.init(&owner);
@@ -4834,8 +4834,8 @@ mod tests {
     fn test_governance_proposal_vote_execute() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let proposer = Address::generate(&env);
         let voter = Address::generate(&env);
@@ -4877,8 +4877,8 @@ mod tests {
     fn test_request_refund() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4913,8 +4913,8 @@ mod tests {
     fn test_approve_and_process_refund() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -4962,8 +4962,8 @@ mod tests {
     fn test_refund_rejects_unauthorized_requester() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -5018,8 +5018,8 @@ mod tests {
     fn test_refund_not_found() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let _ = client.init(&owner);
@@ -5031,8 +5031,8 @@ mod tests {
     fn test_reason_code_analytics() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -5074,13 +5074,13 @@ mod tests {
     fn test_emergency_pause_all() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let _ = client.init(&owner);
 
-        // Pause all (even without emitter linked, pauses OphirPay)
+        // Pause all (even without emitter linked, pauses LumenRail)
         client.emergency_pause_all(&owner);
         assert!(client.is_paused());
 
@@ -5093,8 +5093,8 @@ mod tests {
     fn test_set_and_get_emitter() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let emitter = Address::generate(&env);
 
@@ -5111,8 +5111,8 @@ mod tests {
     fn test_register_and_unregister_hook() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let subscriber = Address::generate(&env);
 
@@ -5146,8 +5146,8 @@ mod tests {
     fn test_get_hooks_by_event_empty() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let _ = client.init(&owner);
@@ -5161,8 +5161,8 @@ mod tests {
     fn test_fee_config_versioning() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
 
         let _ = client.init(&owner);
@@ -5188,8 +5188,8 @@ mod tests {
     fn test_multisig_config_versioning() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let s1 = Address::generate(&env);
         let s2 = Address::generate(&env);
@@ -5213,8 +5213,8 @@ mod tests {
     fn test_two_step_ownership_transfer() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let new_owner = Address::generate(&env);
 
@@ -5247,8 +5247,8 @@ mod tests {
     fn test_accept_ownership_before_timelock_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let new_owner = Address::generate(&env);
 
@@ -5262,8 +5262,8 @@ mod tests {
     fn test_cancel_ownership_transfer() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let new_owner = Address::generate(&env);
 
@@ -5282,8 +5282,8 @@ mod tests {
     fn test_emergency_withdraw_locked_funds_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
@@ -5324,8 +5324,8 @@ mod tests {
     fn test_double_release_escrow_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
@@ -5360,8 +5360,8 @@ mod tests {
     fn test_double_claim_escrow_fails() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let depositor = Address::generate(&env);
@@ -5401,8 +5401,8 @@ mod tests {
     fn test_fee_version_history_capped() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let _ = client.init(&owner);
@@ -5433,8 +5433,8 @@ mod tests {
         let env = Env::default();
         env.mock_all_auths();
         env.ledger().set_timestamp(1000);
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
@@ -5490,8 +5490,8 @@ mod tests {
     fn test_refund_rejected() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
@@ -5529,8 +5529,8 @@ mod tests {
     fn test_multisig_threshold_enforcement() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let signer1 = Address::generate(&env);
@@ -5579,8 +5579,8 @@ mod tests {
     fn test_multisig_duplicate_approval_rejected() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let signer1 = Address::generate(&env);
@@ -5615,8 +5615,8 @@ mod tests {
     fn test_spending_limit_expiry_rejects_spend() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
@@ -5663,8 +5663,8 @@ mod tests {
     fn test_atomic_spend_updates_spend_counters() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
 
         let owner = Address::generate(&env);
         let payer = Address::generate(&env);
@@ -5717,8 +5717,8 @@ mod tests {
     fn test_double_vote_rejected() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let proposer = Address::generate(&env);
         let voter = Address::generate(&env);
@@ -5751,8 +5751,8 @@ mod tests {
     fn test_deposit_too_low_rejected() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let proposer = Address::generate(&env);
 
@@ -5780,8 +5780,8 @@ mod tests {
     fn test_reentrancy_lock_rejects_nested_calls() {
         let env = Env::default();
         env.mock_all_auths();
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let user = Address::generate(&env);
         let payee = Address::generate(&env);
@@ -5861,8 +5861,8 @@ mod tests {
         let env = Env::default();
         env.mock_all_auths();
         env.ledger().set_timestamp(1_000_000);
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         let owner = Address::generate(&env);
         let user = Address::generate(&env);
         let payee1 = Address::generate(&env);

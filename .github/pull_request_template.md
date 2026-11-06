@@ -21,7 +21,7 @@
 - [ ] I have run `npx tsc --noEmit` and there are no type errors
 - [ ] For contract changes: I have run `cargo build --target wasm32v1-none --release`
 - [ ] For contract changes: I have added/updated Rust tests in `contracts/*/src/lib.rs`
-- [ ] For new features: I have updated the README (Why OphirPay table, Roadmap, test counts)
+- [ ] For new features: I have updated the README (Why LumenRail table, Roadmap, test counts)
 - [ ] For API changes: I have updated the TypeScript contract ABI types in `src/types/contract-abi.ts`
 - [ ] My changes do not introduce new lint warnings or type errors
 

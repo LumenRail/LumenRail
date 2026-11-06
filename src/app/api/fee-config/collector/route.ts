@@ -8,7 +8,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/fee-config/collector — current fee collector address
- * Reads from OphirPayContract.get_fee_collector() on-chain.
+ * Reads from LumenRailContract.get_fee_collector() on-chain.
  */
 export const GET = withMetrics("GET /api/fee-config/collector", withRequestLogging(async function GET(request: Request) {
   try {

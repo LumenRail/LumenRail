@@ -1,6 +1,6 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────
-# OphirPay Demo Smoke Test
+# LumenRail Demo Smoke Test
 # Run before any demo to verify everything works.
 # Green = OK, Red = FAIL, Yellow = WARNING
 # ─────────────────────────────────────────────────────────────
@@ -35,7 +35,7 @@ warn() {
 
 echo ""
 echo -e "${BOLD}┌──────────────────────────────────────────────┐${NC}"
-echo -e "${BOLD}│        OphirPay Demo Smoke Test              │${NC}"
+echo -e "${BOLD}│        LumenRail Demo Smoke Test              │${NC}"
 echo -e "${BOLD}└──────────────────────────────────────────────┘${NC}"
 echo ""
 

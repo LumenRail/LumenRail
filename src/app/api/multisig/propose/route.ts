@@ -10,7 +10,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * POST /api/multisig/propose — propose a payment for multisig approval
- * Calls OphirPayContract.propose_payment() on-chain.
+ * Calls LumenRailContract.propose_payment() on-chain.
  */
 export const POST = withMetrics("POST /api/multisig/propose", withRequestLogging(async function POST(request: Request) {
   try {

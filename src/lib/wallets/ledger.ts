@@ -80,7 +80,7 @@ export const ledgerConnector: WalletConnector = {
     ledgerPublicKey = null;
     ledgerConnected = false;
     if (typeof window !== "undefined") {
-      localStorage.removeItem("ophirpay-wallet-connected");
+      localStorage.removeItem("lumenrail-wallet-connected");
     }
   },
 

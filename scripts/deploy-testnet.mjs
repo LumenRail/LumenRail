@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 // SPDX-License-Identifier: MIT
 //
-// OphirPay — Stellar Testnet Contract Deployment
+// LumenRail — Stellar Testnet Contract Deployment
 // Uses @stellar/stellar-sdk v13 for WASM upload + contract creation.
 //
 // RECOMMENDED: Use stellar CLI v27+ for full deployment:
 //   1. stellar keys generate --fund --network testnet --rpc-url https://soroban-testnet.stellar.org <NAME>
-//   2. stellar contract deploy --wasm contracts/ophirpay/target/.../ophirpay_contract.wasm --source-account <NAME> --network testnet --rpc-url https://soroban-testnet.stellar.org
-//   3. stellar contract deploy --wasm contracts/emitter/target/.../ophirpay_emitter.wasm --source-account <NAME> --network testnet --rpc-url https://soroban-testnet.stellar.org
+//   2. stellar contract deploy --wasm contracts/lumenrail/target/.../lumenrail_contract.wasm --source-account <NAME> --network testnet --rpc-url https://soroban-testnet.stellar.org
+//   3. stellar contract deploy --wasm contracts/emitter/target/.../lumenrail_emitter.wasm --source-account <NAME> --network testnet --rpc-url https://soroban-testnet.stellar.org
 //   4. stellar contract invoke --id <CONTRACT> --source-account <NAME> --network testnet --rpc-url https://soroban-testnet.stellar.org -- init --owner <ADDR>
 //   5. stellar contract invoke --id <CONTRACT> --source-account <NAME> --network testnet --rpc-url https://soroban-testnet.stellar.org -- set_emitter --caller <ADDR> --emitter <EMITTER_ID>
 //
@@ -27,8 +27,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const RPC_URL = "https://soroban-testnet.stellar.org";
 const PASSPHRASE = Networks.TESTNET;
-const OPHIRPAY_WASM = join(ROOT, "contracts/ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm");
-const EMITTER_WASM = join(ROOT, "contracts/emitter/target/wasm32v1-none/release/ophirpay_emitter.wasm");
+const LUMENRAIL_WASM = join(ROOT, "contracts/lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm");
+const EMITTER_WASM = join(ROOT, "contracts/emitter/target/wasm32v1-none/release/lumenrail_emitter.wasm");
 
 // ── Helpers ──────────────────────────────────────────────────
 const log = (e, m) => console.log(`\n${e} ${m}`);
@@ -171,7 +171,7 @@ async function invokeContract(server, keypair, contractId, method, args) {
 
 async function main() {
   console.log("┌──────────────────────────────────────────────┐");
-  console.log("│   OphirPay — Stellar Testnet Deployment       │");
+  console.log("│   LumenRail — Stellar Testnet Deployment       │");
   console.log("└──────────────────────────────────────────────┘");
 
   // 1. Keypair
@@ -194,17 +194,17 @@ async function main() {
   const emitterWasmHash = await uploadWasm(server, keypair, EMITTER_WASM);
   const emitter = await createContract(server, keypair, emitterWasmHash);
 
-  // 5. Deploy OphirPay
-  log("🚀", "=== Deploying OphirPay ===");
-  const ophirpayWasmHash = await uploadWasm(server, keypair, OPHIRPAY_WASM);
-  const ophirpay = await createContract(server, keypair, ophirpayWasmHash);
+  // 5. Deploy LumenRail
+  log("🚀", "=== Deploying LumenRail ===");
+  const lumenrailWasmHash = await uploadWasm(server, keypair, LUMENRAIL_WASM);
+  const lumenrail = await createContract(server, keypair, lumenrailWasmHash);
 
-  // 6. Init OphirPay (requires Soroban auth — SDK v13 needs stellar CLI for this)
+  // 6. Init LumenRail (requires Soroban auth — SDK v13 needs stellar CLI for this)
   log("🔧", "Init requires Soroban auth entries (SDK v13 limitation).");
-  log("→", "Use stellar CLI: stellar contract invoke --id " + ophirpay.contractId + " --source-account <KEY> --network testnet -- init --owner " + keypair.publicKey());
+  log("→", "Use stellar CLI: stellar contract invoke --id " + lumenrail.contractId + " --source-account <KEY> --network testnet -- init --owner " + keypair.publicKey());
 
   // 7. Link Emitter
-  log("→", "Link with: stellar contract invoke --id " + ophirpay.contractId + " --source-account <KEY> --network testnet -- set_emitter --caller " + keypair.publicKey() + " --emitter " + emitter.contractId);
+  log("→", "Link with: stellar contract invoke --id " + lumenrail.contractId + " --source-account <KEY> --network testnet -- set_emitter --caller " + keypair.publicKey() + " --emitter " + emitter.contractId);
 
   // 10. Summary
   console.log("\n═══════════════════════════════════════════════");
@@ -213,19 +213,19 @@ async function main() {
   info("Network", "Testnet");
   info("Deployer", keypair.publicKey());
   info("", "");
-  info("OphirPay Contract", ophirpay.contractId);
+  info("LumenRail Contract", lumenrail.contractId);
   info("Emitter Contract", emitter.contractId);
   info("", "");
-  info("OphirPay Explorer", `https://stellar.expert/explorer/testnet/contract/${ophirpay.contractId}`);
+  info("LumenRail Explorer", `https://stellar.expert/explorer/testnet/contract/${lumenrail.contractId}`);
   info("Emitter Explorer", `https://stellar.expert/explorer/testnet/contract/${emitter.contractId}`);
 
   // Save env
   const envContent = [
-    `# OphirPay Testnet Deployment — ${new Date().toISOString()}`,
+    `# LumenRail Testnet Deployment — ${new Date().toISOString()}`,
     `NEXT_PUBLIC_STELLAR_NETWORK=TESTNET`,
     `NEXT_PUBLIC_HORIZON_URL=https://horizon-testnet.stellar.org`,
     `NEXT_PUBLIC_SOROBAN_RPC_URL=${RPC_URL}`,
-    `NEXT_PUBLIC_CONTRACT_ID=${ophirpay.contractId}`,
+    `NEXT_PUBLIC_CONTRACT_ID=${lumenrail.contractId}`,
     `NEXT_PUBLIC_EMITTER_CONTRACT_ID=${emitter.contractId}`,
     `# Deployer public: ${keypair.publicKey()}`,
     `# NOTE: The deployer SECRET key was intentionally NOT written to disk.`,

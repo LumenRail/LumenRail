@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * Cryptographic utility functions for OphirPay.
+ * Cryptographic utility functions for LumenRail.
  * Uses the Web Crypto API (available in Node.js 19+ and all modern browsers).
  */
 

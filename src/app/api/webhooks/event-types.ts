@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * Standard webhook event types for OphirPay.
+ * Standard webhook event types for LumenRail.
  * These are the values used in the `events` array when creating a webhook.
  */
 

@@ -14,15 +14,15 @@
 # Required env vars:
 #   DB_HOST, DB_USER, DB_NAME, DB_PASSWORD (for backup fetch)
 #   AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
-#   BACKUP_BUCKET (default: ophirpay-backups)
+#   BACKUP_BUCKET (default: lumenrail-backups)
 
 set -euo pipefail
 
-BACKUP_BUCKET="${BACKUP_BUCKET:-ophirpay-backups}"
+BACKUP_BUCKET="${BACKUP_BUCKET:-lumenrail-backups}"
 EPHEMERAL_PORT=5433
-EPHEMERAL_NAME="ophirpay-restore-drill-$$"
+EPHEMERAL_NAME="lumenrail-restore-drill-$$"
 
-echo "=== OphirPay Restore Drill ==="
+echo "=== LumenRail Restore Drill ==="
 echo "Timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
 # ── 1. Find latest backup ──────────────────────────────────
@@ -49,7 +49,7 @@ echo "→ Starting ephemeral Postgres on port ${EPHEMERAL_PORT} ..."
 docker run -d \
   --name "${EPHEMERAL_NAME}" \
   -e POSTGRES_PASSWORD=drillpass \
-  -e POSTGRES_DB=ophirpay_drill \
+  -e POSTGRES_DB=lumenrail_drill \
   -p "${EPHEMERAL_PORT}:5432" \
   postgres:16-alpine
 
@@ -67,7 +67,7 @@ done
 echo ""
 echo "→ Restoring ${LATEST} ..."
 gunzip -c "./${LATEST}" | docker exec -i "${EPHEMERAL_NAME}" \
-  psql -U postgres -d ophirpay_drill
+  psql -U postgres -d lumenrail_drill
 
 echo "✓ Restore complete"
 
@@ -80,7 +80,7 @@ PASS=true
 
 for table in "${TABLES[@]}"; do
   COUNT=$(docker exec "${EPHEMERAL_NAME}" \
-    psql -U postgres -d ophirpay_drill -t -c "SELECT COUNT(*) FROM \"${table}\";" 2>/dev/null | xargs || echo "0")
+    psql -U postgres -d lumenrail_drill -t -c "SELECT COUNT(*) FROM \"${table}\";" 2>/dev/null | xargs || echo "0")
 
   if [[ "$COUNT" =~ ^[0-9]+$ ]]; then
     echo "  ✓ ${table}: ${COUNT} rows"

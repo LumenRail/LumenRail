@@ -1,16 +1,16 @@
-# OphirPay Smart Contract Security Audit
+# LumenRail Smart Contract Security Audit
 
 > **Status:** Manual security review (completed) · **Not** a substitute for a paid third-party audit
 >
 > **Auditor:** Codebuff (AI-assisted manual code review)
 > **Date:** 2026-08-13
-> **Scope:** `contracts/ophirpay/src/lib.rs` (OphirPayContract), `contracts/emitter/src/lib.rs` (PaymentEventEmitter), `contracts/ophirpay/spec/` (Kani proofs), the web/API security layer (`src/lib/csrf.ts`, `auth-session.ts`, `challenge.ts`, `api-auth.ts`, `webhook-url-guard.ts`, `webhook-deliver.ts`, `rate-limit.ts`, `src/app/api/auth/session/route.ts`), and the security-related documentation claims.
+> **Scope:** `contracts/lumenrail/src/lib.rs` (LumenRailContract), `contracts/emitter/src/lib.rs` (PaymentEventEmitter), `contracts/lumenrail/spec/` (Kani proofs), the web/API security layer (`src/lib/csrf.ts`, `auth-session.ts`, `challenge.ts`, `api-auth.ts`, `webhook-url-guard.ts`, `webhook-deliver.ts`, `rate-limit.ts`, `src/app/api/auth/session/route.ts`), and the security-related documentation claims.
 
 ---
 
 ## 1. Executive Summary
 
-OphirPay is a well-structured Soroban codebase with clear separation of concerns, consistent
+LumenRail is a well-structured Soroban codebase with clear separation of concerns, consistent
 storage namespacing, pervasive `require_auth` on privileged entrypoints, and a solid
 `LOCKED_BALANCE` accounting pattern for escrows, streams, and governance deposits.
 
@@ -29,7 +29,7 @@ The review found **no single point of direct, unauthenticated fund theft**. Howe
 - **Numerous Low** issues around validation, error-code hygiene, the webhook HMAC scheme, and
   documentation accuracy.
 
-**Bottom line:** do **not** present OphirPay as "audited" or "formally verified" until the
+**Bottom line:** do **not** present LumenRail as "audited" or "formally verified" until the
 findings below are addressed and an independent third-party audit (e.g. Runtime Verification,
 Certora, Trail of Bits, OtterSec) is commissioned.
 
@@ -75,7 +75,7 @@ What this review is **not**:
 > payment, and the refund transfer cannot be triggered permissionlessly. Covered by the new
 > `test_refund_rejects_unauthorized_requester` unit test.
 
-**File:** `contracts/ophirpay/src/lib.rs` (`request_refund` L3230, `process_refund` L3368)
+**File:** `contracts/lumenrail/src/lib.rs` (`request_refund` L3230, `process_refund` L3368)
 
 The contract's headline security invariant is:
 
@@ -117,14 +117,14 @@ list as proven.
 
 ### HIGH-2 — The "formal verification" does not verify the deployed contract
 
-**Files:** `contracts/ophirpay/spec/src/invariants.rs`, `contracts/ophirpay/spec/Cargo.toml`,
+**Files:** `contracts/lumenrail/spec/src/invariants.rs`, `contracts/lumenrail/spec/Cargo.toml`,
 `docs/VERIFICATION.md`, `README.md`
 
 The README and `docs/VERIFICATION.md` claim **"10/10 Kani invariants formally verified"** and a CI
 badge reads "verified-Kani". The reality:
 
 1. **The proofs are decoupled from the contract.** `spec/Cargo.toml` has **no dependency** on the
-   `ophirpay-contract` crate and explicitly notes *"The model functions are pure Rust — no Soroban
+   `lumenrail-contract` crate and explicitly notes *"The model functions are pure Rust — no Soroban
    SDK dependency needed."* Each proof re-implements the logic in a hand-written `model_*`
    function and proves properties of *that model*, not of `lib.rs`.
 2. **Several "invariants" are tautological.** E.g. `model_vote(already_voted) = !already_voted`,
@@ -146,7 +146,7 @@ Additionally, at least one modeled invariant does **not** hold in the actual cod
 **Recommendation:**
 
 - Either (a) remove the "formally verified" claims and badge, or (b) write real Kani/Certora
-  harnesses that exercise the actual `OphirPayContract` via the Soroban test environment and run
+  harnesses that exercise the actual `LumenRailContract` via the Soroban test environment and run
   them in CI, with a published artifact/report.
 - Do not describe these model proofs as "formal verification of the contract."
 
@@ -159,7 +159,7 @@ Additionally, at least one modeled invariant does **not** hold in the actual cod
 > `atomic_spend`, the sole authorized write path. Repeated calls can no longer burn a user's
 > allowance (griefing vector closed).
 
-**File:** `contracts/ophirpay/src/lib.rs` L1867
+**File:** `contracts/lumenrail/src/lib.rs` L1867
 
 `check_spending(env, user, amount)` has **no `require_auth`**, yet it **writes** to persistent
 storage: it resets and then increments `current_daily_spend` / `current_monthly_spend` for `user`.
@@ -173,7 +173,7 @@ and a `require_not_paused` guard.
 
 ### MEDIUM-2 — Unbounded enumeration (resource exhaustion)
 
-**File:** `contracts/ophirpay/src/lib.rs`
+**File:** `contracts/lumenrail/src/lib.rs`
 
 Several readers iterate without any cap, contradicting the README's "Bounded N+1 enumeration"
 claim:
@@ -202,13 +202,13 @@ unreliable or DoS-able. (`get_audit_log_range`, `get_fee_config_history`, and
 **File:** `contracts/emitter/src/lib.rs` L76
 
 `emit_payment` requires only `caller.require_auth()` and does **not** verify that `caller` is the
-linked OphirPay contract (there is no allow-list at all). Any account can emit fabricated
+linked LumenRail contract (there is no allow-list at all). Any account can emit fabricated
 `PaymentEvent`s with arbitrary payer/payee/amount/tx_hash. Because the SSE stream
 (`/api/events`, `/api/audit-log/sse`) and the webhook relayer (`scripts/relayer.ts`) consume these
 events, this is a data-integrity problem: fake payments would surface in dashboards and be
 delivered to webhook subscribers.
 
-**Recommendation:** store an allow-listed source address (the OphirPay contract) and require it in
+**Recommendation:** store an allow-listed source address (the LumenRail contract) and require it in
 `emit_payment`, or require a valid signature from the main contract.
 
 ---
@@ -223,7 +223,7 @@ delivered to webhook subscribers.
 > `test_reentrancy_lock_released_after_guarded_ops` regression test asserts the lock is always
 > released after guarded operations.
 
-**File:** `contracts/ophirpay/src/lib.rs`
+**File:** `contracts/lumenrail/src/lib.rs`
 
 The README states the `REENTRANCY_LOCK` protects cross-contract calls, but only
 `emergency_pause_all`, `emergency_unpause_all`, and `emergency_withdraw` acquire it. The
@@ -243,11 +243,11 @@ checks-effects-interactions ordering.
 > the `invoke_contract` result and convert a failure to `PaymentError::CrossContractCallFailed`,
 > reverting the operation instead of silently leaving the emitter running.
 
-**File:** `contracts/ophirpay/src/lib.rs` L2137
+**File:** `contracts/lumenrail/src/lib.rs` L2137
 
 The cross-contract `pause` call is invoked as `let _: () = env.invoke_contract(&emitter, …)`,
 discarding the result. The emitter's `pause` (L256) requires `caller == EMITTER_OWNER`; if the
-emitter's owner differs from the OphirPay owner, the call reverts and `emergency_pause_all` fails
+emitter's owner differs from the LumenRail owner, the call reverts and `emergency_pause_all` fails
 entirely — meaning the documented "atomic pause_all" is fragile and can silently break the
 emergency circuit breaker.
 
@@ -261,7 +261,7 @@ orchestrator and add a test for the mismatch case.
 > ✅ **Status: FIXED (2026-08-14).** `deliverWebhook` now passes `redirect: "manual"` to `fetch`,
 > so 3xx hops are never followed to internal addresses (e.g. `http://169.254.169.254/`); a 3xx
 > response is treated as a delivery failure. The HMAC canonicalization was also corrected so a
-> receiver verifying `X-OphirPay-Signature` over the received body always matches (see LOW-9).
+> receiver verifying `X-LumenRail-Signature` over the received body always matches (see LOW-9).
 > Covered by the new `src/__tests__/webhook-deliver.test.ts` suite.
 
 **File:** `src/lib/webhook-deliver.ts`, `src/lib/webhook-url-guard.ts`
@@ -342,7 +342,7 @@ and re-run the IP/hostname check against the final resolved address after follow
 - `saturating_*` arithmetic used in most counter/locked-balance paths.
 - `extend_ttl` called on every persistent write.
 - Pause circuit breaker present on most write paths (gap noted above for refunds).
-- 67 Rust contract unit tests (60 ophirpay + 7 emitter) + a large vitest app suite (806 cases), wired into CI.
+- 67 Rust contract unit tests (60 lumenrail + 7 emitter) + a large vitest app suite (806 cases), wired into CI.
 - Web layer verified as matching the README's claims: CSRF (double-submit, timing-safe),
   HMAC-signed sessions with proof-of-ownership, SHA-256-hashed API keys (indexed, fail-closed),
   DNS-rebinding re-validation on webhooks, and pluggable rate limiting.

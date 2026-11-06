@@ -3,7 +3,7 @@
 /**
  * Soroban contract error decoding utilities.
  * Maps raw contract error codes to human-readable messages.
- * Mirrors the PaymentError enum in contracts/ophirpay/src/lib.rs.
+ * Mirrors the PaymentError enum in contracts/lumenrail/src/lib.rs.
  */
 
 const CONTRACT_ERROR_MAP: Record<string, string> = {

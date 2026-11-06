@@ -1,16 +1,16 @@
-# OphirPay — Prometheus Alert Rules
-# These rules monitor the OphirPay API server for conditions that require
+# LumenRail — Prometheus Alert Rules
+# These rules monitor the LumenRail API server for conditions that require
 # immediate operator attention. Designed for Alertmanager → PagerDuty/Slack.
 
 groups:
-  - name: ophirpay_critical
+  - name: lumenrail_critical
     interval: 30s
     rules:
       # ── Contract Balance Alerts ──────────────────────────────
 
       - alert: ContractBalanceBelowLocked
         expr: |
-          ophirpay_contract_balance - ophirpay_locked_balance < 0
+          lumenrail_contract_balance - lumenrail_locked_balance < 0
         for: 1m
         labels:
           severity: critical
@@ -18,14 +18,14 @@ groups:
         annotations:
           summary: "Contract balance dropped below locked funds"
           description: |
-            OphirPay contract {{ $labels.contract_id }} on {{ $labels.network }}
+            LumenRail contract {{ $labels.contract_id }} on {{ $labels.network }}
             has balance {{ $value | humanize }} below total locked escrow+stream
             funds. This indicates a potential fund deficiency or accounting bug.
             IMMEDIATE ACTION: pause the contract and investigate.
 
       - alert: ContractBalanceDroppingFast
         expr: |
-          rate(ophirpay_contract_balance[5m]) < -10000000000
+          rate(lumenrail_contract_balance[5m]) < -10000000000
         for: 5m
         labels:
           severity: warning
@@ -33,12 +33,12 @@ groups:
         annotations:
           summary: "Contract balance decreasing rapidly"
           description: |
-            OphirPay contract balance is dropping at {{ $value | humanize }}/s.
+            LumenRail contract balance is dropping at {{ $value | humanize }}/s.
             Check for unusual withdrawal activity.
 
       - alert: LockedBalanceDivergence
         expr: |
-          abs(ophirpay_contract_balance - ophirpay_locked_balance - ophirpay_unlocked_balance) > 10000000
+          abs(lumenrail_contract_balance - lumenrail_locked_balance - lumenrail_unlocked_balance) > 10000000
         for: 5m
         labels:
           severity: warning
@@ -53,8 +53,8 @@ groups:
 
       - alert: BatchPaymentFailureRateHigh
         expr: |
-          rate(ophirpay_batch_failed_items[15m]) /
-          rate(ophirpay_batch_total_items[15m]) > 0.5
+          rate(lumenrail_batch_failed_items[15m]) /
+          rate(lumenrail_batch_total_items[15m]) > 0.5
         for: 10m
         labels:
           severity: critical
@@ -67,7 +67,7 @@ groups:
 
       - alert: PaymentProcessingLatencyHigh
         expr: |
-          histogram_quantile(0.95, rate(ophirpay_payment_duration_seconds_bucket[5m])) > 30
+          histogram_quantile(0.95, rate(lumenrail_payment_duration_seconds_bucket[5m])) > 30
         for: 5m
         labels:
           severity: warning
@@ -82,8 +82,8 @@ groups:
 
       - alert: WebhookDeliveryFailureRateHigh
         expr: |
-          rate(ophirpay_webhook_failures_total[15m]) /
-          rate(ophirpay_webhook_attempts_total[15m]) > 0.25
+          rate(lumenrail_webhook_failures_total[15m]) /
+          rate(lumenrail_webhook_attempts_total[15m]) > 0.25
         for: 10m
         labels:
           severity: warning
@@ -95,7 +95,7 @@ groups:
             Check subscriber endpoints.
 
       - alert: WebhookQueueDepthHigh
-        expr: ophirpay_webhook_queue_depth > 1000
+        expr: lumenrail_webhook_queue_depth > 1000
         for: 5m
         labels:
           severity: warning
@@ -110,8 +110,8 @@ groups:
 
       - alert: ApiHighErrorRate
         expr: |
-          rate(ophirpay_http_errors_total[5m]) /
-          rate(ophirpay_http_requests_total[5m]) > 0.05
+          rate(lumenrail_http_errors_total[5m]) /
+          rate(lumenrail_http_requests_total[5m]) > 0.05
         for: 5m
         labels:
           severity: critical
@@ -119,25 +119,25 @@ groups:
         annotations:
           summary: "API error rate > 5%"
           description: |
-            OphirPay API is returning errors at {{ $value | humanizePercentage }}.
+            LumenRail API is returning errors at {{ $value | humanizePercentage }}.
             Check logs for root cause.
 
       - alert: ApiDown
-        expr: up{job="ophirpay"} == 0
+        expr: up{job="lumenrail"} == 0
         for: 2m
         labels:
           severity: critical
           component: api
         annotations:
-          summary: "OphirPay API is down"
+          summary: "LumenRail API is down"
           description: |
-            The OphirPay API server is not responding to health checks.
+            The LumenRail API server is not responding to health checks.
             Instance: {{ $labels.instance }}.
 
       # ── Database Alerts ──────────────────────────────────────
 
       - alert: DatabaseConnectionPoolExhausted
-        expr: ophirpay_db_pool_available < 2
+        expr: lumenrail_db_pool_available < 2
         for: 2m
         labels:
           severity: critical
@@ -150,7 +150,7 @@ groups:
 
       - alert: DatabaseQueryLatencyHigh
         expr: |
-          histogram_quantile(0.95, rate(ophirpay_db_query_duration_seconds_bucket[5m])) > 1
+          histogram_quantile(0.95, rate(lumenrail_db_query_duration_seconds_bucket[5m])) > 1
         for: 5m
         labels:
           severity: warning
@@ -164,7 +164,7 @@ groups:
       # ── Rate Limiting Alerts ─────────────────────────────────
 
       - alert: RateLimitHitsHigh
-        expr: rate(ophirpay_rate_limit_hits_total[5m]) > 10
+        expr: rate(lumenrail_rate_limit_hits_total[5m]) > 10
         for: 5m
         labels:
           severity: warning

@@ -1,6 +1,6 @@
 ---
 name: 🐛 Bug Report
-about: Report a bug in OphirPay
+about: Report a bug in LumenRail
 title: "[BUG] "
 labels: ["🐛 bug", "triage"]
 assignees: []
@@ -26,7 +26,7 @@ assignees: []
 
 ## Environment
 
-- **OphirPay version/commit**: <!-- e.g. main @ a1b2c3d -->
+- **LumenRail version/commit**: <!-- e.g. main @ a1b2c3d -->
 - **Browser**: <!-- e.g. Chrome 120, Firefox 121 -->
 - **Wallet**: <!-- e.g. Freighter 5.x, Albedo -->
 - **Network**: <!-- e.g. Stellar Testnet, Futurenet -->
@@ -37,7 +37,7 @@ assignees: []
 <!-- Check all that apply -->
 - [ ] Frontend UI (pages, components)
 - [ ] API routes (backend)
-- [ ] Smart contract (OphirPay)
+- [ ] Smart contract (LumenRail)
 - [ ] Smart contract (Emitter)
 - [ ] CI/CD pipeline
 - [ ] Documentation

@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-message: "If you use OphirPay in your research or project, please cite it as below."
-title: "OphirPay: Open-Source Payment Orchestration Layer for Stellar"
+message: "If you use LumenRail in your research or project, please cite it as below."
+title: "LumenRail: Open-Source Payment Orchestration Layer for Stellar"
 authors:
-  - name: "OphirPay Contributors"
-    website: "https://github.com/OphirPay"
-url: "https://github.com/OphirPay/OphirPay"
-repository-code: "https://github.com/OphirPay/OphirPay"
-abstract: "OphirPay is an open-source payment orchestration layer built on the Stellar blockchain. It provides smart contracts (Soroban/Rust) for payments, escrows, streaming, batch payments, refunds, multisig approvals, DAO governance, and real-time event streaming — with a Next.js frontend, 15-job CI/CD pipeline, and comprehensive developer tooling."
+  - name: "LumenRail Contributors"
+    website: "https://github.com/LumenRail"
+url: "https://github.com/Abolax123/OphirPay"
+repository-code: "https://github.com/Abolax123/OphirPay"
+abstract: "LumenRail is an open-source payment orchestration layer built on the Stellar blockchain. It provides smart contracts (Soroban/Rust) for payments, escrows, streaming, batch payments, refunds, multisig approvals, DAO governance, and real-time event streaming — with a Next.js frontend, 15-job CI/CD pipeline, and comprehensive developer tooling."
 keywords:
   - "stellar"
   - "soroban"

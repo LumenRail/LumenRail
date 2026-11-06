@@ -8,7 +8,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/policy-versions — fee config + multisig config version history.
- * Reads from OphirPayContract.get_fee_config_history() and get_multisig_config_history().
+ * Reads from LumenRailContract.get_fee_config_history() and get_multisig_config_history().
  */
 export const GET = withMetrics("GET /api/policy-versions", withRequestLogging(async function GET(request: Request) {
   try {

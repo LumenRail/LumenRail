@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/OphirPay/OphirPay/main/public/ophirpay-banner.svg" alt="OphirPay Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/lumenrail-banner.svg" alt="LumenRail Banner" width="100%" />
 
-  <h1>🏦 OphirPay</h1>
+  <h1>🏦 LumenRail</h1>
 
   <h3><em>Stellar向けオープンソース決済オーケストレーションレイヤー</em></h3>
 
@@ -22,7 +22,7 @@
 
 ## 📑 目次
 
-- [✨ なぜOphirPay？](#-なぜophirpay)
+- [✨ なぜLumenRail？](#-なぜlumenrail)
 - [🚀 ライブデモ](#-ライブデモ)
 - [🧭 システムアーキテクチャ](#-システムアーキテクチャ)
 - [⚡ クイックスタート](#-クイックスタート)
@@ -36,11 +36,11 @@
 
 ---
 
-## ✨ なぜOphirPay？
+## ✨ なぜLumenRail？
 
-ほとんどのブロックチェーン決済ツールは、開発者向けSDKか複雑なエンタープライズダッシュボードです。**OphirPayはそのギャップを埋めます** — DAOトレジャリーにも十分な機能を持ち、初のクリプト決済を送信するフリーランサーにも直感的に使える、本格級のオープンソース決済プラットフォーム。
+ほとんどのブロックチェーン決済ツールは、開発者向けSDKか複雑なエンタープライズダッシュボードです。**LumenRailはそのギャップを埋めます** — DAOトレジャリーにも十分な機能を持ち、初のクリプト決済を送信するフリーランサーにも直感的に使える、本格級のオープンソース決済プラットフォーム。
 
-| 機能 | OphirPay | 一般的なdApp |
+| 機能 | LumenRail | 一般的なdApp |
 |---|---|---|
 | 個別決済 | ✅ | ✅ |
 | **バッチ決済**（1トランザクションで複数受取人） | ✅ | ❌ |
@@ -85,7 +85,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                   OPHIRPAYプラットフォーム                     │
+│                   LUMENRAILプラットフォーム                     │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌─────────┐ │
@@ -110,7 +110,7 @@
 │  │           Sorobanスマートコントラクト                    │  │
 │  │                                                       │  │
 │  │  ┌──────────────────┐ ネイティブイベント ┌─────────┐  │  │
-│  │  │ OphirPayContract │ + クロスコントラクト│ エミッター│  │  │
+│  │  │ LumenRailContract │ + クロスコントラクト│ エミッター│  │  │
 │  │  │  · record_payment│   pause/unpause   │コントラクト│  │  │
 │  │  │  · propose_pay.  │   オーケストレーション│· events │  │  │
 │  │  │  · grant_role    │                   └────┬────┘  │  │
@@ -140,7 +140,7 @@
 ## ⚡ クイックスタート（60秒）
 
 ```bash
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 npm install && npx prisma db push && npx prisma generate
 cp .env.example .env && npm run dev
 ```
@@ -151,7 +151,7 @@ cp .env.example .env && npm run dev
 
 ```bash
 # 1. クローン＆进入
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 
 # 2. すべてインストール
 npm install
@@ -172,7 +172,7 @@ npm run dev
 
 ## 🔐 ウォレット統合
 
-OphirPayは、統合コネクターアブストラクションを通じて複数のStellarウォレットをサポートしています。`MultiWalletProvider`コンテキストがアプリケーション全体をラップし、以下を提供します：
+LumenRailは、統合コネクターアブストラクションを通じて複数のStellarウォレットをサポートしています。`MultiWalletProvider`コンテキストがアプリケーション全体をラップし、以下を提供します：
 
 | 機能 | 実装 |
 |---|---|
@@ -196,7 +196,7 @@ OphirPayは、統合コネクターアブストラクションを通じて複数
 
 ## 📡 リアルタイムイベント
 
-OphirPayはServer-Sent Events (SSE) を通じて**ブロックチェーンのライブイベント**をストリーミングします。エンドポイントはデプロイされた`PaymentEventEmitter`コントラクトを10秒ごとにポーリングし、新しい決、新しい決済イベントを検出すると接続されたクライアントにプッシュします。
+LumenRailはServer-Sent Events (SSE) を通じて**ブロックチェーンのライブイベント**をストリーミングします。エンドポイントはデプロイされた`PaymentEventEmitter`コントラクトを10秒ごとにポーリングし、新しい決、新しい決済イベントを検出すると接続されたクライアントにプッシュします。
 
 ```
 ブラウザ ←──SSEストリーム─── GET /api/events ──ポーリング──→ PaymentEventEmitter (Soroban)
@@ -219,11 +219,11 @@ OphirPayはServer-Sent Events (SSE) を通じて**ブロックチェーンのラ
 
 ## 🧪 スマートコントラクト
 
-OphirPayは**2つのSorobanコントラクト**をデプロイしています。メインの`OphirPayContract`はすべての決済ロジックを処理し、ネイティブのオンチェーンイベントを発行します。一方、`PaymentEventEmitter`はアプリのSSEストリームがクエリする決済イベントレコードを保存します — 決済ロジックとイベント発行を分離し、よりクリーンなアーキテクチャを実現しています。
+LumenRailは**2つのSorobanコントラクト**をデプロイしています。メインの`LumenRailContract`はすべての決済ロジックを処理し、ネイティブのオンチェーンイベントを発行します。一方、`PaymentEventEmitter`はアプリのSSEストリームがクエリする決済イベントレコードを保存します — 決済ロジックとイベント発行を分離し、よりクリーンなアーキテクチャを実現しています。
 
 ```bash
 # コントラクトテストを実行
-cd contracts/ophirpay && cargo test
+cd contracts/lumenrail && cargo test
 cd contracts/emitter && cargo test
 ```
 
@@ -309,7 +309,7 @@ npm run ci   # typecheck → lint → test → build
 
 <div align="center">
 
-**[🐛 バグを報告](https://github.com/OphirPay/OphirPay/issues)** · **[💡 機能をリクエスト](https://github.com/OphirPay/OphirPay/issues)** · **[📖 ドキュメントを読む](https://github.com/OphirPay/OphirPay#readme)**
+**[🐛 バグを報告](https://github.com/Abolax123/OphirPay/issues)** · **[💡 機能をリクエスト](https://github.com/Abolax123/OphirPay/issues)** · **[📖 ドキュメントを読む](https://github.com/Abolax123/OphirPay#readme)**
 
 <br />
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This runbook documents the reusable E2E harness for validating a horizontally sharded OphirPay deployment. The harness keeps shard routing and storage in memory, so it can exercise partitioning, cross-shard coordination, and cleanup deterministically without production database credentials.
+This runbook documents the reusable E2E harness for validating a horizontally sharded LumenRail deployment. The harness keeps shard routing and storage in memory, so it can exercise partitioning, cross-shard coordination, and cleanup deterministically without production database credentials.
 
 ---
 
@@ -10,7 +10,7 @@ This runbook documents the reusable E2E harness for validating a horizontally sh
 
 ```
                 ┌─────────────────────────────────────────┐
-                │   OphirPay Client / API Gateway / Tests  │
+                │   LumenRail Client / API Gateway / Tests  │
                 └────────────────────┬────────────────────┘
                                      │
                                      ▼

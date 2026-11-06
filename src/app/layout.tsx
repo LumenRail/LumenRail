@@ -20,11 +20,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "OphirPay — Stellar Payment Orchestration",
-    template: "%s | OphirPay",
+    default: "LumenRail — Stellar Payment Orchestration",
+    template: "%s | LumenRail",
   },
   description:
-    "OphirPay is a Stellar-native payment orchestration platform for individuals, businesses, nonprofits, and DAOs.",
+    "LumenRail is a Stellar-native payment orchestration platform for individuals, businesses, nonprofits, and DAOs.",
   icons: { icon: "/icon.svg" },
   manifest: "/manifest.json",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://ophirpay.vercel.app"),
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "OphirPay — Stellar Payment Orchestration",
+    title: "LumenRail — Stellar Payment Orchestration",
     description: "Open-source payment orchestration layer for Stellar. Send, batch, schedule, and track payments.",
     type: "website",
-    siteName: "OphirPay",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "OphirPay — Stellar Payment Orchestration" }],
+    siteName: "LumenRail",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "LumenRail — Stellar Payment Orchestration" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OphirPay — Stellar Payment Orchestration",
+    title: "LumenRail — Stellar Payment Orchestration",
     description: "Open-source payment orchestration layer for Stellar. Smart contracts, webhooks, batch payments, refunds, multisig, governance.",
     images: ["/og-image.png"],
   },
@@ -64,7 +64,7 @@ export default function RootLayout({
             __html: `
               (function () {
                 try {
-                  var stored = localStorage.getItem("ophirpay-theme");
+                  var stored = localStorage.getItem("lumenrail-theme");
                   var dark = stored === "dark" ||
                     ((stored === null || stored === "system") &&
                       window.matchMedia("(prefers-color-scheme: dark)").matches);
@@ -82,7 +82,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              name: "OphirPay",
+              name: "LumenRail",
               url: process.env.NEXT_PUBLIC_APP_URL || "https://ophirpay.vercel.app",
               description: "Open-source payment orchestration layer for Stellar — smart contracts, webhooks, batch payments, refunds, multisig, and governance.",
               applicationCategory: "FinanceApplication",

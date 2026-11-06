@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/rbac — look up role assignments from the Soroban contract.
- * Reads from OphirPayContract.get_role(addr) for a specific address.
+ * Reads from LumenRailContract.get_role(addr) for a specific address.
  * Use query param `addr` to look up a specific address's role.
  */
 export const GET = withMetrics("GET /api/rbac", withRequestLogging(async function GET(request: Request) {

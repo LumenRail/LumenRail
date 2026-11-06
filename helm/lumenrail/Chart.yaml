@@ -1,6 +1,6 @@
 apiVersion: v2
-name: ophirpay
-description: OphirPay — Production-grade Stellar payment infrastructure
+name: lumenrail
+description: LumenRail — Production-grade Stellar payment infrastructure
 type: application
 version: 1.0.0
 appVersion: "1.0.0"
@@ -11,7 +11,7 @@ keywords:
   - blockchain
 home: https://ophirpay.com
 sources:
-  - https://github.com/OphirPay/OphirPay
+  - https://github.com/Abolax123/OphirPay
 maintainers:
-  - name: OphirPay Team
+  - name: LumenRail Team
     email: team@ophirpay.com

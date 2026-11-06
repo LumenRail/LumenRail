@@ -36,7 +36,7 @@ describe("PAGE_TITLES", () => {
     for (const [route, title] of Object.entries(EXPECTED_ROUTE_TITLES)) {
       expect(title, `route ${route} must define a title`).toBeTruthy();
       // Non-default: must not fall back to the layout's default title.
-      expect(title).not.toBe("OphirPay — Stellar Payment Orchestration");
+      expect(title).not.toBe("LumenRail — Stellar Payment Orchestration");
     }
   });
 
@@ -61,21 +61,21 @@ describe("usePageTitle", () => {
     document.title = originalTitle;
   });
 
-  it("sets document.title to `${title} | OphirPay`", () => {
+  it("sets document.title to `${title} | LumenRail`", () => {
     renderHook(() => usePageTitle(PAGE_TITLES.PAYMENTS));
-    expect(document.title).toBe("Payments | OphirPay");
+    expect(document.title).toBe("Payments | LumenRail");
   });
 
   it("applies the shared template suffix for every route title", () => {
     for (const title of Object.values(PAGE_TITLES)) {
       renderHook(() => usePageTitle(title));
-      expect(document.title).toBe(`${title} | OphirPay`);
+      expect(document.title).toBe(`${title} | LumenRail`);
     }
   });
 
-  it("does not double-suffix titles that already mention OphirPay", () => {
-    renderHook(() => usePageTitle("OphirPay — Stellar Payment Orchestration"));
-    expect(document.title).toBe("OphirPay — Stellar Payment Orchestration");
+  it("does not double-suffix titles that already mention LumenRail", () => {
+    renderHook(() => usePageTitle("LumenRail — Stellar Payment Orchestration"));
+    expect(document.title).toBe("LumenRail — Stellar Payment Orchestration");
   });
 
   it("leaves the title untouched when given null/undefined", () => {
@@ -91,21 +91,21 @@ describe("usePageTitle", () => {
     const { rerender } = renderHook(({ title }: { title: string }) => usePageTitle(title), {
       initialProps,
     });
-    expect(document.title).toBe("Batch Payments | OphirPay");
+    expect(document.title).toBe("Batch Payments | LumenRail");
     rerender({ title: PAGE_TITLES.PAYMENTS });
-    expect(document.title).toBe("Payments | OphirPay");
+    expect(document.title).toBe("Payments | LumenRail");
   });
 
   it("restores the neutral default title when the route unmounts (e.g. error boundary)", () => {
     // Simulate arriving from another route — the previous title is a stale
     // route title, not the default.
-    document.title = "Payments | OphirPay";
+    document.title = "Payments | LumenRail";
     const { unmount } = renderHook(() => usePageTitle(PAGE_TITLES.BATCHES));
-    expect(document.title).toBe("Batch Payments | OphirPay");
+    expect(document.title).toBe("Batch Payments | LumenRail");
     // Unmounting simulates an error.tsx / global-error.tsx takeover. Neither
     // error boundary supplies a title, so the hook must fall back to the
     // neutral default — never the preceding route's title.
     unmount();
-    expect(document.title).toBe("OphirPay — Stellar Payment Orchestration");
+    expect(document.title).toBe("LumenRail — Stellar Payment Orchestration");
   });
 });

@@ -1,6 +1,6 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────
-# OphirPay — Deploy Script PUBLIC-config Validation
+# LumenRail — Deploy Script PUBLIC-config Validation
 # ─────────────────────────────────────────────────────────────
 # Validates that scripts/deploy-workflow.sh:
 #   1. Is syntactically valid bash

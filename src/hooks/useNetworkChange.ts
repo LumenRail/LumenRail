@@ -45,7 +45,7 @@ export function useNetworkPoller(
         if (network !== expectedNetwork) {
           // Network mismatch — could trigger a notification
           console.warn(
-            `[OphirPay] Freighter network changed: ${expectedNetwork} → ${network}`
+            `[LumenRail] Freighter network changed: ${expectedNetwork} → ${network}`
           );
         }
       } catch {

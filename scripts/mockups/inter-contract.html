@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inter-Contract Communication — OphirPay</title>
+<title>Inter-Contract Communication — LumenRail</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, sans-serif; background: #0f172a; color: #e2e8f0; padding: 40px; }
@@ -34,11 +34,11 @@
 </head>
 <body>
 <h1>🔗 Inter-Contract Communication</h1>
-<p class="subtitle">OphirPayContract calls PaymentEventEmitter via Soroban invoke_contract</p>
+<p class="subtitle">LumenRailContract calls PaymentEventEmitter via Soroban invoke_contract</p>
 
 <div class="flow">
   <div class="box main">
-    <h2>📦 OphirPayContract</h2>
+    <h2>📦 LumenRailContract</h2>
     <p>Main payment lifecycle contract</p>
     <div class="code-block">
       <span class="kw">pub fn</span> <span class="fn">create_payment</span>(env, payer, payee, amount, tx_hash) {<br>

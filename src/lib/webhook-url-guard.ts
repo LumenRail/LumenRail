@@ -3,7 +3,7 @@
 /**
  * SSRF guard for user-supplied webhook URLs.
  *
- * OphirPay's server delivers webhooks by making outbound HTTP requests to
+ * LumenRail's server delivers webhooks by making outbound HTTP requests to
  * URLs users register. Without a guard, a malicious user could register
  * http://169.254.169.254/ (cloud metadata), http://localhost:5432 (internal
  * DB), or other internal endpoints and turn the server into a proxy.

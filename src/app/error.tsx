@@ -12,7 +12,7 @@ export default function ErrorPage({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("[OphirPay] Unhandled error:", error);
+    console.error("[LumenRail] Unhandled error:", error);
   }, [error]);
 
   return (

@@ -129,7 +129,7 @@ describe("Modal", () => {
 
   it("pushes a history entry so the back button can close it", () => {
     render(<Modal open onClose={() => {}}>Content</Modal>);
-    expect(window.history.state?.ophirPayModal).toBe(true);
+    expect(window.history.state?.lumenRailModal).toBe(true);
   });
 
   it("closes when the browser back button is pressed", () => {

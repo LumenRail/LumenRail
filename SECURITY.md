@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in OphirPay, please **do not** open a public issue.
+If you discover a security vulnerability in LumenRail, please **do not** open a public issue.
 
 Instead, email **security@ophirpay.com** with:
 - A description of the vulnerability
@@ -49,16 +49,16 @@ If eligible, you will receive a reward based on the severity of the vulnerabilit
 
 ## Security.txt
 
-OphirPay publishes a `security.txt` file at `/.well-known/security.txt` following the [RFC 9116](https://www.rfc-editor.org/rfc/rfc9116) standard. This file provides security researchers with contact information and disclosure policies.
+LumenRail publishes a `security.txt` file at `/.well-known/security.txt` following the [RFC 9116](https://www.rfc-editor.org/rfc/rfc9116) standard. This file provides security researchers with contact information and disclosure policies.
 
 The file is accessible at:
 - **Production**: https://ophirpay.vercel.app/.well-known/security.txt
-- **Repository**: https://github.com/OphirPay/OphirPay/blob/main/.well-known/security.txt
+- **Repository**: https://github.com/Abolax123/OphirPay/blob/main/.well-known/security.txt
 
 ## Security Best Practices
 
 ### For Users
-- OphirPay never stores private keys — all signing happens client-side via Freighter
+- LumenRail never stores private keys — all signing happens client-side via Freighter
 - Always verify the destination address before signing
 - Check transaction details in Freighter before approving
 - Use a hardware wallet for production/mainnet operations
@@ -82,7 +82,7 @@ The file is accessible at:
 
 ## Bug Bounty Program
 
-OphirPay offers rewards for responsibly disclosed vulnerabilities:
+LumenRail offers rewards for responsibly disclosed vulnerabilities:
 
 | Severity | Reward | Examples |
 |---|---|---|
@@ -93,7 +93,7 @@ OphirPay offers rewards for responsibly disclosed vulnerabilities:
 
 ### Scope
 
-- Smart contracts: `contracts/ophirpay/src/lib.rs`, `contracts/emitter/src/lib.rs`
+- Smart contracts: `contracts/lumenrail/src/lib.rs`, `contracts/emitter/src/lib.rs`
 - API routes: `src/app/api/**/route.ts`
 - Authentication: Wallet session auth, API key auth
 - Webhook system: URL validation, HMAC signing, SSRF prevention
@@ -129,7 +129,7 @@ OphirPay offers rewards for responsibly disclosed vulnerabilities:
 
 ## Security Headers
 
-OphirPay implements the following security headers:
+LumenRail implements the following security headers:
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
 - `Referrer-Policy: strict-origin-when-cross-origin`
@@ -157,7 +157,7 @@ OphirPay implements the following security headers:
 
 ## Dependency Vulnerability Policy
 
-OphirPay runs an automated dependency vulnerability scan that **fails the build** on advisories rated **high or critical**.
+LumenRail runs an automated dependency vulnerability scan that **fails the build** on advisories rated **high or critical**.
 
 ### How the scan works
 

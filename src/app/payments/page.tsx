@@ -146,7 +146,7 @@ function PaymentsClient() {
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = `ophirpay-payments-${new Date().toISOString().split("T")[0]}.csv`;
+        link.download = `lumenrail-payments-${new Date().toISOString().split("T")[0]}.csv`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -165,7 +165,7 @@ function PaymentsClient() {
       { key: "amountStroops", header: "Amount (Stroops)" },
       { key: "metadata", header: "Metadata" },
       { key: "txHash", header: "Tx Hash" },
-    ], { filename: `ophirpay-payments-${new Date().toISOString().split("T")[0]}.csv` });
+    ], { filename: `lumenrail-payments-${new Date().toISOString().split("T")[0]}.csv` });
   };
 
   return (
@@ -180,7 +180,7 @@ function PaymentsClient() {
             Payments
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
-            Payment records stored on-chain by the OphirPay Soroban contract
+            Payment records stored on-chain by the LumenRail Soroban contract
           </p>
         </div>
         <div className="flex items-center gap-3">

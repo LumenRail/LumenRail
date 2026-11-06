@@ -12,7 +12,7 @@ const clients = new Map<string, ReadableStreamDefaultController>();
 let clientCounter = 0;
 
 /**
- * Poll the Soroban OphirPayContract for new audit log entries.
+ * Poll the Soroban LumenRailContract for new audit log entries.
  * Compares the latest on-chain entry ID with our last-seen ID.
  */
 async function pollContractForAuditEntries(

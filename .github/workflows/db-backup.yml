@@ -6,7 +6,7 @@ on:
   workflow_dispatch:      # Manual trigger
 
 env:
-  BACKUP_BUCKET: ophirpay-backups
+  BACKUP_BUCKET: lumenrail-backups
   BACKUP_RETENTION_DAYS: 30
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
       - name: Create backup
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H-%M-%SZ")
-          BACKUP_FILE="ophirpay-${TIMESTAMP}.sql.gz"
+          BACKUP_FILE="lumenrail-${TIMESTAMP}.sql.gz"
           echo "Backup file: ${BACKUP_FILE}"
           echo "BACKUP_FILE=${BACKUP_FILE}" >> $GITHUB_ENV
 

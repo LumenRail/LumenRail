@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("OphirPay Dashboard", () => {
+test.describe("LumenRail Dashboard", () => {
   test("loads dashboard page", async ({ page }) => {
     await page.goto("/");
-    await expect(page).toHaveTitle(/OphirPay/i);
+    await expect(page).toHaveTitle(/LumenRail/i);
     // Sidebar brand is also an h1 — target the page heading inside <main>.
     // h1 renders after client-side hydration — allow time in production.
     await expect(page.locator("main h1")).toBeVisible({ timeout: 15000 });

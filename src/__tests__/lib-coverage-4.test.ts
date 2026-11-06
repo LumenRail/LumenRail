@@ -171,7 +171,7 @@ describe('headers', () => {
 
 describe('constants', () => {
   it('has APP constants', () => {
-    expect(APP.NAME).toBe('OphirPay');
+    expect(APP.NAME).toBe('LumenRail');
     expect(APP.VERSION).toBe('0.1.0');
   });
   it('has STELLAR constants', () => {

@@ -4,7 +4,7 @@
  * Page title constants for consistent navigation and SEO.
  *
  * Every route under `src/app` renders its title through `usePageTitle()`
- * (see `src/hooks/usePageTitle.ts`), which mirrors the `"%s | OphirPay"`
+ * (see `src/hooks/usePageTitle.ts`), which mirrors the `"%s | LumenRail"`
  * template declared in `src/app/layout.tsx`. Keep the keys here in sync
  * with the routes so the browser tab and share previews always name the
  * current resource.
@@ -36,19 +36,19 @@ export const PAGE_TITLES = {
 export const PAGE_DESCRIPTIONS = {
   HOME: "Monitor your financial operations and payment activity on Stellar.",
   SEND: "Send XLM on the Stellar network — fast, cheap, and secure.",
-  PAYMENTS: "View payment records stored on-chain by the OphirPay Soroban contract.",
+  PAYMENTS: "View payment records stored on-chain by the LumenRail Soroban contract.",
   BATCHES: "Process multiple payments in a single Stellar transaction.",
   NEW_BATCH: "Create a new batch of payments to multiple recipients on Stellar.",
   RECURRING: "Schedule recurring payments on Stellar with automated execution.",
   REQUESTS: "Create and manage payment requests — shareable invoice-style links.",
   WEBHOOKS: "Configure webhook endpoints for real-time payment event notifications.",
-  CONTRACTS: "View and interact with the OphirPay Soroban smart contracts.",
+  CONTRACTS: "View and interact with the LumenRail Soroban smart contracts.",
   ANALYTICS: "Payment analytics and reporting — volume, success rates, trends.",
   EVENTS: "Real-time payment event stream from the Stellar blockchain.",
   AUDIT_LOG: "Query the on-chain audit log of contract actions.",
   HOOKS: "Register notification hooks that fire on on-chain contract events.",
-  RBAC: "Manage role-based access control assignments on the OphirPay contracts.",
-  FEE_CONFIG: "View and update on-chain fee configuration for OphirPay services.",
+  RBAC: "Manage role-based access control assignments on the LumenRail contracts.",
+  FEE_CONFIG: "View and update on-chain fee configuration for LumenRail services.",
   REFUNDS: "Track refund requests and their lifecycle on-chain.",
   TIMELOCK: "Review and execute timelocked administrative actions.",
   POLICY_VERSIONS: "Review the version history of fee and multisig configuration.",

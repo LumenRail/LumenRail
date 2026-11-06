@@ -73,7 +73,7 @@ export default function AnalyticsPage() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics</h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
-            On-chain payment metrics from the OphirPay Soroban contract
+            On-chain payment metrics from the LumenRail Soroban contract
           </p>
         </div>
         <button

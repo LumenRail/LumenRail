@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // SPDX-License-Identifier: MIT
 // ─────────────────────────────────────────────────────────────────────────────
-// OphirPay — dependency vulnerability scan (CI gate)
+// LumenRail — dependency vulnerability scan (CI gate)
 // ─────────────────────────────────────────────────────────────────────────────
 // Runs `npm audit --json`, applies the documented suppressions from
 // `.github/dependency-suppressions.json`, and FAILS the build when any

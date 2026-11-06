@@ -56,14 +56,14 @@ export function Modal({
     const handlePopState = () => onCloseRef.current();
 
     window.addEventListener("popstate", handlePopState);
-    history.pushState({ ophirPayModal: true }, "");
+    history.pushState({ lumenRailModal: true }, "");
 
     return () => {
       window.removeEventListener("popstate", handlePopState);
       // If the modal was closed by a means other than the back button (Esc,
       // backdrop, or close button), remove the history entry we pushed so the
       // page's history stays intact.
-      if (history.state?.ophirPayModal) {
+      if (history.state?.lumenRailModal) {
         try {
           history.back();
         } catch {

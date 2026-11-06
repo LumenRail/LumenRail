@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ophirpay
-  namespace: ophirpay
+  name: lumenrail
+  namespace: lumenrail
   labels:
-    app: ophirpay
+    app: lumenrail
 spec:
   replicas: 2
   strategy:
@@ -14,24 +14,24 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: ophirpay
+      app: lumenrail
   template:
     metadata:
       labels:
-        app: ophirpay
+        app: lumenrail
     spec:
       containers:
-        - name: ophirpay
-          image: ghcr.io/ophirpay/ophirpay:latest
+        - name: lumenrail
+          image: ghcr.io/lumenrail/lumenrail:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
               name: http
           envFrom:
             - configMapRef:
-                name: ophirpay-config
+                name: lumenrail-config
             - secretRef:
-                name: ophirpay-secrets
+                name: lumenrail-secrets
           resources:
             requests:
               cpu: 250m
@@ -68,14 +68,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ophirpay
-  namespace: ophirpay
+  name: lumenrail
+  namespace: lumenrail
   labels:
-    app: ophirpay
+    app: lumenrail
 spec:
   type: ClusterIP
   selector:
-    app: ophirpay
+    app: lumenrail
   ports:
     - port: 80
       targetPort: 3000
@@ -85,8 +85,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ophirpay
-  namespace: ophirpay
+  name: lumenrail
+  namespace: lumenrail
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -98,7 +98,7 @@ spec:
     - hosts:
         - ophirpay.com
         - api.ophirpay.com
-      secretName: ophirpay-tls
+      secretName: lumenrail-tls
   rules:
     - host: ophirpay.com
       http:
@@ -107,20 +107,20 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: ophirpay
+                name: lumenrail
                 port:
                   number: 80
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ophirpay
-  namespace: ophirpay
+  name: lumenrail
+  namespace: lumenrail
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: ophirpay
+    name: lumenrail
   minReplicas: 2
   maxReplicas: 10
   metrics:
@@ -140,23 +140,23 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: ophirpay
-  namespace: ophirpay
+  name: lumenrail
+  namespace: lumenrail
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: ophirpay
+      app: lumenrail
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: ophirpay
-  namespace: ophirpay
+  name: lumenrail
+  namespace: lumenrail
 spec:
   podSelector:
     matchLabels:
-      app: ophirpay
+      app: lumenrail
   policyTypes:
     - Ingress
     - Egress

@@ -8,7 +8,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/stats — aggregate contract statistics
- * Reads from OphirPayContract.get_stats() on-chain.
+ * Reads from LumenRailContract.get_stats() on-chain.
  * Returns counters for payments, escrows, streams, batches, and total amounts.
  */
 export const GET = withMetrics("GET /api/stats", withRequestLogging(async function GET(request: Request) {

@@ -1,6 +1,6 @@
 # 🚀 Deployment Guide
 
-> Step-by-step deployment instructions for OphirPay across multiple platforms. Covers Vercel (one-click), Docker, and standalone Node.js — including environment variables, Prisma migrations, Soroban contract deployment, and troubleshooting.
+> Step-by-step deployment instructions for LumenRail across multiple platforms. Covers Vercel (one-click), Docker, and standalone Node.js — including environment variables, Prisma migrations, Soroban contract deployment, and troubleshooting.
 
 ---
 
@@ -43,13 +43,13 @@ cp .env.example .env.local
 
 | Variable | Description | Example |
 |---|---|---|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host:5432/ophirpay` |
+| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host:5432/lumenrail` |
 | `DATABASE_PROVIDER` | Database provider | `postgresql` |
 | `NEXT_PUBLIC_STELLAR_NETWORK` | Stellar network | `TESTNET` or `PUBLIC` |
 | `NEXT_PUBLIC_STELLAR_RPC_URL` | Soroban RPC endpoint | `https://soroban-testnet.stellar.org:443` |
 | `NEXT_PUBLIC_STELLAR_HORIZON_URL` | Horizon API endpoint | `https://horizon-testnet.stellar.org` |
 | `STELLAR_NETWORK_PASSPHRASE` | Network passphrase | `Test SDF Network ; September 2015` |
-| `NEXT_PUBLIC_CONTRACT_ID` | Deployed OphirPay contract ID | `CCQGGU...` |
+| `NEXT_PUBLIC_CONTRACT_ID` | Deployed LumenRail contract ID | `CCQGGU...` |
 | `NEXT_PUBLIC_EMITTER_CONTRACT_ID` | Deployed emitter contract ID | `CDAVU2...` |
 | `NEXT_PUBLIC_APP_URL` | App base URL | `https://ophirpay.vercel.app` |
 
@@ -87,7 +87,7 @@ cp .env.example .env.local
 
 ## Option 1: Vercel (Recommended)
 
-Vercel is the easiest way to deploy OphirPay. The project includes a pre-configured `vercel.json`.
+Vercel is the easiest way to deploy LumenRail. The project includes a pre-configured `vercel.json`.
 
 ### One-Click Deploy
 
@@ -136,13 +136,13 @@ vercel
 
 ## Option 2: Docker
 
-OphirPay includes a multi-stage `Dockerfile` and a `docker-compose.yml` with PostgreSQL and Redis.
+LumenRail includes a multi-stage `Dockerfile` and a `docker-compose.yml` with PostgreSQL and Redis.
 
 ### Quick Start with Docker Compose
 
 ```bash
 # Clone the repo
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 
 # Start all services (app + PostgreSQL + Redis)
 docker compose up -d
@@ -158,7 +158,7 @@ curl http://localhost:3000/api/health
 
 | Service | Image | Port | Purpose |
 |---|---|---|---|
-| `app` | Built from `Dockerfile` | 3000 | OphirPay application |
+| `app` | Built from `Dockerfile` | 3000 | LumenRail application |
 | `db` | `postgres:16-alpine` | 5432 | PostgreSQL database |
 | `redis` | `redis:7-alpine` | 6379 | Rate limiting cache |
 
@@ -170,7 +170,7 @@ Override environment variables in `docker-compose.yml`:
 services:
   app:
     environment:
-      - DATABASE_URL=postgresql://ophirpay:ophirpay@db:5432/ophirpay
+      - DATABASE_URL=postgresql://lumenrail:lumenrail@db:5432/lumenrail
       - NEXT_PUBLIC_STELLAR_NETWORK=PUBLIC
       - NEXT_PUBLIC_STELLAR_RPC_URL=https://soroban.stellar.org:443
       - NEXT_PUBLIC_STELLAR_HORIZON_URL=https://horizon.stellar.org
@@ -186,7 +186,7 @@ services:
 
 ```bash
 # Build the image
-docker build -t ophirpay .
+docker build -t lumenrail .
 
 # Run with environment variables
 docker run -p 3000:3000 \
@@ -198,7 +198,7 @@ docker run -p 3000:3000 \
   -e NEXT_PUBLIC_CONTRACT_ID="CCQGGU..." \
   -e NEXT_PUBLIC_EMITTER_CONTRACT_ID="CDAVU2..." \
   -e NEXT_PUBLIC_APP_URL="http://localhost:3000" \
-  ophirpay
+  lumenrail
 ```
 
 ### Docker Image Details
@@ -227,7 +227,7 @@ For deploying to a VPS, bare metal, or any Linux server without Docker.
 
 ```bash
 # Clone and install
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 npm ci
 
 # Generate Prisma client
@@ -253,8 +253,8 @@ For production, use PM2 to keep the process alive:
 # Install PM2
 npm i -g pm2
 
-# Start OphirPay
-pm2 start npm --name "ophirpay" -- start
+# Start LumenRail
+pm2 start npm --name "lumenrail" -- start
 
 # Save PM2 config
 pm2 save
@@ -268,34 +268,34 @@ pm2 startup
 Alternatively, create a systemd service:
 
 ```ini
-# /etc/systemd/system/ophirpay.service
+# /etc/systemd/system/lumenrail.service
 [Unit]
-Description=OphirPay Payment Platform
+Description=LumenRail Payment Platform
 After=network.target postgresql.service
 
 [Service]
 Type=simple
-User=ophirpay
-WorkingDirectory=/opt/OphirPay
+User=lumenrail
+WorkingDirectory=/opt/LumenRail
 ExecStart=/usr/bin/node server.js
 Restart=on-failure
 RestartSec=5
 Environment=NODE_ENV=production
-EnvironmentFile=/opt/OphirPay/.env
+EnvironmentFile=/opt/LumenRail/.env
 
 [Install]
 WantedBy=multi-user.target
 ```
 
 ```bash
-sudo systemctl enable ophirpay
-sudo systemctl start ophirpay
+sudo systemctl enable lumenrail
+sudo systemctl start lumenrail
 ```
 
 ### Reverse Proxy (Nginx)
 
 ```nginx
-# /etc/nginx/sites-available/ophirpay
+# /etc/nginx/sites-available/lumenrail
 server {
     listen 80;
     server_name ophirpay.com;
@@ -318,25 +318,25 @@ server {
 
 ## Option 4: Kubernetes (Helm)
 
-A Helm chart is included in `helm/ophirpay/`.
+A Helm chart is included in `helm/lumenrail/`.
 
 ### Deploy with Helm
 
 ```bash
 # Create namespace
-kubectl create namespace ophirpay
+kubectl create namespace lumenrail
 
 # Create secrets
-kubectl create secret generic ophirpay-secrets \
-  --namespace ophirpay \
+kubectl create secret generic lumenrail-secrets \
+  --namespace lumenrail \
   --from-literal=DATABASE_URL="postgresql://..." \
   --from-literal=AUTH_SECRET="$(openssl rand -hex 32)" \
   --from-literal=NEXT_PUBLIC_CONTRACT_ID="<contract-id>" \
   --from-literal=NEXT_PUBLIC_EMITTER_CONTRACT_ID="<emitter-id>"
 
 # Install with Helm
-helm upgrade --install ophirpay ./helm/ophirpay \
-  --namespace ophirpay \
+helm upgrade --install lumenrail ./helm/lumenrail \
+  --namespace lumenrail \
   --set image.tag=latest \
   --set ingress.hosts[0].host=ophirpay.com \
   --set config.NEXT_PUBLIC_STELLAR_NETWORK=PUBLIC \
@@ -350,8 +350,8 @@ helm upgrade --install ophirpay ./helm/ophirpay \
 ### Verify
 
 ```bash
-kubectl get pods -n ophirpay
-kubectl get ingress -n ophirpay
+kubectl get pods -n lumenrail
+kubectl get ingress -n lumenrail
 curl https://ophirpay.com/api/health
 ```
 
@@ -359,7 +359,7 @@ curl https://ophirpay.com/api/health
 
 ## Soroban Contract Deployment
 
-OphirPay requires two Soroban contracts. Deploy them before starting the app.
+LumenRail requires two Soroban contracts. Deploy them before starting the app.
 
 ### Testnet (Default)
 
@@ -367,7 +367,7 @@ The testnet contracts are pre-deployed and configured in `.env.example`:
 
 | Contract | ID |
 |---|---|
-| OphirPay | `CCQGGUJRRVXMHNEX2RYPODGJE2YRMYY4Y7A3KTJH3QP2LWZLTCOPRPET` |
+| LumenRail | `CCQGGUJRRVXMHNEX2RYPODGJE2YRMYY4Y7A3KTJH3QP2LWZLTCOPRPET` |
 | Emitter | `CDAVU2XJ7C2Y52GRJZKRG3HDI7AJ2K2FHAFH5FPDTSUQAV7XNBQNNVAN` |
 
 No action needed — just use the defaults.
@@ -376,12 +376,12 @@ No action needed — just use the defaults.
 
 ```bash
 # 1. Build both contracts
-cd contracts/ophirpay && cargo build --target wasm32v1-none --release
+cd contracts/lumenrail && cargo build --target wasm32v1-none --release
 cd ../emitter && cargo build --target wasm32v1-none --release
 
 # 2. Deploy emitter
 stellar contract deploy \
-  --wasm target/wasm32v1-none/release/ophirpay_emitter.wasm \
+  --wasm target/wasm32v1-none/release/lumenrail_emitter.wasm \
   --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015"
@@ -395,18 +395,18 @@ stellar contract invoke --id <EMITTER_ID> --source-account <SECRET_KEY> \
 
 # 4. Deploy main contract
 stellar contract deploy \
-  --wasm ../ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm \
+  --wasm ../lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm \
   --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015"
 
 # 5. Init main contract + point at emitter
-stellar contract invoke --id <OPHIRPAY_ID> --source-account <SECRET_KEY> \
+stellar contract invoke --id <LUMENRAIL_ID> --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015" \
   -- init --owner <OWNER_PUBLIC_KEY>
 
-stellar contract invoke --id <OPHIRPAY_ID> --source-account <SECRET_KEY> \
+stellar contract invoke --id <LUMENRAIL_ID> --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015" \
   -- set_emitter --emitter <EMITTER_ID>
@@ -426,15 +426,15 @@ Or use the automated script:
 
 ```sql
 -- Connect to PostgreSQL and create the database
-CREATE DATABASE ophirpay;
-CREATE USER ophirpay WITH PASSWORD '<secure-password>';
-GRANT ALL PRIVILEGES ON DATABASE ophirpay TO ophirpay;
+CREATE DATABASE lumenrail;
+CREATE USER lumenrail WITH PASSWORD '<secure-password>';
+GRANT ALL PRIVILEGES ON DATABASE lumenrail TO lumenrail;
 ```
 
 Then run migrations:
 
 ```bash
-DATABASE_URL="postgresql://ophirpay:<password>@<host>:5432/ophirpay" \
+DATABASE_URL="postgresql://lumenrail:<password>@<host>:5432/lumenrail" \
   npx prisma migrate deploy
 ```
 
@@ -443,8 +443,8 @@ DATABASE_URL="postgresql://ophirpay:<password>@<host>:5432/ophirpay" \
 If your `DATABASE_URL` uses a pooled connection (PgBouncer, Neon), set `DIRECT_DATABASE_URL` for migrations:
 
 ```env
-DATABASE_URL=postgresql://user:pass@ep-xxx.pooler.supabase.com:6543/ophirpay
-DIRECT_DATABASE_URL=postgresql://user:pass@ep-xxx.supabase.co:5432/ophirpay
+DATABASE_URL=postgresql://user:pass@ep-xxx.pooler.supabase.com:6543/lumenrail
+DIRECT_DATABASE_URL=postgresql://user:pass@ep-xxx.supabase.co:5432/lumenrail
 ```
 
 Prisma uses `DATABASE_URL` at runtime and `DIRECT_DATABASE_URL` for `migrate deploy`.
@@ -550,6 +550,6 @@ curl -s https://your-domain.com/api/health | jq .database
 
 <div align="center">
 
-**[← Back to OphirPay README](../README.md)**
+**[← Back to LumenRail README](../README.md)**
 
 </div>

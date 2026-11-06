@@ -1,6 +1,6 @@
 # 🌟 How Stellar Payments Work
 
-> A concise primer for web developers new to blockchain. This covers the concepts you need to understand OphirPay's architecture and start building on Stellar.
+> A concise primer for web developers new to blockchain. This covers the concepts you need to understand LumenRail's architecture and start building on Stellar.
 
 ---
 
@@ -149,7 +149,7 @@ Included in ledger
 | 2-of-3 | Company treasury — 2 directors must approve |
 | 3-of-5 | DAO governance — 3 council members |
 
-OphirPay uses multisig for payment approvals and admin actions.
+LumenRail uses multisig for payment approvals and admin actions.
 
 **How signing works in practice:**
 1. Build the transaction (specify operations, fee, memo)
@@ -212,13 +212,13 @@ console.log("Account funded:", data);
 
 **⚠️ Important:** Testnet XLM has no real value. Never send testnet tokens to mainnet addresses or vice versa.
 
-**OphirPay default:** The app runs on testnet. Switch to mainnet by changing `NEXT_PUBLIC_STELLAR_NETWORK="PUBLIC"` in your `.env`.
+**LumenRail default:** The app runs on testnet. Switch to mainnet by changing `NEXT_PUBLIC_STELLAR_NETWORK="PUBLIC"` in your `.env`.
 
 ---
 
 ## Horizon — Stellar's REST API
 
-**Horizon** is Stellar's HTTP API server — think of it as the "backend" for reading blockchain data. OphirPay uses Horizon to:
+**Horizon** is Stellar's HTTP API server — think of it as the "backend" for reading blockchain data. LumenRail uses Horizon to:
 
 - Query account balances
 - Fetch transaction history
@@ -267,8 +267,8 @@ Response:
 | Cost model | Predictable (rent-based) | Gas auction |
 | Storage | Persistent + temporary | Permanent (expensive) |
 
-**How OphirPay uses Soroban:**
-- `OphirPayContract` — handles payment recording, multisig, governance, RBAC
+**How LumenRail uses Soroban:**
+- `LumenRailContract` — handles payment recording, multisig, governance, RBAC
 - `PaymentEventEmitter` — stores payment events for SSE streaming
 - Cross-contract calls for emergency pause/unpause orchestration
 
@@ -278,7 +278,7 @@ Response:
 - **Host functions**: Built-in functions (crypto, storage, events)
 - **Invocations**: Calling a contract function with arguments
 
-You don't need to write Soroban contracts to use OphirPay — the contracts are already deployed on testnet. But understanding them helps if you want to extend the platform.
+You don't need to write Soroban contracts to use LumenRail — the contracts are already deployed on testnet. But understanding them helps if you want to extend the platform.
 
 ---
 
@@ -322,7 +322,7 @@ const transaction = new TransactionBuilder(account, {
       amount: "10.0", // 10 XLM
     })
   )
-  .addMemo(Memo.text("Hello from OphirPay!"))
+  .addMemo(Memo.text("Hello from LumenRail!"))
   .setTimeout(300) // 5-minute timeout
   .build();
 
@@ -384,12 +384,12 @@ try {
 | Soroban Docs | [soroban.stellar.org](https://soroban.stellar.org) |
 | Stellar Expert (block explorer) | [stellar.expert](https://stellar.expert) |
 | Stellar SDK (JavaScript) | [github.com/stellar/js-stellar-sdk](https://github.com/stellar/js-stellar-sdk) |
-| OphirPay Source Code | [github.com/OphirPay/OphirPay](https://github.com/OphirPay/OphirPay) |
+| LumenRail Source Code | [github.com/Abolax123/OphirPay](https://github.com/Abolax123/OphirPay) |
 
 ---
 
 <div align="center">
 
-**[← Back to OphirPay README](../README.md)**
+**[← Back to LumenRail README](../README.md)**
 
 </div>

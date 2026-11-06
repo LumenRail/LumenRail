@@ -25,11 +25,11 @@ export async function register() {
       const wsServer = await startLiveEventsWsServer();
       wsServer.startEventStream();
       console.info(
-        `[OphirPay] WebSocket event server listening on port ${wsServer.port}`
+        `[LumenRail] WebSocket event server listening on port ${wsServer.port}`
       );
     } catch (error) {
       console.warn(
-        "[OphirPay] WebSocket event server unavailable — clients will use SSE:",
+        "[LumenRail] WebSocket event server unavailable — clients will use SSE:",
         error instanceof Error ? error.message : String(error)
       );
     }

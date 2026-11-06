@@ -1,4 +1,4 @@
-// This is a Prisma schema for OphirPay
+// This is a Prisma schema for LumenRail
 // Documentation: https://pris.ly/d/prisma-schema
 //
 // ── Database Provider ──────────────────────────────────────
@@ -63,13 +63,13 @@ datasource db {
 
 // ── User / Organization ──────────────────────────────────────
 
-/// A registered OphirPay user. Identified by wallet (Stellar) or email and
+/// A registered LumenRail user. Identified by wallet (Stellar) or email and
 /// the owner of every payment, batch, webhook, and key in the system.
 model User {
   /// Primary key — CUID generated at insert time.
   id              String   @id @default(cuid())
   /// Stellar public key (G…) used to authenticate this user. Unique — a
-  /// wallet can only ever belong to one OphirPay account. Nullable because
+  /// wallet can only ever belong to one LumenRail account. Nullable because
   /// users may register with email first and connect a wallet later.
   stellarAddress  String?  @unique
   /// Display name shown in the UI and webhook payloads.
@@ -138,7 +138,7 @@ model Account {
 // ── Payments ───────────────────────────────────────────────────
 
 /// A single payment record. Off-chain ledger row for a payment that was
-/// (or will be) recorded on-chain by the OphirPay Soroban contract.
+/// (or will be) recorded on-chain by the LumenRail Soroban contract.
 model Payment {
   /// Primary key — CUID generated at insert time.
   id                String    @id @default(cuid())
@@ -413,7 +413,7 @@ enum RequestStatus {
 
 // ── Webhooks ───────────────────────────────────────────────────
 
-/// An outgoing webhook subscription. When a subscribed event fires, OphirPay
+/// An outgoing webhook subscription. When a subscribed event fires, LumenRail
 /// POSTs a signed JSON payload to `url` (see webhook-deliver for the HMAC
 /// signing scheme). The `secret` is used to sign payloads and verify
 /// authenticity.

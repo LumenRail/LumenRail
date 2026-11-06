@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * Contract ABI type definitions for OphirPay Soroban contracts v3.
- * Matches the contracts/ophirpay/src/lib.rs and contracts/emitter/src/lib.rs interfaces.
+ * Contract ABI type definitions for LumenRail Soroban contracts v3.
+ * Matches the contracts/lumenrail/src/lib.rs and contracts/emitter/src/lib.rs interfaces.
  *
  * Key features:
  * - Escrow: lock funds with deadline, owner release, beneficiary claim, arbiter

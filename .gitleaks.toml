@@ -1,7 +1,7 @@
-# OphirPay Gitleaks Configuration
+# LumenRail Gitleaks Configuration
 # Ignores known false positives in test fixtures, snapshots, and demo seed data.
 
-title = "OphirPay Gitleaks Config"
+title = "LumenRail Gitleaks Config"
 
 [allowlist]
   description = "Known non-sensitive values in test files and demos"
@@ -10,7 +10,7 @@ title = "OphirPay Gitleaks Config"
   paths = [
     '''src/lib/contracts.ts''',
     '''README.md''',
-    '''contracts/ophirpay/test_snapshots/''',
+    '''contracts/lumenrail/test_snapshots/''',
     '''contracts/emitter/test_snapshots/''',
     '''prisma/seed.ts''',
     '''scripts/mockups/''',
@@ -23,6 +23,6 @@ title = "OphirPay Gitleaks Config"
     '''GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA''',  # burn address
     # Public Stellar Testnet identifiers — NOT secrets, NOT private keys
     '''GACNKEDGJYLLVQDXWYEEPB47Y3JEV5JNZ3RQANTJIVKKEOXX4NC4YWHU''',  # Testnet chain read source (public key)
-    '''CAW7OORNGPRBRQJIXRXZOXEPZZO3Z5FKSCLBULGLBTVVPZYYVTK2UKIA''',  # OphirPay Testnet contract ID
+    '''CAW7OORNGPRBRQJIXRXZOXEPZZO3Z5FKSCLBULGLBTVVPZYYVTK2UKIA''',  # LumenRail Testnet contract ID
     '''CCMXLNRPBTHVTEH7UEBXQVZ4YJZB5NN7LXJBAL465A6YFXJPJGV2CYPX''',  # Emitter Testnet contract ID
   ]

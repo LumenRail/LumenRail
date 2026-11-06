@@ -1,4 +1,4 @@
-# OphirPay PR Labeler
+# LumenRail PR Labeler
 # Automatically labels pull requests based on changed file paths.
 # Uses: https://github.com/actions/labeler
 

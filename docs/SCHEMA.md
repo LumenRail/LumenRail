@@ -1,6 +1,6 @@
 # 📊 Database Schema
 
-> Entity-Relationship Diagram (ERD) of the OphirPay Prisma schema. This documents all models, their fields, and relationships.
+> Entity-Relationship Diagram (ERD) of the LumenRail Prisma schema. This documents all models, their fields, and relationships.
 
 ---
 
@@ -241,7 +241,7 @@ erDiagram
 
 ## Database Providers
 
-OphirPay supports two database providers, switchable via the `DATABASE_PROVIDER` environment variable:
+LumenRail supports two database providers, switchable via the `DATABASE_PROVIDER` environment variable:
 
 | Provider | Use Case | Connection |
 |---|---|---|
@@ -294,6 +294,6 @@ The schema defines the following indexes for query performance:
 
 <div align="center">
 
-**[← Back to OphirPay README](../README.md)**
+**[← Back to LumenRail README](../README.md)**
 
 </div>

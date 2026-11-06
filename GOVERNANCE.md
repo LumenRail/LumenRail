@@ -1,6 +1,6 @@
-# OphirPay Governance
+# LumenRail Governance
 
-This document defines the governance model for the OphirPay open-source project.
+This document defines the governance model for the LumenRail open-source project.
 
 ## Roles
 
@@ -8,13 +8,13 @@ This document defines the governance model for the OphirPay open-source project.
 |---|---|---|
 | **Maintainer** | Core project steward | Merge PRs, cut releases, manage CI, triage issues |
 | **Contributor** | Anyone who submits a merged PR | Submit PRs, review code, participate in discussions |
-| **Community Member** | Anyone using or interested in OphirPay | Open issues, ask questions, provide feedback |
+| **Community Member** | Anyone using or interested in LumenRail | Open issues, ask questions, provide feedback |
 
 ## Decision Making
 
 ### Consensus Model
 
-OphirPay uses a **lazy consensus** model:
+LumenRail uses a **lazy consensus** model:
 
 1. A proposal is made via GitHub Issue or PR
 2. The community has reasonable time to comment (typically 3-7 days)

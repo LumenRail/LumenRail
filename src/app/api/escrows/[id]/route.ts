@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/escrows/[id] — single escrow lookup
- * Reads from OphirPayContract on-chain.
+ * Reads from LumenRailContract on-chain.
  */
 export const GET = withMetrics("GET /api/escrows/[id]", withRequestLogging(async function GET(
   request: Request,

@@ -27,7 +27,7 @@ export type AuditLogEntry = {
  * GET /api/audit-log
  *
  * Returns contract audit log entries. Requires API-key authentication.
- * Queries the OphirPayContract's persistent audit ledger on-chain.
+ * Queries the LumenRailContract's persistent audit ledger on-chain.
  * Supports pagination and filtering by actor, action, and timestamp.
  */
 async function _GET(request: Request) {

@@ -8,7 +8,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/fee-config — current fee configuration from the Soroban contract.
- * Simulates a read-only call to OphirPayContract.get_fee_config().
+ * Simulates a read-only call to LumenRailContract.get_fee_config().
  */
 export const GET = withMetrics("GET /api/fee-config", withRequestLogging(async function GET(request: Request) {
   try {

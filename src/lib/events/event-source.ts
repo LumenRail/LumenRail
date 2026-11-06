@@ -138,7 +138,7 @@ export function normalizeEvent(
     timestamp: new Date().toISOString(),
     paymentId: `evt_${rawId}`,
     status: "COMPLETED",
-    emitter: (raw.emitter as string) || "OphirPay",
+    emitter: (raw.emitter as string) || "LumenRail",
     payer: (raw.payer as string) || "",
     payee: (raw.payee as string) || "",
     amount: (raw.amount as string) || "0",

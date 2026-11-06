@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ══════════════════════════════════════════════════════════════════
-# OphirPay — Pre-Submission Verification
+# LumenRail — Pre-Submission Verification
 # ══════════════════════════════════════════════════════════════════
 # Runs the full quality gate in one shot and prints a pass/fail
 # summary. Mirrors the CI pipeline:
@@ -31,7 +31,7 @@ SKIP_CONTRACTS="${SKIP_CONTRACTS:-0}"
 
 # prisma validate only parses the schema; it never connects to the DB,
 # so a placeholder URL is enough when DATABASE_URL is not exported.
-DATABASE_URL="${DATABASE_URL:-postgresql://user:pass@localhost:5432/ophirpay}"
+DATABASE_URL="${DATABASE_URL:-postgresql://user:pass@localhost:5432/lumenrail}"
 export DATABASE_URL
 
 PASS=0
@@ -55,7 +55,7 @@ run_step() {
 }
 
 echo "════════════════════════════════════════════════════════════"
-echo "  OphirPay pre-submission verification"
+echo "  LumenRail pre-submission verification"
 echo "  $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
 echo "════════════════════════════════════════════════════════════"
 
@@ -101,7 +101,7 @@ if [ "$SKIP_CONTRACTS" = "1" ]; then
 elif ! command -v cargo >/dev/null 2>&1; then
   echo "⚠️  cargo not found — skipping contract tests"
 else
-  run_step "Contract tests (ophirpay)" bash -c "cd contracts/ophirpay && cargo test --quiet"
+  run_step "Contract tests (lumenrail)" bash -c "cd contracts/lumenrail && cargo test --quiet"
   run_step "Contract tests (emitter)" bash -c "cd contracts/emitter && cargo test --quiet"
 fi
 

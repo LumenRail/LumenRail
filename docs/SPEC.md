@@ -1,8 +1,8 @@
-# OphirPay — Contract Specification & Invariants
+# LumenRail — Contract Specification & Invariants
 
 ## Overview
 
-This document defines the formal invariants that the OphirPay Soroban contract
+This document defines the formal invariants that the LumenRail Soroban contract
 MUST maintain across all operations. These invariants serve as the foundation
 for testing, auditing, and formal verification.
 
@@ -221,14 +221,14 @@ changes, only the latest 100 are returned.
 ## Testing Strategy
 
 Each invariant is verified by unit tests, property-based proptests, and integration harnesses:
-- **Unit Tests**: `contracts/ophirpay/src/lib.rs` (lines ~3840+)
-- **Proptest Suite**: `contracts/ophirpay/tests/proptest_token_moving.rs` (fuzzing token paths, reentrancy-shaped sequences, and `LOCKED_BALANCE` conservation)
-- **Integration Tests**: `contracts/ophirpay/tests/integration/` (end-to-end multi-contract flows)
+- **Unit Tests**: `contracts/lumenrail/src/lib.rs` (lines ~3840+)
+- **Proptest Suite**: `contracts/lumenrail/tests/proptest_token_moving.rs` (fuzzing token paths, reentrancy-shaped sequences, and `LOCKED_BALANCE` conservation)
+- **Integration Tests**: `contracts/lumenrail/tests/integration/` (end-to-end multi-contract flows)
 
 To run tests:
 ```bash
-cd contracts/ophirpay && cargo test                             # unit tests & in-crate property tests
-cd contracts/ophirpay && cargo test --test proptest_token_moving # dedicated proptest suite
+cd contracts/lumenrail && cargo test                             # unit tests & in-crate property tests
+cd contracts/lumenrail && cargo test --test proptest_token_moving # dedicated proptest suite
 cd contracts/emitter && cargo test                              # emitter unit tests
 ```
 

@@ -2,31 +2,31 @@ import { test, expect } from "@playwright/test";
 
 /**
  * Every route sets a dynamic `document.title` via `usePageTitle` (mirroring
- * the `%s | OphirPay` metadata template). These checks assert the browser
- * tab title is non-default (not the layout's "OphirPay — Stellar Payment
+ * the `%s | LumenRail` metadata template). These checks assert the browser
+ * tab title is non-default (not the layout's "LumenRail — Stellar Payment
  * Orchestration") on key routes.
  */
 const ROUTE_TITLES: Record<string, RegExp> = {
-  "/": /Treasury Dashboard \| OphirPay/,
-  "/payments": /^Payments \| OphirPay$/,
-  "/batches": /^Batch Payments \| OphirPay$/,
-  "/batches/new": /^New Batch Payment \| OphirPay$/,
-  "/send": /^Send Payment \| OphirPay$/,
-  "/webhooks": /^Webhooks \| OphirPay$/,
-  "/recurring": /^Recurring Payments \| OphirPay$/,
-  "/requests": /^Payment Requests \| OphirPay$/,
-  "/contracts": /^Smart Contracts \| OphirPay$/,
-  "/analytics": /^Analytics \| OphirPay$/,
-  "/events": /^Event Stream \| OphirPay$/,
-  "/audit-log": /^Audit Log \| OphirPay$/,
-  "/hooks": /^Notification Hooks \| OphirPay$/,
-  "/rbac": /^Access Control \(RBAC\) \| OphirPay$/,
-  "/fee-config": /^Fee Configuration \| OphirPay$/,
-  "/refunds": /^Refunds \| OphirPay$/,
-  "/timelock": /^Timelock \| OphirPay$/,
-  "/policy-versions": /^Policy Versions \| OphirPay$/,
-  "/multisig": /^Multisig \| OphirPay$/,
-  "/governance": /^Governance \| OphirPay$/,
+  "/": /Treasury Dashboard \| LumenRail/,
+  "/payments": /^Payments \| LumenRail$/,
+  "/batches": /^Batch Payments \| LumenRail$/,
+  "/batches/new": /^New Batch Payment \| LumenRail$/,
+  "/send": /^Send Payment \| LumenRail$/,
+  "/webhooks": /^Webhooks \| LumenRail$/,
+  "/recurring": /^Recurring Payments \| LumenRail$/,
+  "/requests": /^Payment Requests \| LumenRail$/,
+  "/contracts": /^Smart Contracts \| LumenRail$/,
+  "/analytics": /^Analytics \| LumenRail$/,
+  "/events": /^Event Stream \| LumenRail$/,
+  "/audit-log": /^Audit Log \| LumenRail$/,
+  "/hooks": /^Notification Hooks \| LumenRail$/,
+  "/rbac": /^Access Control \(RBAC\) \| LumenRail$/,
+  "/fee-config": /^Fee Configuration \| LumenRail$/,
+  "/refunds": /^Refunds \| LumenRail$/,
+  "/timelock": /^Timelock \| LumenRail$/,
+  "/policy-versions": /^Policy Versions \| LumenRail$/,
+  "/multisig": /^Multisig \| LumenRail$/,
+  "/governance": /^Governance \| LumenRail$/,
 };
 
 test.describe("Dynamic page titles", () => {

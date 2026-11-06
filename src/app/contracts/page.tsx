@@ -185,7 +185,7 @@ export default function ContractsPage() {
       <div>
         <Link href="/" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">← Dashboard</Link>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mt-2">Soroban Contracts</h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-1">Interact with the OphirPay smart contract on Stellar Testnet</p>
+        <p className="text-gray-500 dark:text-gray-400 mt-1">Interact with the LumenRail smart contract on Stellar Testnet</p>
       </div>
 
       {/* Contract Info */}

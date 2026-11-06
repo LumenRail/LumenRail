@@ -1,6 +1,6 @@
 # Smart Contract Reference: SSE Event Emission
 
-This document describes how the OphirPay `PaymentEventEmitter` Soroban smart contract emits events that power the Server-Sent Events (SSE) stream consumed by clients.
+This document describes how the LumenRail `PaymentEventEmitter` Soroban smart contract emits events that power the Server-Sent Events (SSE) stream consumed by clients.
 
 ## Contract
 
@@ -17,7 +17,7 @@ Stored permanently by event ID.
 | Field | Type | Description |
 |-------|------|-------------|
 | `id` | `u64` | Monotonic event identifier (1-based). |
-| `source` | `String` | Human-readable source label, e.g. `"OphirPay"`. |
+| `source` | `String` | Human-readable source label, e.g. `"LumenRail"`. |
 | `payer` | `Address` | Stellar account or contract that initiated the payment. |
 | `payee` | `Address` | Stellar account or contract receiving the payment. |
 | `amount` | `i128` | Payment amount in stroops or token-specific units. |
@@ -109,7 +109,7 @@ env.events().publish(
 
 ```
 ┌─────────────────┐     emit_payment      ┌─────────────────────┐
-│  OphirPay       │ ─────────────────────>│  PaymentEventEmitter  │
+│  LumenRail       │ ─────────────────────>│  PaymentEventEmitter  │
 │  orchestrator   │                       │  contract             │
 └─────────────────┘                       └─────────────────────┘
                                                    │

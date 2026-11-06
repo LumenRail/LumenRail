@@ -23,7 +23,7 @@ export async function sendEmail(payload: EmailPayload): Promise<boolean> {
   }
 
   // Production: integrate with email provider
-  // const { data, error } = await resend.emails.send({ from: "OphirPay <payments@ophirpay.com>", ...payload });
+  // const { data, error } = await resend.emails.send({ from: "LumenRail <payments@ophirpay.com>", ...payload });
   // return !error;
 
   return false;

@@ -1,12 +1,12 @@
 # Prisma Database CI & Testing Guide
 
-This document outlines the CI/CD pipeline, schema testing, and migration verification workflows configured for Prisma in OphirPay.
+This document outlines the CI/CD pipeline, schema testing, and migration verification workflows configured for Prisma in LumenRail.
 
 ---
 
 ## Architecture Overview
 
-OphirPay uses Prisma ORM with **PostgreSQL** as the canonical database engine in staging, CI, and production (`relationMode = "prisma"`).
+LumenRail uses Prisma ORM with **PostgreSQL** as the canonical database engine in staging, CI, and production (`relationMode = "prisma"`).
 
 ```
 ┌────────────────────────────────────────────────────────┐

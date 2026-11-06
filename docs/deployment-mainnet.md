@@ -1,6 +1,6 @@
-# OphirPay — Mainnet Deployment Guide
+# LumenRail — Mainnet Deployment Guide
 
-This guide walks through deploying OphirPay to Stellar Mainnet with PostgreSQL, Soroban contracts, Kubernetes, and monitoring.
+This guide walks through deploying LumenRail to Stellar Mainnet with PostgreSQL, Soroban contracts, Kubernetes, and monitoring.
 
 > 🚀 **Looking for the executable checklist?** Use the
 > [**Mainnet Deployment Runbook**](./MAINNET_RUNBOOK.md) — it consolidates this
@@ -31,7 +31,7 @@ NEXT_PUBLIC_HORIZON_URL=https://horizon.stellar.org
 NEXT_PUBLIC_SOROBAN_RPC_URL=https://soroban.stellar.org
 
 # Database
-DATABASE_URL=postgresql://user:password@host:5432/ophirpay
+DATABASE_URL=postgresql://user:password@host:5432/lumenrail
 DATABASE_PROVIDER=postgresql
 
 # Contracts
@@ -71,7 +71,7 @@ curl -s "https://horizon.stellar.org/accounts/<MAINNET_PUBLIC_KEY>" | jq '.balan
 ### 2.2 Build WASM artifacts
 
 ```bash
-cd contracts/ophirpay
+cd contracts/lumenrail
 cargo build --target wasm32v1-none --release
 cd ../emitter
 cargo build --target wasm32v1-none --release
@@ -104,7 +104,7 @@ Deploy the **emitter first**, then the **main contract** (the main contract is i
 
 ```bash
 stellar contract deploy \
-  --wasm contracts/emitter/target/wasm32v1-none/release/ophirpay_emitter.wasm \
+  --wasm contracts/emitter/target/wasm32v1-none/release/lumenrail_emitter.wasm \
   --source <MAINNET_SECRET_KEY> \
   --rpc-url "https://soroban.stellar.org:443" \
   --network-passphrase "Public Global Stellar Network ; September 2015" \
@@ -126,11 +126,11 @@ stellar contract invoke \
   -- init --owner <OWNER_PUBLIC_KEY>
 ```
 
-#### 2.4.3 Deploy OphirPay main contract
+#### 2.4.3 Deploy LumenRail main contract
 
 ```bash
 stellar contract deploy \
-  --wasm contracts/ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm \
+  --wasm contracts/lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm \
   --source <MAINNET_SECRET_KEY> \
   --rpc-url "https://soroban.stellar.org:443" \
   --network-passphrase "Public Global Stellar Network ; September 2015" \
@@ -140,7 +140,7 @@ stellar contract deploy \
 # Save the returned contract ID → NEXT_PUBLIC_CONTRACT_ID
 ```
 
-#### 2.4.4 Initialize OphirPay main contract (with emitter)
+#### 2.4.4 Initialize LumenRail main contract (with emitter)
 
 ```bash
 stellar contract invoke \
@@ -190,7 +190,7 @@ stellar contract invoke \
 
 ## 2.6 Contract Address Registry
 
-| Network | OphirPay Contract | Emitter Contract |
+| Network | LumenRail Contract | Emitter Contract |
 |---|---|---|
 | **Testnet** | `CBRCZHMNWOFTWOTCI2WBQ5A5HVKVLO2AXHYIWJ5FVYB45OHLSLWGJGYB` | `CA6LAPR4OWABPWORBQGK5O5H5S62GIPQBKP3PH7H2DQ3ZNSWSH3RHFE4` |
 | **Mainnet** | *To be deployed* | *To be deployed* |
@@ -204,15 +204,15 @@ stellar contract invoke \
 ### 3.1 Provision PostgreSQL
 
 ```sql
-CREATE DATABASE ophirpay;
-CREATE USER ophirpay WITH PASSWORD '<secure-password>';
-GRANT ALL PRIVILEGES ON DATABASE ophirpay TO ophirpay;
+CREATE DATABASE lumenrail;
+CREATE USER lumenrail WITH PASSWORD '<secure-password>';
+GRANT ALL PRIVILEGES ON DATABASE lumenrail TO lumenrail;
 ```
 
 ### 3.2 Run migrations
 
 ```bash
-DATABASE_URL="postgresql://ophirpay:<password>@<host>:5432/ophirpay" \
+DATABASE_URL="postgresql://lumenrail:<password>@<host>:5432/lumenrail" \
   npx prisma migrate deploy
 ```
 
@@ -235,10 +235,10 @@ DATABASE_URL="..." npx prisma db push --force-reset  # Test only
 ### 4.1 Create namespace and secrets
 
 ```bash
-kubectl create namespace ophirpay
+kubectl create namespace lumenrail
 
-kubectl create secret generic ophirpay-secrets \
-  --namespace ophirpay \
+kubectl create secret generic lumenrail-secrets \
+  --namespace lumenrail \
   --from-literal=DATABASE_URL="postgresql://..." \
   --from-literal=NEXT_PUBLIC_CONTRACT_ID="<contract-id>" \
   --from-literal=NEXT_PUBLIC_EMITTER_CONTRACT_ID="<emitter-id>"
@@ -247,8 +247,8 @@ kubectl create secret generic ophirpay-secrets \
 ### 4.2 Deploy with Helm
 
 ```bash
-helm upgrade --install ophirpay ./helm/ophirpay \
-  --namespace ophirpay \
+helm upgrade --install lumenrail ./helm/lumenrail \
+  --namespace lumenrail \
   --set image.tag=v1.0.0 \
   --set ingress.hosts[0].host=ophirpay.com \
   --set config.NEXT_PUBLIC_STELLAR_NETWORK=PUBLIC \
@@ -262,9 +262,9 @@ helm upgrade --install ophirpay ./helm/ophirpay \
 ### 4.3 Verify deployment
 
 ```bash
-kubectl get pods -n ophirpay
-kubectl get svc -n ophirpay
-kubectl get ingress -n ophirpay
+kubectl get pods -n lumenrail
+kubectl get svc -n lumenrail
+kubectl get ingress -n lumenrail
 
 # Check health
 curl https://ophirpay.com/api/health
@@ -313,7 +313,7 @@ api.ophirpay.com CNAME ophirpay.com
 cert-manager will auto-provision Let's Encrypt certificates:
 
 ```bash
-kubectl get certificate -n ophirpay
+kubectl get certificate -n lumenrail
 # Should show READY=True
 ```
 
@@ -344,11 +344,11 @@ If a deployment causes issues:
 
 ```bash
 # Rollback Helm release
-helm rollback ophirpay -n ophirpay
+helm rollback lumenrail -n lumenrail
 
 # Or deploy previous image
-helm upgrade ophirpay ./helm/ophirpay \
-  --namespace ophirpay \
+helm upgrade lumenrail ./helm/lumenrail \
+  --namespace lumenrail \
   --set image.tag=v0.9.0
 ```
 

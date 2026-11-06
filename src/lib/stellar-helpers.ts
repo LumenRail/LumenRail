@@ -28,7 +28,7 @@ export function hasSufficientBalance(balance: number, amount: number): boolean {
 }
 
 /**
- * Format a Stellar public key with the G...XXXX convention used across OphirPay.
+ * Format a Stellar public key with the G...XXXX convention used across LumenRail.
  */
 export function formatStellarKey(publicKey: string, showChars = 4): string {
   if (!publicKey || !isValidStellarAddress(publicKey)) return "Invalid Address";

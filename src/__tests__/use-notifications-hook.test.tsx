@@ -240,8 +240,8 @@ describe("useNotifications", () => {
     const notif: PaymentNotification = { ...makeNotif("dup-1"), txHash: "tx-same" };
 
     act(() => {
-      window.dispatchEvent(new CustomEvent("ophirpay:notification", { detail: notif }));
-      window.dispatchEvent(new CustomEvent("ophirpay:notification", { detail: notif }));
+      window.dispatchEvent(new CustomEvent("lumenrail:notification", { detail: notif }));
+      window.dispatchEvent(new CustomEvent("lumenrail:notification", { detail: notif }));
     });
 
     expect(result.current.notifications).toHaveLength(1);

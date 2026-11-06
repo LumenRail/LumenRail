@@ -28,7 +28,7 @@ export function signWebhookPayload(payload: WebhookPayload, secret: string): str
  * field emptied — `JSON.stringify({...payload, signature: ""})`. A receiver
  * recomputes identically: parse the received body, empty the `signature`
  * field, re-serialize (stable key order), and compare against the
- * `X-OphirPay-Signature` header.
+ * `X-LumenRail-Signature` header.
  */
 export function buildSignedPayload(
   payload: WebhookPayload,
@@ -73,8 +73,8 @@ export async function deliverWebhook(
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-OphirPay-Signature": signature,
-          "X-OphirPay-Event": payload.event,
+          "X-LumenRail-Signature": signature,
+          "X-LumenRail-Event": payload.event,
         },
         body,
         signal: controller.signal,

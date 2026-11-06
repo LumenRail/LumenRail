@@ -1,69 +1,69 @@
-# OphirPay Code Owners
+# LumenRail Code Owners
 # Automatically assigns PR reviewers based on file paths.
 # Last match wins — place more specific rules later.
 # Teams map to GitHub teams: create these in Settings → Access → Teams.
 
 # ── Core contracts ──────────────────────────────────────────────
-contracts/                         @OphirPay/core-contracts
+contracts/                         @LumenRail/core-contracts
 
 # ── Frontend pages and components ───────────────────────────────
-src/app/                           @OphirPay/frontend
-src/components/                    @OphirPay/frontend
+src/app/                           @LumenRail/frontend
+src/components/                    @LumenRail/frontend
 
 # ── Backend API routes ──────────────────────────────────────────
-src/app/api/                       @OphirPay/backend
-src/middleware.ts                  @OphirPay/backend
+src/app/api/                       @LumenRail/backend
+src/middleware.ts                  @LumenRail/backend
 
 # ── Shared library ──────────────────────────────────────────────
-src/lib/                           @OphirPay/backend @OphirPay/frontend
-src/hooks/                         @OphirPay/frontend
-src/types/                         @OphirPay/backend @OphirPay/frontend
+src/lib/                           @LumenRail/backend @LumenRail/frontend
+src/hooks/                         @LumenRail/frontend
+src/types/                         @LumenRail/backend @LumenRail/frontend
 
 # ── DevOps & CI ─────────────────────────────────────────────────
-.github/workflows/                 @OphirPay/devops
-.github/labeler.yml               @OphirPay/devops
-.github/dependabot.yml             @OphirPay/devops
-scripts/                           @OphirPay/devops
-Dockerfile                         @OphirPay/devops
-.dockerignore                      @OphirPay/devops
-docker-compose.yml                 @OphirPay/devops
-k8s/                               @OphirPay/devops
-helm/                              @OphirPay/devops
+.github/workflows/                 @LumenRail/devops
+.github/labeler.yml               @LumenRail/devops
+.github/dependabot.yml             @LumenRail/devops
+scripts/                           @LumenRail/devops
+Dockerfile                         @LumenRail/devops
+.dockerignore                      @LumenRail/devops
+docker-compose.yml                 @LumenRail/devops
+k8s/                               @LumenRail/devops
+helm/                              @LumenRail/devops
 
 # ── Security ────────────────────────────────────────────────────
-.gitleaks.toml                     @OphirPay/devops
-src/lib/api-auth.ts                @OphirPay/backend
-src/lib/auth-rate-limit.ts         @OphirPay/backend
-src/lib/crypto.ts                  @OphirPay/backend
-src/lib/rate-limit.ts              @OphirPay/backend
-SECURITY.md                        @OphirPay/backend
+.gitleaks.toml                     @LumenRail/devops
+src/lib/api-auth.ts                @LumenRail/backend
+src/lib/auth-rate-limit.ts         @LumenRail/backend
+src/lib/crypto.ts                  @LumenRail/backend
+src/lib/rate-limit.ts              @LumenRail/backend
+SECURITY.md                        @LumenRail/backend
 
 # ── Testing ─────────────────────────────────────────────────────
-src/__tests__/                     @OphirPay/frontend
-e2e/                               @OphirPay/frontend @OphirPay/devops
-vitest.config.ts                   @OphirPay/frontend
-vitest.setup.ts                    @OphirPay/frontend
-playwright.config.ts               @OphirPay/devops
+src/__tests__/                     @LumenRail/frontend
+e2e/                               @LumenRail/frontend @LumenRail/devops
+vitest.config.ts                   @LumenRail/frontend
+vitest.setup.ts                    @LumenRail/frontend
+playwright.config.ts               @LumenRail/devops
 
 # ── Database ────────────────────────────────────────────────────
-prisma/                            @OphirPay/backend
+prisma/                            @LumenRail/backend
 
 # ── Documentation ───────────────────────────────────────────────
-*.md                               @OphirPay/docs
-docs/                              @OphirPay/docs
-CONTRIBUTING.md                    @OphirPay/docs @OphirPay/devops
-CHANGELOG.md                       @OphirPay/docs
+*.md                               @LumenRail/docs
+docs/                              @LumenRail/docs
+CONTRIBUTING.md                    @LumenRail/docs @LumenRail/devops
+CHANGELOG.md                       @LumenRail/docs
 
 # ── Root config files ───────────────────────────────────────────
-package.json                       @OphirPay/devops @OphirPay/frontend
-package-lock.json                  @OphirPay/devops @OphirPay/frontend
-tsconfig.json                      @OphirPay/frontend
-next.config.ts                     @OphirPay/frontend
-tailwind.config.ts                 @OphirPay/frontend
-postcss.config.mjs                 @OphirPay/frontend
-eslint.config.mjs                  @OphirPay/frontend
-.editorconfig                      @OphirPay/devops
-.prettierrc                        @OphirPay/devops
-.nvmrc                             @OphirPay/devops
-.gitignore                         @OphirPay/devops
-.gitattributes                     @OphirPay/devops
+package.json                       @LumenRail/devops @LumenRail/frontend
+package-lock.json                  @LumenRail/devops @LumenRail/frontend
+tsconfig.json                      @LumenRail/frontend
+next.config.ts                     @LumenRail/frontend
+tailwind.config.ts                 @LumenRail/frontend
+postcss.config.mjs                 @LumenRail/frontend
+eslint.config.mjs                  @LumenRail/frontend
+.editorconfig                      @LumenRail/devops
+.prettierrc                        @LumenRail/devops
+.nvmrc                             @LumenRail/devops
+.gitignore                         @LumenRail/devops
+.gitattributes                     @LumenRail/devops

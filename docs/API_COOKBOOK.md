@@ -1,4 +1,4 @@
-# OphirPay API Cookbook
+# LumenRail API Cookbook
 
 Runnable `curl` examples and realistic sample responses for **every public
 endpoint**. The canonical schemas live in [`docs/openapi.yaml`](./openapi.yaml);
@@ -102,7 +102,7 @@ curl -N --max-time 60 "$BASE/api/events"
 | `GACZ7ZELCUC5YGJ6JHIVLEZNR3XKYKOVUWD6H3IRFPRZMALNUYJZQM2U` | Stellar public key (payer/depositor) |
 | `GDHJ3K2LQ7F5XQZPX6YWNMYKXWQXVZKBJZQFYX3F6KRLV4WDXHJMB2UY` | Second Stellar public key (payee/beneficiary) |
 | `a1b2c3d4…` (64 hex) | Stellar transaction hash |
-| `CCQGGUJRRVXMHNEX2RYPODGJE2YRMYY4Y7A3KTJH3QP2LWZLTCOPRPET` | OphirPay contract id |
+| `CCQGGUJRRVXMHNEX2RYPODGJE2YRMYY4Y7A3KTJH3QP2LWZLTCOPRPET` | LumenRail contract id |
 | `CDAVU2XJ7C2Y52GRJZKRG3HDI7AJ2K2FHAFH5FPDTSUQAV7XNBQNNVAN` | Emitter contract id |
 | `cm0py0000000000000000001` | CUID record id (DB-backed rows) |
 
@@ -282,7 +282,7 @@ curl -G "$BASE/api/payments/export" \
   -H "X-API-Key: $KEY" \
   --data-urlencode "status=COMPLETED" \
   --data-urlencode "search=invoice" \
-  -o ophirpay-payments-2026-08-26.csv
+  -o lumenrail-payments-2026-08-26.csv
 ```
 
 ```text
@@ -833,7 +833,7 @@ curl "$BASE/api/webhooks" -H "X-API-Key: $KEY"
     {
       "id": "cm0wh0000000000000000001",
       "userId": "u_01J2K3L4M5N6P7Q8R9S0T1",
-      "url": "https://api.example.com/webhooks/ophirpay",
+      "url": "https://api.example.com/webhooks/lumenrail",
       "events": "[\"payment.completed\",\"payment.failed\",\"batch.completed\"]",
       "isActive": true,
       "hasSecret": true,
@@ -848,14 +848,14 @@ curl "$BASE/api/webhooks" -H "X-API-Key: $KEY"
 ### Register a webhook — `POST /api/webhooks`
 
 Auth: **required**. The `secret` is returned **only once** — use it to verify
-`OphirPay-Signature` headers on deliveries (HMAC-SHA256 over the raw body).
+`LumenRail-Signature` headers on deliveries (HMAC-SHA256 over the raw body).
 
 ```bash
 curl -X POST "$BASE/api/webhooks" \
   -H "X-API-Key: $KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "url": "https://api.example.com/webhooks/ophirpay",
+    "url": "https://api.example.com/webhooks/lumenrail",
     "events": ["payment.completed", "payment.failed"],
     "isActive": true
   }'
@@ -866,7 +866,7 @@ curl -X POST "$BASE/api/webhooks" \
   "success": true,
   "data": {
     "id": "cm0wh0000000000000000001",
-    "url": "https://api.example.com/webhooks/ophirpay",
+    "url": "https://api.example.com/webhooks/lumenrail",
     "events": "[\"payment.completed\",\"payment.failed\"]",
     "isActive": true,
     "secret": "whsec_9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
@@ -968,7 +968,7 @@ curl -X DELETE "$BASE/api/keys?id=cm0ak0000000000000000002" -H "X-API-Key: $KEY"
 ### Issue a session — `POST /api/auth/session`
 
 No API key needed — called by the UI after a wallet connect. Sets an HttpOnly,
-HMAC-signed session cookie (`ophirpay_session`) on success. Cookie-based
+HMAC-signed session cookie (`lumenrail_session`) on success. Cookie-based
 requests must include cookies, not `X-API-Key`.
 
 ```bash
@@ -1025,7 +1025,7 @@ curl -X POST "$BASE/api/webhooks" \
   -b cookies.txt \
   -H "x-csrf-token: 8f14e45fceea167a5a36dedd4bea2543" \
   -H "Content-Type: application/json" \
-  -d '{ "url": "https://api.example.com/webhooks/ophirpay", "events": ["payment.completed"] }'
+  -d '{ "url": "https://api.example.com/webhooks/lumenrail", "events": ["payment.completed"] }'
 ```
 
 ## Multisig
@@ -1828,7 +1828,7 @@ curl "$BASE/api/policy-versions" -H "X-API-Key: $KEY"
 
 ### Get contract info — `GET /api/contracts`
 
-Auth: **required**. Reads version and owner from the OphirPay contract.
+Auth: **required**. Reads version and owner from the LumenRail contract.
 
 ```bash
 curl "$BASE/api/contracts" -H "X-API-Key: $KEY"
@@ -1842,7 +1842,7 @@ curl "$BASE/api/contracts" -H "X-API-Key: $KEY"
     "rpcUrl": "https://soroban-testnet.stellar.org",
     "reachable": true,
     "contracts": {
-      "ophirpay": {
+      "lumenrail": {
         "id": "CCQGGUJRRVXMHNEX2RYPODGJE2YRMYY4Y7A3KTJH3QP2LWZLTCOPRPET",
         "version": "0.1.0",
         "owner": "GACZ7ZELCUC5YGJ6JHIVLEZNR3XKYKOVUWD6H3IRFPRZMALNUYJZQM2U"
@@ -1935,21 +1935,21 @@ curl "$BASE/api/metrics"
 ```
 
 ```text
-# HELP ophirpay_http_requests_total Total HTTP requests served
-# TYPE ophirpay_http_requests_total counter
-ophirpay_http_requests_total 12840
+# HELP lumenrail_http_requests_total Total HTTP requests served
+# TYPE lumenrail_http_requests_total counter
+lumenrail_http_requests_total 12840
 
-# HELP ophirpay_payments_created_total Total payments created
-# TYPE ophirpay_payments_created_total counter
-ophirpay_payments_created_total 137
+# HELP lumenrail_payments_created_total Total payments created
+# TYPE lumenrail_payments_created_total counter
+lumenrail_payments_created_total 137
 
-# HELP ophirpay_webhooks_delivered_total Total webhooks delivered
-# TYPE ophirpay_webhooks_delivered_total counter
-ophirpay_webhooks_delivered_total 118
+# HELP lumenrail_webhooks_delivered_total Total webhooks delivered
+# TYPE lumenrail_webhooks_delivered_total counter
+lumenrail_webhooks_delivered_total 118
 
-# HELP ophirpay_webhooks_failed_total Total webhooks that failed delivery
-# TYPE ophirpay_webhooks_failed_total counter
-ophirpay_webhooks_failed_total 2
+# HELP lumenrail_webhooks_failed_total Total webhooks that failed delivery
+# TYPE lumenrail_webhooks_failed_total counter
+lumenrail_webhooks_failed_total 2
 ```
 
 ---

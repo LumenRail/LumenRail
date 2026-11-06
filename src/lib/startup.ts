@@ -14,7 +14,7 @@ export async function bootstrap(): Promise<void> {
   // Validate environment variables with Zod schema (fails fast with clear messages)
   try {
     const env = validateEnv();
-    logger.info("OphirPay starting up", {
+    logger.info("LumenRail starting up", {
       version: "0.1.0",
       nodeEnv: env.NODE_ENV,
       database: env.DATABASE_PROVIDER,

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 //
-// Visual regression tests for the critical OphirPay pages.
+// Visual regression tests for the critical LumenRail pages.
 //
 // Baselines are stored in `tests/visual/__screenshots__/` and are compared
 // against the live render on every run. A committed change that alters a
@@ -35,7 +35,7 @@ for (const { path, name } of PAGES) {
     test("light theme", async ({ page }) => {
       // Force light theme before first paint to avoid FOUC.
       await page.addInitScript(() => {
-        localStorage.setItem("ophirpay-theme", "light");
+        localStorage.setItem("lumenrail-theme", "light");
       });
       await page.goto(path);
       // Wait for client-side hydration so the page heading / content renders.
@@ -50,7 +50,7 @@ for (const { path, name } of PAGES) {
 
     test("dark theme", async ({ page }) => {
       await page.addInitScript(() => {
-        localStorage.setItem("ophirpay-theme", "dark");
+        localStorage.setItem("lumenrail-theme", "dark");
       });
       await page.goto(path);
       await expect(page.locator("main")).toBeVisible({ timeout: 15000 });

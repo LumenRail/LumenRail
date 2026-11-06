@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * Wallet session authentication for OphirPay.
+ * Wallet session authentication for LumenRail.
  *
  * The browser UI authenticates by connecting a Stellar wallet, which
  * produces a signed session cookie. Machine-to-machine callers continue
@@ -22,7 +22,7 @@ import prisma from "@/lib/prisma";
 import { authenticateRequest } from "@/lib/api-auth";
 import { isValidStellarAddress } from "@/lib/stellar";
 
-export const SESSION_COOKIE_NAME = "ophirpay_session";
+export const SESSION_COOKIE_NAME = "lumenrail_session";
 export const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 // ── Secret ────────────────────────────────────────────────────

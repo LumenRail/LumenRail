@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #![cfg(test)]
 
-//! Property-based testing & reentrancy test suite for OphirPay token-moving functions.
+//! Property-based testing & reentrancy test suite for LumenRail token-moving functions.
 //!
 //! Acceptance Criteria:
 //! 1. Property tests over escrow release/claim, stream claim/cancel, refund processing
@@ -9,7 +9,7 @@
 //! 2. Include reentrancy-shaped call sequences asserting ReentrantCall rejection.
 //! 3. Runs in CI with bounded iterations (ProptestConfig::with_cases(64)).
 
-use ophirpay_contract::{OphirPayContract, OphirPayContractClient, PaymentError};
+use lumenrail_contract::{LumenRailContract, LumenRailContractClient, PaymentError};
 use proptest::prelude::*;
 use proptest::test_runner::Config as ProptestConfig;
 use soroban_sdk::testutils::{Address as _, Ledger as _};
@@ -29,7 +29,7 @@ fn get_proptest_config() -> ProptestConfig {
 struct PropHarness<'a> {
     env: Env,
     contract_id: Address,
-    client: OphirPayContractClient<'a>,
+    client: LumenRailContractClient<'a>,
     owner: Address,
     token_admin: Address,
     token_id: Address,
@@ -52,8 +52,8 @@ impl<'a> PropHarness<'a> {
         let token_client = token::Client::new(&env, &token_id);
         let token_admin_client = token::StellarAssetClient::new(&env, &token_id);
 
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         client.init(&owner);
 
         PropHarness {

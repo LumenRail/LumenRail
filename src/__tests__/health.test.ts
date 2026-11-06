@@ -11,7 +11,7 @@ vi.mock("@/lib/prisma", () => ({
 vi.mock("@/lib/contracts", () => {
   let mockId = "CAQQYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY";
   return {
-    get OPHIRPAY_CONTRACT_ID() {
+    get LUMENRAIL_CONTRACT_ID() {
       return mockId;
     },
     setMockContractId: (id: string) => {

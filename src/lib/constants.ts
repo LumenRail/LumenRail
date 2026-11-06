@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * Application-wide constants used across OphirPay.
+ * Application-wide constants used across LumenRail.
  */
 
 export const APP = {
-  NAME: "OphirPay",
+  NAME: "LumenRail",
   VERSION: "0.1.0",
   DESCRIPTION: "The Open-Source Payment Orchestration Layer for Stellar",
-  REPO: "https://github.com/OphirPay/OphirPay",
+  REPO: "https://github.com/Abolax123/OphirPay",
 } as const;
 
 export const STELLAR = {

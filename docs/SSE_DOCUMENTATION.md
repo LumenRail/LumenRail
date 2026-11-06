@@ -1,22 +1,22 @@
-# OphirPay Server-Sent Events (SSE) Integration & Architecture Guide
+# LumenRail Server-Sent Events (SSE) Integration & Architecture Guide
 
 ## Overview
 
-OphirPay utilizes **Server-Sent Events (SSE)** over standard HTTP/1.1 and HTTP/2 streaming connections to deliver real-time payment updates, contract audit logs, and transaction status streams to client applications with sub-second latency.
+LumenRail utilizes **Server-Sent Events (SSE)** over standard HTTP/1.1 and HTTP/2 streaming connections to deliver real-time payment updates, contract audit logs, and transaction status streams to client applications with sub-second latency.
 
-Unlike bidirectional WebSockets or resource-intensive polling intervals, SSE provides a lightweight, battery-efficient, unidirectional channel from the OphirPay gateway directly to frontend interfaces, backend indexers, and webhook relay daemons.
+Unlike bidirectional WebSockets or resource-intensive polling intervals, SSE provides a lightweight, battery-efficient, unidirectional channel from the LumenRail gateway directly to frontend interfaces, backend indexers, and webhook relay daemons.
 
 ---
 
 ## Architecture & Transport Protocols
 
-OphirPay implements a dual-transport fallback strategy orchestrated by the client-side event manager:
+LumenRail implements a dual-transport fallback strategy orchestrated by the client-side event manager:
 1. **Primary Transport:** WebSocket (`ws://` / `wss://`) for interactive bidirectional sessions.
 2. **Fallback & Streaming Transport:** Server-Sent Events (`http://` / `https://`) via `/api/events` and `/api/audit-log/sse`.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    OphirPay Event Stream                    │
+│                    LumenRail Event Stream                    │
 └──────────────────────────────┬──────────────────────────────┘
                                │
             ┌──────────────────┴──────────────────┐
@@ -199,4 +199,4 @@ export function PaymentLiveTracker({ paymentId }: { paymentId: string }) {
 
 1. **Automatic Exponential Backoff:** Native browser `EventSource` handles connection retries automatically. When implementing custom Node.js / Python subscribers, always apply exponential backoff (e.g. 1s, 2s, 4s, max 30s).
 2. **Missed Event Reconciliation:** If a client goes offline, on reconnection it should query `GET /api/payments/:id` to reconcile any states that were broadcast during the disconnection window.
-3. **Heartbeat Pings:** The OphirPay SSE server transmits `:keepalive\n\n` comments every 15 seconds to prevent intermediate proxy / NAT timeouts.
+3. **Heartbeat Pings:** The LumenRail SSE server transmits `:keepalive\n\n` comments every 15 seconds to prevent intermediate proxy / NAT timeouts.

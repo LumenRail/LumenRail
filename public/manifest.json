@@ -1,6 +1,6 @@
 {
-  "name": "OphirPay — Stellar Payment Orchestration",
-  "short_name": "OphirPay",
+  "name": "LumenRail — Stellar Payment Orchestration",
+  "short_name": "LumenRail",
   "description": "Open-source payment orchestration layer for Stellar. Send payments, manage batches, schedule recurring transfers, and track everything in real-time.",
   "start_url": "/",
   "display": "standalone",

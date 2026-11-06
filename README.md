@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/OphirPay/OphirPay/main/public/ophirpay-banner.svg" alt="OphirPay Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/lumenrail-banner.svg" alt="LumenRail Banner" width="100%" />
 
-  <h1>🏦 OphirPay</h1>
+  <h1>🏦 LumenRail</h1>
 
   <h3><em>The Open-Source Payment Orchestration Layer for Stellar</em></h3>
 
@@ -22,8 +22,8 @@
   </p>
 
   <p>
-    <a href="https://github.com/OphirPay/OphirPay/actions/workflows/ci.yml">
-      <img src="https://img.shields.io/github/actions/workflow/status/OphirPay/OphirPay/ci.yml?label=CI%20(22%20jobs)&logo=githubactions&logoColor=white" alt="CI — 22 jobs" />
+    <a href="https://github.com/Abolax123/OphirPay/actions/workflows/ci.yml">
+      <img src="https://img.shields.io/github/actions/workflow/status/LumenRail/LumenRail/ci.yml?label=CI%20(22%20jobs)&logo=githubactions&logoColor=white" alt="CI — 22 jobs" />
     </a>
     <a href="#-testing--quality">
       <img src="https://img.shields.io/badge/tests-970%20passed%20(806%20app%20%2B%2067%20contracts%20%2B%2097%20e2e)-brightgreen.svg" alt="970 Tests Passing" />
@@ -55,7 +55,7 @@
     <a href="LICENSE">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
     </a>
-    <a href="https://github.com/OphirPay/OphirPay/releases">
+    <a href="https://github.com/Abolax123/OphirPay/releases">
       <img src="https://img.shields.io/badge/version-v0.1.0-blue.svg" alt="v0.1.0" />
     </a>
   </p>
@@ -65,7 +65,7 @@
 
 ## 📑 Table of Contents
 
-- [✨ Why OphirPay?](#-why-ophirpay)
+- [✨ Why LumenRail?](#-why-lumenrail)
 - [🚀 Live Demo](#-live-demo)
 - [🧭 System Architecture](#-system-architecture)
 - [⚡ Quick Start](#-quick-start)
@@ -97,11 +97,11 @@
 
 ---
 
-## ✨ Why OphirPay?
+## ✨ Why LumenRail?
 
-Most blockchain payment tools are either developer-facing SDKs or complex enterprise dashboards. **OphirPay bridges the gap** — a production-grade, open-source payment platform that's powerful enough for DAO treasuries yet intuitive enough for a freelancer sending their first crypto payment.
+Most blockchain payment tools are either developer-facing SDKs or complex enterprise dashboards. **LumenRail bridges the gap** — a production-grade, open-source payment platform that's powerful enough for DAO treasuries yet intuitive enough for a freelancer sending their first crypto payment.
 
-| Capability | OphirPay | Typical dApp |
+| Capability | LumenRail | Typical dApp |
 |---|---|---|
 | Single payments | ✅ | ✅ |
 | **Batch payments** (multi-recipient in 1 tx) | ✅ | ❌ |
@@ -147,7 +147,7 @@ Most blockchain payment tools are either developer-facing SDKs or complex enterp
 
 ### 🎥 Pitch Video (3 min)
 
-<video src="https://raw.githubusercontent.com/OphirPay/OphirPay/main/public/demo.mp4" controls width="720" poster="https://raw.githubusercontent.com/OphirPay/OphirPay/main/public/ophirpay-banner.svg" style="max-width:100%;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15)">
+<video src="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/demo.mp4" controls width="720" poster="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/lumenrail-banner.svg" style="max-width:100%;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15)">
   Your browser does not support embedded video.
   <a href="https://ophirpay.vercel.app/demo.mp4">Watch on Vercel →</a>
 </video>
@@ -164,7 +164,7 @@ Most blockchain payment tools are either developer-facing SDKs or complex enterp
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     OPHIRPAY PLATFORM                       │
+│                     LUMENRAIL PLATFORM                       │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌─────────┐ │
@@ -189,7 +189,7 @@ Most blockchain payment tools are either developer-facing SDKs or complex enterp
 │  │                 Soroban Smart Contracts                │  │
 │  │                                                       │  │
 │  │  ┌──────────────────┐    native events   ┌─────────┐ │  │
-│  │  │ OphirPayContract │    + cross-contract │ Emitter │ │  │
+│  │  │ LumenRailContract │    + cross-contract │ Emitter │ │  │
 │  │  │  · record_payment│    pause/unpause    │ Contract│ │  │
 │  │  │  · propose_payment│    orchestration    │· events │ │  │
 │  │  │  · grant_role    │                      └────┬────┘ │  │
@@ -219,7 +219,7 @@ Most blockchain payment tools are either developer-facing SDKs or complex enterp
 ## ⚡ Hackathon Quickstart (60 seconds)
 
 ```bash
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 npm install && npx prisma db push && npx prisma generate
 cp .env.example .env && npm run dev
 ```
@@ -250,7 +250,7 @@ bash scripts/demo-test.sh
 
 ```bash
 # 1. Clone & enter
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 
 # 2. Install everything
 npm install
@@ -295,7 +295,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
 ## 🔐 Wallet Integration
 
-OphirPay supports multiple Stellar wallets through a unified connector abstraction. Our `MultiWalletProvider` context wraps the entire application, providing:
+LumenRail supports multiple Stellar wallets through a unified connector abstraction. Our `MultiWalletProvider` context wraps the entire application, providing:
 
 | Feature | Implementation |
 |---|---|
@@ -338,7 +338,7 @@ connect("albedo");  // or "freighter", "xbull"
 
 ## 📡 Real-Time Events
 
-OphirPay streams **live blockchain events** via Server-Sent Events (SSE). The endpoint polls the deployed `PaymentEventEmitter` contract every 10 seconds, detecting new payment events and pushing them to connected clients.
+LumenRail streams **live blockchain events** via Server-Sent Events (SSE). The endpoint polls the deployed `PaymentEventEmitter` contract every 10 seconds, detecting new payment events and pushing them to connected clients.
 
 ```
 Browser ←──SSE stream─── GET /api/events ──polls──→ PaymentEventEmitter (Soroban)
@@ -365,12 +365,12 @@ Visit **`/events`** in the app to see the live feed with connection status indic
 
 ## 🧪 Smart Contracts
 
-OphirPay deploys **two Soroban contracts**. The main `OphirPayContract` handles all payment logic and publishes native on-chain events, while the `PaymentEventEmitter` stores payment-event records that the app's SSE stream queries — keeping payment logic and event emission separate for cleaner architecture and independent queryability. The contracts are also wired for cross-contract orchestration: `emergency_pause_all` / `emergency_unpause_all` atomically propagate the circuit breaker to the emitter.
+LumenRail deploys **two Soroban contracts**. The main `LumenRailContract` handles all payment logic and publishes native on-chain events, while the `PaymentEventEmitter` stores payment-event records that the app's SSE stream queries — keeping payment logic and event emission separate for cleaner architecture and independent queryability. The contracts are also wired for cross-contract orchestration: `emergency_pause_all` / `emergency_unpause_all` atomically propagate the circuit breaker to the emitter.
 
 ### 🔗 Inter-Contract Flow
 
 ```
-OphirPayContract.record_payment(payer, payee, amount, asset, tx_hash, metadata)
+LumenRailContract.record_payment(payer, payee, amount, asset, tx_hash, metadata)
   │
   ├─ 1. Increments payment counter
   ├─ 2. Stores Payment struct in persistent storage
@@ -382,11 +382,11 @@ Browser ←── SSE stream (GET /api/events) ──polls──→ PaymentEvent
         └─ payment:created event                       └─ get_event_count() / get_event(id)
 
 Emergency orchestration (cross-contract):
-OphirPayContract.emergency_pause_all() / emergency_unpause_all()
+LumenRailContract.emergency_pause_all() / emergency_unpause_all()
   └─ env.invoke_contract(emitter, "pause"/"unpause")  →  PaymentEventEmitter
 ```
 
-### 📦 Main Contract — `OphirPayContract`
+### 📦 Main Contract — `LumenRailContract`
 
 | Detail | Value |
 |---|---|
@@ -461,7 +461,7 @@ OphirPayContract.emergency_pause_all() / emergency_unpause_all()
 
 ```bash
 # Build both contracts to WASM
-cd contracts/ophirpay && cargo build --target wasm32v1-none --release
+cd contracts/lumenrail && cargo build --target wasm32v1-none --release
 cd contracts/emitter && cargo build --target wasm32v1-none --release
 ```
 </details>
@@ -472,7 +472,7 @@ cd contracts/emitter && cargo build --target wasm32v1-none --release
 ```bash
 # 1. Deploy emitter
 stellar contract deploy \
-  --wasm contracts/emitter/target/wasm32v1-none/release/ophirpay_emitter.wasm \
+  --wasm contracts/emitter/target/wasm32v1-none/release/lumenrail_emitter.wasm \
   --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015"
@@ -485,17 +485,17 @@ stellar contract invoke --id <EMITTER_ID> --source-account <SECRET_KEY> \
 
 # 3. Deploy main contract
 stellar contract deploy \
-  --wasm contracts/ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm \
+  --wasm contracts/lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm \
   --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015"
 
 # 4. Init main contract + point at emitter
-stellar contract invoke --id <OPHIRPAY_ID> --source-account <SECRET_KEY> \
+stellar contract invoke --id <LUMENRAIL_ID> --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015" \
   -- init --owner <OWNER_PUBLIC_KEY>
-stellar contract invoke --id <OPHIRPAY_ID> --source-account <SECRET_KEY> \
+stellar contract invoke --id <LUMENRAIL_ID> --source-account <SECRET_KEY> \
   --rpc-url "https://soroban-testnet.stellar.org:443" \
   --network-passphrase "Test SDF Network ; September 2015" \
   -- set_emitter --emitter <EMITTER_ID>
@@ -535,12 +535,12 @@ Both Soroban contracts include comprehensive `#[cfg(test)]` unit test modules (6
 
 | Contract | Tests | Coverage |
 |---|---|---|
-| `OphirPayContract` | 60 tests | init, payments, escrows, streams, batches, multisig, RBAC, fee config, timelock, governance, refunds, pause, stats, invariants, refund validation, reentrancy lock release |
+| `LumenRailContract` | 60 tests | init, payments, escrows, streams, batches, multisig, RBAC, fee config, timelock, governance, refunds, pause, stats, invariants, refund validation, reentrancy lock release |
 | `PaymentEventEmitter` | 7 tests | init, emit, get, count, pause/unpause, access control, allow-list |
 
 ```bash
 # Run contract tests
-cd contracts/ophirpay && cargo test
+cd contracts/lumenrail && cargo test
 cd contracts/emitter && cargo test
 ```
 
@@ -673,7 +673,7 @@ Every push to `main` triggers **22 jobs** across six tracks:
 | Gitleaks | Secrets scanning on every push |
 | PR Labeler | Auto-labels PRs by changed paths |
 
-**→ [View latest CI run](https://github.com/OphirPay/OphirPay/actions/workflows/ci.yml)**
+**→ [View latest CI run](https://github.com/Abolax123/OphirPay/actions/workflows/ci.yml)**
 
 ![CI/CD Pipeline](./public/screenshots/ci-pipeline.png)
 
@@ -810,8 +810,8 @@ We follow [Conventional Commits](https://www.conventionalcommits.org):
 
 ## 🔬 Formal Verification
 
-> ⚠️ **Honest status:** the Kani harnesses in `contracts/ophirpay/spec/` verify hand-written
-> **models** — they share no code with the deployed `OphirPayContract`, are not run in CI, and
+> ⚠️ **Honest status:** the Kani harnesses in `contracts/lumenrail/spec/` verify hand-written
+> **models** — they share no code with the deployed `LumenRailContract`, are not run in CI, and
 > several are tautological. The list below reflects *modeled intent*, **not** proof of the deployed
 > contract. See [docs/AUDIT.md](docs/AUDIT.md) for details.
 
@@ -829,7 +829,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org):
 **Run the (model) proofs:**
 ```bash
 cargo install kani-verifier && cargo kani setup
-cd contracts/ophirpay/spec && cargo kani
+cd contracts/lumenrail/spec && cargo kani
 ```
 
 See [docs/VERIFICATION.md](docs/VERIFICATION.md) for setup and the Certora/Komet roadmap.
@@ -859,7 +859,7 @@ Trail of Bits, or OtterSec) commissioned before mainnet deployment.
 
 ## 🔒 Security
 
-OphirPay is designed with defense-in-depth across the contract, API, and web layers. No private keys are ever stored server-side — all signing happens client-side via Freighter/xBull/Rabet/Albedo/Lobstr.
+LumenRail is designed with defense-in-depth across the contract, API, and web layers. No private keys are ever stored server-side — all signing happens client-side via Freighter/xBull/Rabet/Albedo/Lobstr.
 
 ### Smart Contract Invariants
 
@@ -878,20 +878,20 @@ OphirPay is designed with defense-in-depth across the contract, API, and web lay
 - **Session security** — HMAC-SHA256 signed session cookies with expiry, `HttpOnly; SameSite=Lax`, fail-closed on DB errors
 - **API keys** — SHA-256 hashed at rest, indexed prefix lookup, expiry support, `lastUsed` tracking
 - **SSRF guard for webhooks** — blocks loopback/link-local/private IPs and hostnames, with DNS-rebinding re-validation at delivery time
-- **HMAC-signed webhook payloads** — receivers verify `X-OphirPay-Signature` (HMAC-SHA256)
+- **HMAC-signed webhook payloads** — receivers verify `X-LumenRail-Signature` (HMAC-SHA256)
 - **Input validation** — Zod schemas on all mutation routes; Stellar address regex, amount bounds, memo length limits
 - **Rate limiting** — per-IP sliding window (120 RPM default, Redis backend for multi-instance)
 - **Security headers** — CSP with Stellar-only connect-src, HSTS, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, Referrer-Policy
 - **Error boundaries** — React error boundaries prevent full-page crashes
 - **Secrets scanning** — Gitleaks on every PR; dependency auditing via `npm audit` in CI
 
-> ⚠️ **Production note**: OphirPay uses SQLite locally. The live deployment runs PostgreSQL (Neon) with `AUTH_SECRET`, rate limiting, and the documented CORS origins. See `docs/deployment-mainnet.md` for the full checklist.
+> ⚠️ **Production note**: LumenRail uses SQLite locally. The live deployment runs PostgreSQL (Neon) with `AUTH_SECRET`, rate limiting, and the documented CORS origins. See `docs/deployment-mainnet.md` for the full checklist.
 
 ---
 
 ## ⚡ Performance & Gas
 
-OphirPay is engineered for predictable on-chain costs and fast reads:
+LumenRail is engineered for predictable on-chain costs and fast reads:
 
 - **Gas-report CI gate** — the `contract-gas-report` job compiles both contracts, enforces the 128 KB Soroban WASM protocol limit, estimates base inclusion fees, and uploads a per-function gas report as a build artifact (`docs/GAS.md` mirrors the cost model)
 - **Cached on-chain reads** — read-only simulations are cached server-side (30–60 s TTL) with per-key granularity; governance/multisig/escrow listings hit the RPC once per window instead of per request
@@ -902,7 +902,7 @@ OphirPay is engineered for predictable on-chain costs and fast reads:
 ### Audit-Readiness
 
 - **~300 typed contract error variants** — every failure path returns a machine-readable `PaymentError` (many variants reserved for unimplemented features), mirrored in the TypeScript error catalog and surfaced as clean HTTP/API errors
-- **Invariant tests** — fund-safety (`LOCKED_BALANCE` cap), reentrancy, pause, timelock, and 1-vote-per-address are covered by Rust unit tests (60 in `ophirpay`, 7 in `emitter`) plus 806 app vitest cases
+- **Invariant tests** — fund-safety (`LOCKED_BALANCE` cap), reentrancy, pause, timelock, and 1-vote-per-address are covered by Rust unit tests (60 in `lumenrail`, 7 in `emitter`) plus 806 app vitest cases
 - **Zero failing tests** — the full suite is green in CI (`lint`, `typecheck`, `unit-tests`, `contract-wasm`, `next-build`, `e2e`, `secret-scan`)
 - **Threat-modeled web layer** — CSRF, SSRF, HMAC sessions, hashed API keys, rate limiting, and CSP are documented in the Security section above and enforced in code
 - **Manual security review completed** — a full review of both Soroban contracts and the web/API security layer is in [docs/AUDIT.md](docs/AUDIT.md) (2 High, 6 Medium findings); a third-party audit is still pending before mainnet
@@ -913,8 +913,8 @@ OphirPay is engineered for predictable on-chain costs and fast reads:
 
 | Channel | Link |
 |---|---|
-| **GitHub Discussions** | [github.com/OphirPay/OphirPay/discussions](https://github.com/OphirPay/OphirPay/discussions) |
-| **Issue Tracker** | [github.com/OphirPay/OphirPay/issues](https://github.com/OphirPay/OphirPay/issues) |
+| **GitHub Discussions** | [github.com/Abolax123/OphirPay/discussions](https://github.com/Abolax123/OphirPay/discussions) |
+| **Issue Tracker** | [github.com/Abolax123/OphirPay/issues](https://github.com/Abolax123/OphirPay/issues) |
 | **Security Reports** | [SECURITY.md](SECURITY.md) — Bug bounty program available |
 | **Stellar Ecosystem** | [stellar.org](https://stellar.org) · [Soroban Docs](https://soroban.stellar.org) |
 
@@ -941,7 +941,7 @@ Special thanks to the **Stellar Development Foundation** for their excellent doc
 
 <div align="center">
 
-**[🐛 Report a Bug](https://github.com/OphirPay/OphirPay/issues)** · **[💡 Request a Feature](https://github.com/OphirPay/OphirPay/issues)** · **[📖 Read the Docs](https://github.com/OphirPay/OphirPay#readme)**
+**[🐛 Report a Bug](https://github.com/Abolax123/OphirPay/issues)** · **[💡 Request a Feature](https://github.com/Abolax123/OphirPay/issues)** · **[📖 Read the Docs](https://github.com/Abolax123/OphirPay#readme)**
 
 <br />
 

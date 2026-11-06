@@ -86,7 +86,7 @@ describe("deliverWebhook", () => {
     const body = JSON.parse(String(init.body));
     expect(body.event).toBe("payment.created");
     expect(body.signature).toMatch(/^[a-f0-9]{64}$/);
-    expect((init.headers as Record<string, string>)["X-OphirPay-Signature"]).toBe(body.signature);
+    expect((init.headers as Record<string, string>)["X-LumenRail-Signature"]).toBe(body.signature);
   });
 
   it("treats a 3xx redirect response as a failure (never follows it)", async () => {

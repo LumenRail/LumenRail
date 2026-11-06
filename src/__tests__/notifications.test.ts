@@ -166,7 +166,7 @@ describe("notifications library", () => {
   describe("emitPaymentNotification & NOTIFY templates", () => {
     it("emits custom window event and dispatches notification", () => {
       const listener = vi.fn();
-      window.addEventListener("ophirpay:notification", listener);
+      window.addEventListener("lumenrail:notification", listener);
 
       const notif = emitPaymentNotification({
         type: "payment.received",
@@ -177,37 +177,37 @@ describe("notifications library", () => {
       expect(listener).toHaveBeenCalledTimes(1);
       expect(notif.type).toBe("payment.received");
 
-      window.removeEventListener("ophirpay:notification", listener);
+      window.removeEventListener("lumenrail:notification", listener);
     });
 
     it("NOTIFY.paymentSent triggers payment.sent notification", () => {
       const listener = vi.fn();
-      window.addEventListener("ophirpay:notification", listener);
+      window.addEventListener("lumenrail:notification", listener);
 
       NOTIFY.paymentSent("25 XLM", "tx_sent_hash_123");
       expect(listener).toHaveBeenCalledTimes(1);
 
-      window.removeEventListener("ophirpay:notification", listener);
+      window.removeEventListener("lumenrail:notification", listener);
     });
 
     it("NOTIFY.paymentReceived triggers payment.received notification", () => {
       const listener = vi.fn();
-      window.addEventListener("ophirpay:notification", listener);
+      window.addEventListener("lumenrail:notification", listener);
 
       NOTIFY.paymentReceived("80 XLM", "GBBD...3333");
       expect(listener).toHaveBeenCalledTimes(1);
 
-      window.removeEventListener("ophirpay:notification", listener);
+      window.removeEventListener("lumenrail:notification", listener);
     });
 
     it("NOTIFY.batchComplete triggers payment.batch_completed notification", () => {
       const listener = vi.fn();
-      window.addEventListener("ophirpay:notification", listener);
+      window.addEventListener("lumenrail:notification", listener);
 
       NOTIFY.batchComplete(15, "batch_99");
       expect(listener).toHaveBeenCalledTimes(1);
 
-      window.removeEventListener("ophirpay:notification", listener);
+      window.removeEventListener("lumenrail:notification", listener);
     });
   });
 

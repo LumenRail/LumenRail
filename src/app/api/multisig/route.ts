@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/multisig — current multisig configuration
- * Reads from the Soroban contract via OphirPayContract.get_multisig_config().
+ * Reads from the Soroban contract via LumenRailContract.get_multisig_config().
  */
 export const GET = withMetrics("GET /api/multisig", withRequestLogging(async function GET(request: Request) {
   try {

@@ -3,7 +3,7 @@ import { withMetrics } from "@/lib/metrics-middleware";
 
 import prisma from "@/lib/prisma";
 import { STELLAR_NETWORK, SOROBAN_RPC_URL, HORIZON_URL } from "@/lib/stellar";
-import { OPHIRPAY_CONTRACT_ID } from "@/lib/contracts";
+import { LUMENRAIL_CONTRACT_ID } from "@/lib/contracts";
 import { successResponse, serverError } from "@/lib/api-response";
 import { withRequestLogging } from "@/lib/request-logging";
 
@@ -76,9 +76,9 @@ export const GET = withMetrics("GET /api/health", withRequestLogging(async funct
     }
 
     // Check Contract-ID presence
-    const contractStatus: "ok" | "error" = 
-      OPHIRPAY_CONTRACT_ID && OPHIRPAY_CONTRACT_ID.startsWith("C") && OPHIRPAY_CONTRACT_ID.length === 56 
-        ? "ok" 
+    const contractStatus: "ok" | "error" =
+      LUMENRAIL_CONTRACT_ID && LUMENRAIL_CONTRACT_ID.startsWith("C") && LUMENRAIL_CONTRACT_ID.length === 56
+        ? "ok"
         : "error";
 
     const optionalChecks = [rpcStatus, horizonStatus, contractStatus, redisStatus].filter(
@@ -104,7 +104,7 @@ export const GET = withMetrics("GET /api/health", withRequestLogging(async funct
             horizon: { status: horizonStatus, latencyMs: horizonLatency },
           },
           contract: {
-            id: OPHIRPAY_CONTRACT_ID || null,
+            id: LUMENRAIL_CONTRACT_ID || null,
             status: contractStatus,
           },
         },

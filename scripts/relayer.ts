@@ -1,7 +1,7 @@
 /**
- * OphirPay Webhook Relayer
+ * LumenRail Webhook Relayer
  * 
- * Polls Prisma for active notification hooks AND queries the Soroban OphirPayContract
+ * Polls Prisma for active notification hooks AND queries the Soroban LumenRailContract
  * for new audit log entries. When a hook's event type matches a new audit entry,
  * the relayer delivers a signed webhook to the subscriber URL.
  * 
@@ -11,7 +11,7 @@
  * 
  * Environment variables:
  *   POLL_INTERVAL_MS — polling interval in ms (default: 30000)
- *   NEXT_PUBLIC_CONTRACT_ID — Soroban OphirPay contract address
+ *   NEXT_PUBLIC_CONTRACT_ID — Soroban LumenRail contract address
  */
 
 import { nativeToScVal } from "@stellar/stellar-sdk";
@@ -51,7 +51,7 @@ interface QueuedEvent {
  * In production, this should be replaced by event-driven delivery (SSE → enqueue).
  */
 /**
- * Query the Soroban OphirPayContract for new audit log entries since lastCheck.
+ * Query the Soroban LumenRailContract for new audit log entries since lastCheck.
  * Returns a list of event descriptions keyed by event type.
  */
 async function pollSorobanAuditLog(
@@ -133,7 +133,7 @@ async function pollSorobanAuditLog(
 }
 
 async function relayerLoop(): Promise<void> {
-  logger.info("🔔 OphirPay Webhook Relayer started", { pollInterval: POLL_INTERVAL, contractId: CONTRACT_ID });
+  logger.info("🔔 LumenRail Webhook Relayer started", { pollInterval: POLL_INTERVAL, contractId: CONTRACT_ID });
 
   // Track last-seen event timestamps per event type to avoid duplicate deliveries
   const lastDelivered: Record<string, number> = {};

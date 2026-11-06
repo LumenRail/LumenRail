@@ -1,14 +1,14 @@
-# OphirPay Formal Verification
+# LumenRail Formal Verification
 
-> ⚠️ **Honest status (2026-08-14):** the Kani harnesses in `contracts/ophirpay/spec/`
-> verify **hand-written models** that share no code with the deployed `OphirPayContract`.
+> ⚠️ **Honest status (2026-08-14):** the Kani harnesses in `contracts/lumenrail/spec/`
+> verify **hand-written models** that share no code with the deployed `LumenRailContract`.
 > They are not run in CI, and several are tautological. The table below documents
-> *modeled intent* — it is **not** proof of the deployed contract, and OphirPay must
+> *modeled intent* — it is **not** proof of the deployed contract, and LumenRail must
 > **not** be presented as "formally verified" until real harnesses against the contract
 > (or an independent audit) exist. See [docs/AUDIT.md](AUDIT.md) HIGH-2.
 
 This document describes how to run the Kani harnesses and the roadmap toward real
-formal verification of the OphirPay smart contracts using
+formal verification of the LumenRail smart contracts using
 [Kani Rust Verifier](https://model-checking.github.io/kani/).
 
 ## Modeled Invariants (not proofs of the deployed contract)
@@ -44,7 +44,7 @@ cargo kani setup
 ### 2. Run All Proofs
 
 ```bash
-cd contracts/ophirpay
+cd contracts/lumenrail
 cargo kani --harness all
 ```
 
@@ -147,10 +147,10 @@ rule lockedBalanceInvariant(method f) {
 kup install komet
 
 # Run fuzzing
-komet test --contract contracts/ophirpay
+komet test --contract contracts/lumenrail
 
 # Run symbolic execution
-komet prove run --contract contracts/ophirpay \
+komet prove run --contract contracts/lumenrail \
     --invariant locked_balance_invariant \
     --invariant one_vote_per_address_invariant
 ```
@@ -170,12 +170,12 @@ formal-verification:
         cargo install kani-verifier
         cargo kani setup
     - name: Run formal verification
-      run: cd contracts/ophirpay && cargo kani --harness all
+      run: cd contracts/lumenrail && cargo kani --harness all
     - name: Upload verification report
       uses: actions/upload-artifact@v4
       with:
         name: formal-verification-report
-        path: contracts/ophirpay/target/kani/
+        path: contracts/lumenrail/target/kani/
 ```
 
 ## Interpreting Results

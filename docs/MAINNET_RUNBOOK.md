@@ -1,6 +1,6 @@
-# 🚀 OphirPay Mainnet Deployment Runbook
+# 🚀 LumenRail Mainnet Deployment Runbook
 
-> **Executable checklist** for deploying OphirPay (two Soroban contracts + the
+> **Executable checklist** for deploying LumenRail (two Soroban contracts + the
 > web app) to **Stellar Mainnet**. This runbook consolidates
 > [docs/deployment-mainnet.md](./deployment-mainnet.md) into a step-by-step
 > runbook with **pre-flight checks, rollback steps, and post-deploy
@@ -67,7 +67,7 @@
 
   ```bash
   git checkout v1.0.0        # or the release commit SHA you intend to ship
-  cd contracts/ophirpay && cargo build --target wasm32v1-none --release
+  cd contracts/lumenrail && cargo build --target wasm32v1-none --release
   cd ../emitter && cargo build --target wasm32v1-none --release
   ```
 
@@ -76,8 +76,8 @@
   `propose_upgrade` on future releases):
 
   ```bash
-  sha256sum contracts/ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm
-  sha256sum contracts/emitter/target/wasm32v1-none/release/ophirpay_emitter.wasm
+  sha256sum contracts/lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm
+  sha256sum contracts/emitter/target/wasm32v1-none/release/lumenrail_emitter.wasm
   # → record both hashes in the registry (Phase 4)
   ```
 
@@ -85,8 +85,8 @@
   `contract-wasm` job, re-verify locally):
 
   ```bash
-  stat -c '%n %s bytes' contracts/ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm \
-    contracts/emitter/target/wasm32v1-none/release/ophirpay_emitter.wasm
+  stat -c '%n %s bytes' contracts/lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm \
+    contracts/emitter/target/wasm32v1-none/release/lumenrail_emitter.wasm
   ```
 
 ### 0.3 Contract IDs
@@ -161,7 +161,7 @@
 
   ```bash
   stellar contract deploy \
-    --wasm contracts/emitter/target/wasm32v1-none/release/ophirpay_emitter.wasm \
+    --wasm contracts/emitter/target/wasm32v1-none/release/lumenrail_emitter.wasm \
     --source <MAINNET_SECRET_KEY> \
     --rpc-url "https://soroban.stellar.org:443" \
     --network-passphrase "Public Global Stellar Network ; September 2015" \
@@ -184,11 +184,11 @@
 
 ### 2.2 Deploy main contract
 
-- [ ] **Deploy `OphirPayContract`**:
+- [ ] **Deploy `LumenRailContract`**:
 
   ```bash
   stellar contract deploy \
-    --wasm contracts/ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm \
+    --wasm contracts/lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm \
     --source <MAINNET_SECRET_KEY> \
     --rpc-url "https://soroban.stellar.org:443" \
     --network-passphrase "Public Global Stellar Network ; September 2015" \
@@ -291,11 +291,11 @@
   | Artifact | Value |
   |---|---|
   | Deploy commit / tag | `v1.0.0` (or SHA) |
-  | Mainnet `OphirPayContract` ID | `<CONTRACT_ID>` |
+  | Mainnet `LumenRailContract` ID | `<CONTRACT_ID>` |
   | Mainnet `PaymentEventEmitter` ID | `<EMITTER_CONTRACT_ID>` |
   | Owner public key | `<OWNER_PUBLIC_KEY>` |
-  | `ophirpay_contract.wasm` SHA-256 | `<from Phase 0.2>` |
-  | `ophirpay_emitter.wasm` SHA-256 | `<from Phase 0.2>` |
+  | `lumenrail_contract.wasm` SHA-256 | `<from Phase 0.2>` |
+  | `lumenrail_emitter.wasm` SHA-256 | `<from Phase 0.2>` |
   | Deploy date | `<date>` |
   | Operator | `<name>` |
 
@@ -316,10 +316,10 @@
 - [ ] Roll back the Helm release to the previous revision:
 
   ```bash
-  helm rollback ophirpay -n ophirpay
+  helm rollback lumenrail -n lumenrail
   # or pin an explicit previous image:
-  helm upgrade ophirpay ./helm/ophirpay \
-    --namespace ophirpay \
+  helm upgrade lumenrail ./helm/lumenrail \
+    --namespace lumenrail \
     --set image.tag=v0.9.0
   ```
 
@@ -400,8 +400,8 @@
 - [ ] Deploy via Helm:
 
   ```bash
-  helm upgrade --install ophirpay ./helm/ophirpay \
-    --namespace ophirpay \
+  helm upgrade --install lumenrail ./helm/lumenrail \
+    --namespace lumenrail \
     --set image.tag=v1.0.0 \
     --set ingress.hosts[0].host=ophirpay.com \
     --set config.NEXT_PUBLIC_STELLAR_NETWORK=PUBLIC \
@@ -455,7 +455,7 @@
 - [ ] Monitoring shows healthy metrics (`/api/metrics`)
 - [ ] Emergency contact recorded (on-call engineer, status.stellar.org)
 
-> **Done — OphirPay is live on mainnet.** Keep the Phase 4 registry safe: it is
+> **Done — LumenRail is live on mainnet.** Keep the Phase 4 registry safe: it is
 > the anchor for every future upgrade and rollback.
 
 ---

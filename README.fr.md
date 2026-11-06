@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/OphirPay/OphirPay/main/public/ophirpay-banner.svg" alt="OphirPay Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/lumenrail-banner.svg" alt="LumenRail Banner" width="100%" />
 
-  <h1>🏦 OphirPay</h1>
+  <h1>🏦 LumenRail</h1>
 
   <h3><em>La Couche d'Orchestration de Paiements Open Source pour Stellar</em></h3>
 
@@ -22,7 +22,7 @@
 
 ## 📑 Table des Matières
 
-- [✨ Pourquoi OphirPay ?](#-pourquoi-ophirpay)
+- [✨ Pourquoi LumenRail ?](#-pourquoi-lumenrail)
 - [🚀 Démo en Direct](#-démo-en-direct)
 - [🧭 Architecture du Système](#-architecture-du-système)
 - [⚡ Démarrage Rapide](#-démarrage-rapide)
@@ -36,11 +36,11 @@
 
 ---
 
-## ✨ Pourquoi OphirPay ?
+## ✨ Pourquoi LumenRail ?
 
-La plupart des outils de paiement blockchain sont soit des SDKs orientés développeurs, soit des tableaux de bord d'entreprise complexes. **OphirPay comble le fossé** — une plateforme de paiement de niveau production, open source, suffisamment puissante pour les trésoreries de DAO et suffisamment intuitive pour un freelancer envoyant son premier paiement en crypto.
+La plupart des outils de paiement blockchain sont soit des SDKs orientés développeurs, soit des tableaux de bord d'entreprise complexes. **LumenRail comble le fossé** — une plateforme de paiement de niveau production, open source, suffisamment puissante pour les trésoreries de DAO et suffisamment intuitive pour un freelancer envoyant son premier paiement en crypto.
 
-| Capacité | OphirPay | dApp Typique |
+| Capacité | LumenRail | dApp Typique |
 |---|---|---|
 | Paiements individuels | ✅ | ✅ |
 | **Paiements par lots** (multi-destinataires en 1 tx) | ✅ | ❌ |
@@ -85,7 +85,7 @@ La plupart des outils de paiement blockchain sont soit des SDKs orientés dével
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                   PLATEFORME OPHIRPAY                        │
+│                   PLATEFORME LUMENRAIL                        │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌─────────┐ │
@@ -110,7 +110,7 @@ La plupart des outils de paiement blockchain sont soit des SDKs orientés dével
 │  │          Contrats Intelligents Soroban                │  │
 │  │                                                       │  │
 │  │  ┌──────────────────┐  événements natifs ┌─────────┐ │  │
-│  │  │ OphirPayContract │  + cross-contract  │ Contrat │ │  │
+│  │  │ LumenRailContract │  + cross-contract  │ Contrat │ │  │
 │  │  │  · record_payment│  pause/unpause     │ Émetteur│ │  │
 │  │  │  · propose_pay.  │  orchestration     │· events │ │  │
 │  │  │  · grant_role    │                    └────┬────┘ │  │
@@ -140,7 +140,7 @@ La plupart des outils de paiement blockchain sont soit des SDKs orientés dével
 ## ⚡ Démarrage Rapide (60 secondes)
 
 ```bash
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 npm install && npx prisma db push && npx prisma generate
 cp .env.example .env && npm run dev
 ```
@@ -151,7 +151,7 @@ cp .env.example .env && npm run dev
 
 ```bash
 # 1. Cloner et entrer
-git clone https://github.com/OphirPay/OphirPay.git && cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
 
 # 2. Installer tout
 npm install
@@ -172,7 +172,7 @@ Ouvre **[http://localhost:3000](http://localhost:3000)** — connecte ton portef
 
 ## 🔐 Intégration de Portefeuille
 
-OphirPay prend en charge plusieurs portefeuilles Stellar grâce à une abstraction unifiée de connecteurs. Notre contexte `MultiWalletProvider` enveloppe l'application entière, offrant :
+LumenRail prend en charge plusieurs portefeuilles Stellar grâce à une abstraction unifiée de connecteurs. Notre contexte `MultiWalletProvider` enveloppe l'application entière, offrant :
 
 | Fonctionnalité | Implémentation |
 |---|---|
@@ -196,7 +196,7 @@ OphirPay prend en charge plusieurs portefeuilles Stellar grâce à une abstracti
 
 ## 📡 Événements en Temps Réel
 
-OphirPay diffuse des **événements en direct de la blockchain** via Server-Sent Events (SSE). L'endpoint interroge le contrat `PaymentEventEmitter` déployé toutes les 10 secondes, détectant les nouveaux événements de paiement et les diffusant aux clients connectés.
+LumenRail diffuse des **événements en direct de la blockchain** via Server-Sent Events (SSE). L'endpoint interroge le contrat `PaymentEventEmitter` déployé toutes les 10 secondes, détectant les nouveaux événements de paiement et les diffusant aux clients connectés.
 
 ```
 Navigateur ←──flux SSE─── GET /api/events ──interroge──→ PaymentEventEmitter (Soroban)
@@ -219,11 +219,11 @@ Visite **`/events`** dans l'application pour voir le flux en direct avec indicat
 
 ## 🧪 Contrats Intelligents
 
-OphirPay déploie **deux contrats Soroban**. Le `OphirPayContract` principal gère toute la logique de paiement et publie des événements natifs on-chain, tandis que le `PaymentEventEmitter` stocke les enregistrements d'événements de paiement que le flux SSE de l'application interroge — séparant la logique de paiement et l'émission d'événements pour une architecture plus propre.
+LumenRail déploie **deux contrats Soroban**. Le `LumenRailContract` principal gère toute la logique de paiement et publie des événements natifs on-chain, tandis que le `PaymentEventEmitter` stocke les enregistrements d'événements de paiement que le flux SSE de l'application interroge — séparant la logique de paiement et l'émission d'événements pour une architecture plus propre.
 
 ```bash
 # Exécuter les tests des contrats
-cd contracts/ophirpay && cargo test
+cd contracts/lumenrail && cargo test
 cd contracts/emitter && cargo test
 ```
 
@@ -309,7 +309,7 @@ Un grand merci à la **Stellar Development Foundation** pour leur excellente doc
 
 <div align="center">
 
-**[🐛 Signaler un Bug](https://github.com/OphirPay/OphirPay/issues)** · **[💡 Demander une Fonctionnalité](https://github.com/OphirPay/OphirPay/issues)** · **[📖 Lire la Documentation](https://github.com/OphirPay/OphirPay#readme)**
+**[🐛 Signaler un Bug](https://github.com/Abolax123/OphirPay/issues)** · **[💡 Demander une Fonctionnalité](https://github.com/Abolax123/OphirPay/issues)** · **[📖 Lire la Documentation](https://github.com/Abolax123/OphirPay#readme)**
 
 <br />
 

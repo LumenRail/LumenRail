@@ -60,7 +60,7 @@ export const rabetConnector: WalletConnector = {
       }
     }
     if (typeof window !== "undefined") {
-      localStorage.removeItem("ophirpay-wallet-connected");
+      localStorage.removeItem("lumenrail-wallet-connected");
     }
   },
 

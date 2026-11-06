@@ -17,9 +17,9 @@
       "title": "Platform Health",
       "type": "stat",
       "targets": [
-        { "expr": "ophirpay_http_requests_total", "legendFormat": "HTTP Requests" },
-        { "expr": "ophirpay_payments_created_total", "legendFormat": "Payments" },
-        { "expr": "ophirpay_webhooks_delivered_total", "legendFormat": "Webhooks" }
+        { "expr": "lumenrail_http_requests_total", "legendFormat": "HTTP Requests" },
+        { "expr": "lumenrail_payments_created_total", "legendFormat": "Payments" },
+        { "expr": "lumenrail_webhooks_delivered_total", "legendFormat": "Webhooks" }
       ]
     },
     {
@@ -31,7 +31,7 @@
       "title": "HTTP Request Rate",
       "type": "timeseries",
       "targets": [
-        { "expr": "rate(ophirpay_http_requests_total[5m])", "legendFormat": "Requests/s" }
+        { "expr": "rate(lumenrail_http_requests_total[5m])", "legendFormat": "Requests/s" }
       ]
     },
     {
@@ -42,8 +42,8 @@
       "title": "Payments — Created vs Failed",
       "type": "timeseries",
       "targets": [
-        { "expr": "rate(ophirpay_payments_created_total[5m])", "legendFormat": "Created" },
-        { "expr": "rate(ophirpay_payments_failed_total[5m])", "legendFormat": "Failed" }
+        { "expr": "rate(lumenrail_payments_created_total[5m])", "legendFormat": "Created" },
+        { "expr": "rate(lumenrail_payments_failed_total[5m])", "legendFormat": "Failed" }
       ]
     },
     {
@@ -54,8 +54,8 @@
       "title": "Webhook Delivery Health",
       "type": "timeseries",
       "targets": [
-        { "expr": "rate(ophirpay_webhooks_delivered_total[5m])", "legendFormat": "Delivered" },
-        { "expr": "rate(ophirpay_webhooks_failed_total[5m])", "legendFormat": "Failed" }
+        { "expr": "rate(lumenrail_webhooks_delivered_total[5m])", "legendFormat": "Delivered" },
+        { "expr": "rate(lumenrail_webhooks_failed_total[5m])", "legendFormat": "Failed" }
       ]
     },
     {
@@ -67,7 +67,7 @@
       "title": "Database Query Latency (avg)",
       "type": "timeseries",
       "targets": [
-        { "expr": "ophirpay_db_query_duration_seconds_sum / ophirpay_db_query_duration_seconds_count", "legendFormat": "Avg Query Time" }
+        { "expr": "lumenrail_db_query_duration_seconds_sum / lumenrail_db_query_duration_seconds_count", "legendFormat": "Avg Query Time" }
       ]
     },
     {
@@ -78,18 +78,18 @@
       "title": "Batch Processing Volume",
       "type": "timeseries",
       "targets": [
-        { "expr": "rate(ophirpay_batches_processed_total[5m])", "legendFormat": "Batches/min" }
+        { "expr": "rate(lumenrail_batches_processed_total[5m])", "legendFormat": "Batches/min" }
       ]
     }
   ],
   "refresh": "30s",
   "schemaVersion": 39,
-  "tags": ["ophirpay", "stellar", "payments"],
+  "tags": ["lumenrail", "stellar", "payments"],
   "templating": { "list": [] },
   "time": { "from": "now-6h", "to": "now" },
   "timepicker": {},
   "timezone": "utc",
-  "title": "OphirPay — Payment Infrastructure",
-  "uid": "ophirpay",
+  "title": "LumenRail — Payment Infrastructure",
+  "uid": "lumenrail",
   "version": 1
 }

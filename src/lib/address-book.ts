@@ -12,7 +12,7 @@ interface AddressEntry {
   lastUsed?: number;
 }
 
-const STORAGE_KEY = "ophirpay-address-book";
+const STORAGE_KEY = "lumenrail-address-book";
 
 /** Get all saved addresses from localStorage. */
 export function getAddressBook(): AddressEntry[] {

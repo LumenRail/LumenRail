@@ -4,7 +4,7 @@
  * Advanced contract interaction helpers for multisig, governance,
  * recurring payments, and audit log queries.
  * 
- * These wire the Soroban OphirPayContract directly through Freighter signing
+ * These wire the Soroban LumenRailContract directly through Freighter signing
  * instead of API route stubs.
  */
 

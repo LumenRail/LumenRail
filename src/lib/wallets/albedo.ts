@@ -55,7 +55,7 @@ export const albedoConnector: WalletConnector = {
 
   async disconnect() {
     if (typeof window !== "undefined") {
-      localStorage.removeItem("ophirpay-wallet-connected");
+      localStorage.removeItem("lumenrail-wallet-connected");
     }
   },
 

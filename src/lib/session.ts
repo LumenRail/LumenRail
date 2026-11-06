@@ -11,7 +11,7 @@ interface WalletSession {
   lastConnected: number;
 }
 
-const SESSION_KEY = "ophirpay-wallet-session";
+const SESSION_KEY = "lumenrail-wallet-session";
 
 /**
  * Save wallet session to localStorage.

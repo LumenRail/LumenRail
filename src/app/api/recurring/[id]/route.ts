@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/recurring/[id] — single recurring payment lookup
- * Reads from OphirPayContract on-chain.
+ * Reads from LumenRailContract on-chain.
  */
 export const GET = withMetrics("GET /api/recurring/[id]", withRequestLogging(async function GET(
   request: Request,

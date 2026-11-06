@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────────────────────────
-# OphirPay Full Contract Deployment
+# LumenRail Full Contract Deployment
 # ─────────────────────────────────────────────────────────────────
-# Builds and deploys BOTH the OphirPay and Emitter Soroban contracts
+# Builds and deploys BOTH the LumenRail and Emitter Soroban contracts
 # to Stellar Testnet.
 #
 # Prerequisites:
@@ -33,7 +33,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "============================================"
-echo " OphirPay Full Contract Deployment"
+echo " LumenRail Full Contract Deployment"
 echo "============================================"
 echo "RPC:     $RPC_URL"
 echo ""
@@ -42,8 +42,8 @@ echo ""
 echo "🔨 Building contracts..."
 echo ""
 
-echo "  → OphirPay contract..."
-(cd "$PROJECT_DIR/contracts/ophirpay" && \
+echo "  → LumenRail contract..."
+(cd "$PROJECT_DIR/contracts/lumenrail" && \
   cargo build --target wasm32v1-none --release 2>&1 | tail -3)
 
 echo "  → Emitter contract..."
@@ -54,21 +54,21 @@ echo ""
 echo "✅ Both contracts built"
 echo ""
 
-# ── Step 1: Deploy OphirPay ────────────────────────────────────
+# ── Step 1: Deploy LumenRail ────────────────────────────────────
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo " 📦 Deploying OphirPay Contract"
+echo " 📦 Deploying LumenRail Contract"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
 node "$PROJECT_DIR/scripts/deploy-contract.js" "$SECRET_KEY"
 
-OPHIRPAY_CONTRACT_ID=$(grep NEXT_PUBLIC_CONTRACT_ID "$PROJECT_DIR/.env.contract" 2>/dev/null | cut -d= -f2 || echo "")
+LUMENRAIL_CONTRACT_ID=$(grep NEXT_PUBLIC_CONTRACT_ID "$PROJECT_DIR/.env.contract" 2>/dev/null | cut -d= -f2 || echo "")
 
-if [ -z "$OPHIRPAY_CONTRACT_ID" ]; then
-  echo "⚠️  Could not extract OphirPay contract ID — continuing anyway"
+if [ -z "$LUMENRAIL_CONTRACT_ID" ]; then
+  echo "⚠️  Could not extract LumenRail contract ID — continuing anyway"
 else
   echo ""
-  echo "OphirPay Contract ID: $OPHIRPAY_CONTRACT_ID"
+  echo "LumenRail Contract ID: $LUMENRAIL_CONTRACT_ID"
 fi
 
 # ── Step 2: Deploy Emitter ─────────────────────────────────────
@@ -141,7 +141,7 @@ async function deploy() {
     contractIdPreimage: sdk.xdr.ContractIdPreimage.contractIdPreimageFromAddress(
       new sdk.xdr.ContractIdPreimageFromAddress({
         address: sdk.xdr.ScAddress.scAddressTypeAccount(sdk.StrKey.decodeEd25519PublicKey(pubKey)),
-        salt: Buffer.alloc(32, 1), // Different salt from OphirPay (0)
+        salt: Buffer.alloc(32, 1), // Different salt from LumenRail (0)
       })
     ),
     executable: sdk.xdr.ContractExecutable.contractExecutableWasm(wasmHash),
@@ -189,10 +189,10 @@ async function deploy() {
     'NEXT_PUBLIC_EMITTER_UPLOAD_TX=' + result.hash + '\\n'
   );
 
-  // Link Emitter to OphirPay (cross-contract orchestration)
+  // Link Emitter to LumenRail (cross-contract orchestration)
   console.log('');
-  console.log('🔗 To link Emitter to OphirPay:');
-  console.log('   Call set_emitter on the OphirPay contract with the Emitter contract ID');
+  console.log('🔗 To link Emitter to LumenRail:');
+  console.log('   Call set_emitter on the LumenRail contract with the Emitter contract ID');
   console.log('   Then emergency_pause_all / emergency_unpause_all will control both.');
 }
 
@@ -212,6 +212,6 @@ echo ""
 echo "Next steps:"
 echo "  1. Copy .env.contract values to .env.local"
 echo "  2. Call init(owner) on both contracts"
-echo "  3. Call set_emitter(emitter_address) on OphirPay"
+echo "  3. Call set_emitter(emitter_address) on LumenRail"
 echo "  4. Verify at https://stellar.expert/explorer/testnet"
 echo ""

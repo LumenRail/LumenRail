@@ -175,7 +175,7 @@ export function Sidebar() {
         </span>
         Stellar Testnet
       </div>
-      <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">OphirPay v1.0.0-rc1</p>
+      <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">LumenRail v1.0.0-rc1</p>
     </div>
   );
 
@@ -204,7 +204,7 @@ export function Sidebar() {
             <span className="text-white font-bold text-lg">O</span>
           </div>
           <div>
-            <h1 className="text-lg font-bold text-gray-900 dark:text-white leading-none">OphirPay</h1>
+            <h1 className="text-lg font-bold text-gray-900 dark:text-white leading-none">LumenRail</h1>
             <p className="text-xs text-gray-500 dark:text-gray-400">Stellar Payments</p>
           </div>
         </div>
@@ -221,7 +221,7 @@ export function Sidebar() {
           <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-ophir-600 to-stellar flex items-center justify-center shadow-lg shadow-ophir-500/30">
             <span className="text-white font-bold text-lg">O</span>
           </div>
-          <div><h1 className="text-lg font-bold text-gray-900 dark:text-white leading-none">OphirPay</h1></div>
+          <div><h1 className="text-lg font-bold text-gray-900 dark:text-white leading-none">LumenRail</h1></div>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">{links}</nav>
         {footer}

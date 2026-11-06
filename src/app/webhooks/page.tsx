@@ -244,7 +244,7 @@ export default function WebhooksPage() {
             <p className="text-xs text-blue-700 dark:text-blue-400 mb-3">
               Webhooks are delivered with HMAC-SHA256 signatures. Verify the{" "}
               <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900/50 rounded text-xs">
-                X-OphirPay-Signature
+                X-LumenRail-Signature
               </code>{" "}
               header using your webhook secret. Failed deliveries are retried up to 3
               times with exponential backoff (1s, 2s, 4s).
@@ -348,8 +348,8 @@ export default function WebhooksPage() {
               <pre className="text-xs bg-gray-900 text-green-400 rounded-lg p-3 overflow-x-auto">
 {`curl -X POST <your-endpoint> \\
   -H "Content-Type: application/json" \\
-  -H "X-OphirPay-Event: payment.created" \\
-  -H "X-OphirPay-Signature: <signature>" \\
+  -H "X-LumenRail-Event: payment.created" \\
+  -H "X-LumenRail-Signature: <signature>" \\
   -d '{"event":"payment.created","timestamp":"...","data":{}}'`}
               </pre>
             </div>
@@ -364,7 +364,7 @@ export default function WebhooksPage() {
                 type="url"
                 value={formUrl}
                 onChange={(e) => setFormUrl(e.target.value)}
-                placeholder="https://your-server.com/webhooks/ophirpay"
+                placeholder="https://your-server.com/webhooks/lumenrail"
                 className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ophir-500 focus:border-transparent"
               />
             </div>

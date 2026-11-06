@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // SPDX-License-Identifier: MIT
 //
-// OphirPay — Testnet Contract Integration Tests (Live RPC)
+// LumenRail — Testnet Contract Integration Tests (Live RPC)
 //
 // Acceptance Criteria:
 // 1. Deploy / link contract + emitter to testnet and run happy-path integration tests via RPC
@@ -41,16 +41,16 @@ const FRIENDBOT_URL = process.env.FRIENDBOT_URL || "https://friendbot.stellar.or
 const SKIP_ON_NETWORK_ERROR = process.env.SKIP_ON_NETWORK_ERROR !== "false";
 
 // WASM candidate paths
-const OPHIRPAY_WASM_PATHS = [
-  join(ROOT, "contracts/ophirpay/target/wasm32v1-none/release/ophirpay_contract.wasm"),
-  join(ROOT, "contracts/ophirpay/target/wasm32-unknown-unknown/release/ophirpay_contract.wasm"),
-  join(ROOT, "contracts/ophirpay_contract.wasm"),
+const LUMENRAIL_WASM_PATHS = [
+  join(ROOT, "contracts/lumenrail/target/wasm32v1-none/release/lumenrail_contract.wasm"),
+  join(ROOT, "contracts/lumenrail/target/wasm32-unknown-unknown/release/lumenrail_contract.wasm"),
+  join(ROOT, "contracts/lumenrail_contract.wasm"),
 ];
 
 const EMITTER_WASM_PATHS = [
-  join(ROOT, "contracts/emitter/target/wasm32v1-none/release/ophirpay_emitter.wasm"),
-  join(ROOT, "contracts/emitter/target/wasm32-unknown-unknown/release/ophirpay_emitter.wasm"),
-  join(ROOT, "contracts/ophirpay_emitter.wasm"),
+  join(ROOT, "contracts/emitter/target/wasm32v1-none/release/lumenrail_emitter.wasm"),
+  join(ROOT, "contracts/emitter/target/wasm32-unknown-unknown/release/lumenrail_emitter.wasm"),
+  join(ROOT, "contracts/lumenrail_emitter.wasm"),
 ];
 
 // ── Logging Helpers ────────────────────────────────────────────
@@ -243,7 +243,7 @@ async function invokeMethod(server, keypair, contractId, method, args = []) {
 // ── Main Integration Test Runner ───────────────────────────────
 async function runIntegrationSuite() {
   console.log("┌───────────────────────────────────────────────────────────┐");
-  console.log("│   OphirPay — Testnet Contract Integration Test Suite     │");
+  console.log("│   LumenRail — Testnet Contract Integration Test Suite     │");
   console.log("└───────────────────────────────────────────────────────────┘");
   log("🌐", `Target RPC Endpoint: ${RPC_URL}`);
   log("🔑", `Network Passphrase: ${PASSPHRASE}`);
@@ -289,15 +289,15 @@ async function runIntegrationSuite() {
   let ophirContractId = process.env.CONTRACT_ID || process.env.NEXT_PUBLIC_CONTRACT_ID;
   let emitterContractId = process.env.EMITTER_CONTRACT_ID || process.env.NEXT_PUBLIC_EMITTER_CONTRACT_ID;
 
-  const ophirWasmPath = findExistingWasm(OPHIRPAY_WASM_PATHS);
+  const ophirWasmPath = findExistingWasm(LUMENRAIL_WASM_PATHS);
   const emitterWasmPath = findExistingWasm(EMITTER_WASM_PATHS);
 
   if (!ophirContractId && ophirWasmPath) {
-    log("🔨", `Deploying fresh OphirPay contract from ${ophirWasmPath}...`);
+    log("🔨", `Deploying fresh LumenRail contract from ${ophirWasmPath}...`);
     try {
       const ophirHash = await uploadWasm(server, deployer, ophirWasmPath);
       ophirContractId = await createContract(server, deployer, ophirHash);
-      pass(`Deployed OphirPay: ${ophirContractId}`);
+      pass(`Deployed LumenRail: ${ophirContractId}`);
     } catch (err) {
       warn(`Deployment failed (${err.message}). Falling back to simulation checks.`);
     }
@@ -438,7 +438,7 @@ async function runIntegrationSuite() {
   step(8, "Testing Flow 5: Emitter & Orchestration (End-to-End)");
   await recordTest("Emitter Flow — Read Emitter & Contract State", async () => {
     const isPaused = await simulateCall(server, ophirContractId, "is_paused", [], deployer.publicKey());
-    pass(`OphirPay pause state: ${isPaused === true ? "PAUSED" : "ACTIVE"}`);
+    pass(`LumenRail pause state: ${isPaused === true ? "PAUSED" : "ACTIVE"}`);
 
     if (emitterContractId) {
       const emitterOwner = await simulateCall(server, emitterContractId, "get_event_count", [], deployer.publicKey());
@@ -458,7 +458,7 @@ async function runIntegrationSuite() {
   }
   console.log("───────────────────────────────────────────────────────────");
   console.log(` Total: ${testResults.length} | Passed: ${passedCount} | Failed: ${testResults.length - passedCount}`);
-  console.log(` OphirPay Explorer: https://stellar.expert/explorer/testnet/contract/${ophirContractId}`);
+  console.log(` LumenRail Explorer: https://stellar.expert/explorer/testnet/contract/${ophirContractId}`);
   if (emitterContractId) {
     console.log(` Emitter Explorer:  https://stellar.expert/explorer/testnet/contract/${emitterContractId}`);
   }

@@ -25,7 +25,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("[OphirPay ErrorBoundary]", error.message, errorInfo.componentStack);
+    console.error("[LumenRail ErrorBoundary]", error.message, errorInfo.componentStack);
   }
 
   render() {

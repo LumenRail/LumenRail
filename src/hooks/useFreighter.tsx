@@ -129,7 +129,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     setWallet(initialWalletState);
     setError(null);
     if (typeof window !== "undefined") {
-      localStorage.removeItem("ophirpay-wallet-connected");
+      localStorage.removeItem("lumenrail-wallet-connected");
     }
   }, []);
 

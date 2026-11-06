@@ -341,7 +341,7 @@ export default function GovernancePage() {
               onChange={(e) => setFormDesc(e.target.value)}
               rows={3}
               className="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
-              placeholder="This proposal upgrades the OphirPay contract..."
+              placeholder="This proposal upgrades the LumenRail contract..."
             />
           </div>
           <div>

@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/batches/[id] — single batch lookup
- * Reads from OphirPayContract on-chain. Supports ?payments=true for included payment IDs.
+ * Reads from LumenRailContract on-chain. Supports ?payments=true for included payment IDs.
  */
 export const GET = withMetrics("GET /api/batches/[id]", withRequestLogging(async function GET(
   request: Request,

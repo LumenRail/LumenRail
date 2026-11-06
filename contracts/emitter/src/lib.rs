@@ -15,7 +15,7 @@ const UPGRADE_TIMELOCK: Symbol = symbol_short!("UPG_LOCK");
 const PAUSED: Symbol = symbol_short!("PAUSED");
 const PENDING_OWNER: Symbol = symbol_short!("PND_OWN");
 const OWNER_PROPOSED_AT: Symbol = symbol_short!("OWN_PAT");
-// Allow-listed source contract (the OphirPay orchestrator). When set,
+// Allow-listed source contract (the LumenRail orchestrator). When set,
 // emit_payment only accepts events from this address — preventing any
 // account from fabricating PaymentEvents (MEDIUM-3 audit fix).
 const ALLOWED_SOURCE: Symbol = symbol_short!("ALW_SRC");
@@ -76,7 +76,7 @@ impl PaymentEventEmitter {
 
     /// Record an external payment event.
     /// Caller must authorize AND be the allow-listed source (typically the main
-    /// OphirPay contract). Returns the new event ID, or an EmitterError.
+    /// LumenRail contract). Returns the new event ID, or an EmitterError.
     pub fn emit_payment(
         env: Env,
         caller: Address,
@@ -300,7 +300,7 @@ impl PaymentEventEmitter {
     }
 
     /// Pause event emission (owner only).
-    /// Used by the OphirPay orchestrator to freeze both contracts atomically.
+    /// Used by the LumenRail orchestrator to freeze both contracts atomically.
     pub fn pause(env: Env, caller: Address) -> Result<(), EmitterError> {
         caller.require_auth();
         let owner: Address = env
@@ -387,7 +387,7 @@ mod tests {
 
         let id = client.emit_payment(
             &owner,
-            &String::from_str(&env, "OphirPay"),
+            &String::from_str(&env, "LumenRail"),
             &payer,
             &payee,
             &2500i128,
@@ -462,7 +462,7 @@ mod tests {
         // Allowed source can emit
         let id = client.emit_payment(
             &allowed,
-            &String::from_str(&env, "OphirPay"),
+            &String::from_str(&env, "LumenRail"),
             &payer,
             &payee,
             &100i128,

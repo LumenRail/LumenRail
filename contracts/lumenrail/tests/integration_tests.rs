@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 #![cfg(test)]
 
-use ophirpay_contract::{
-    BatchCreateResult, OphirPayContract, OphirPayContractClient, Payment, PaymentError,
+use lumenrail_contract::{
+    BatchCreateResult, LumenRailContract, LumenRailContractClient, Payment, PaymentError,
     RefundReasonCode, RefundStatus,
 };
-use ophirpay_emitter::{EmitterError, PaymentEventEmitter, PaymentEventEmitterClient};
+use lumenrail_emitter::{EmitterError, PaymentEventEmitter, PaymentEventEmitterClient};
 use soroban_sdk::testutils::{Address as _, Ledger as _};
 use soroban_sdk::{token, Address, Env, String, Vec};
 
@@ -15,7 +15,7 @@ use soroban_sdk::{token, Address, Env, String, Vec};
 pub struct TestFixture<'a> {
     pub env: Env,
     pub contract_id: Address,
-    pub client: OphirPayContractClient<'a>,
+    pub client: LumenRailContractClient<'a>,
     pub owner: Address,
     pub token_admin: Address,
     pub token_id: Address,
@@ -36,8 +36,8 @@ impl<'a> TestFixture<'a> {
         let token_client = token::Client::new(&env, &token_id);
         let token_admin_client = token::StellarAssetClient::new(&env, &token_id);
 
-        let contract_id = env.register(OphirPayContract, ());
-        let client = OphirPayContractClient::new(&env, &contract_id);
+        let contract_id = env.register(LumenRailContract, ());
+        let client = LumenRailContractClient::new(&env, &contract_id);
         client.init(&owner);
 
         TestFixture {
@@ -689,11 +689,11 @@ fn test_cross_contract_emitter_linking_and_events() {
     let fix = TestFixture::new();
     let (emitter_id, emitter_client) = fix.setup_emitter();
 
-    // Link emitter to OphirPay contract
+    // Link emitter to LumenRail contract
     fix.client.set_emitter(&fix.owner, &emitter_id);
     assert_eq!(fix.client.get_emitter(), Some(emitter_id.clone()));
 
-    // Set allow-list on emitter to only accept OphirPay
+    // Set allow-list on emitter to only accept LumenRail
     emitter_client.set_allowed_source(&fix.owner, &Some(fix.contract_id.clone()));
     assert_eq!(
         emitter_client.get_allowed_source(),
@@ -703,7 +703,7 @@ fn test_cross_contract_emitter_linking_and_events() {
     // Emit event directly from owner (allowed by owner bypass)
     let payer = Address::generate(&fix.env);
     let payee = Address::generate(&fix.env);
-    let source = String::from_str(&fix.env, "OphirPay");
+    let source = String::from_str(&fix.env, "LumenRail");
     let tx_hash = String::from_str(&fix.env, "0xemit_1");
 
     let event_id =
@@ -736,7 +736,7 @@ fn test_cross_contract_emergency_pause_orchestration() {
     // Attempting to emit on paused emitter fails
     let payer = Address::generate(&fix.env);
     let payee = Address::generate(&fix.env);
-    let source = String::from_str(&fix.env, "OphirPay");
+    let source = String::from_str(&fix.env, "LumenRail");
     let tx_hash = String::from_str(&fix.env, "0xpaused_emit");
 
     let res =

@@ -2,10 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "ophirpay.fullname" . }}
+  name: {{ include "lumenrail.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "ophirpay.labels" . | nindent 4 }}
+    {{- include "lumenrail.labels" . | nindent 4 }}
   annotations:
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
 spec:
@@ -28,7 +28,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ include "ophirpay.fullname" $ }}
+                name: {{ include "lumenrail.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}

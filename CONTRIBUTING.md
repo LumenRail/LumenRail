@@ -1,11 +1,11 @@
-# Contributing to OphirPay
+# Contributing to LumenRail
 
-Thank you for your interest in contributing! OphirPay is an open-source payment orchestration layer for Stellar.
+Thank you for your interest in contributing! LumenRail is an open-source payment orchestration layer for Stellar.
 
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/OphirPay.git`
+2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/LumenRail.git`
 3. Install dependencies: `npm install`
 4. Set up the database: `npx prisma db push && npx prisma generate`
 5. Start the dev server: `npm run dev`
@@ -77,7 +77,7 @@ npm run lint          # ESLint
 Contracts are in `contracts/`. Build with:
 
 ```bash
-cd contracts/ophirpay && cargo test   # 58 contract tests
+cd contracts/lumenrail && cargo test   # 58 contract tests
 cd contracts/emitter && cargo test    # 6 emitter tests
 ```
 
@@ -97,7 +97,7 @@ artifact — see the `contract-gas-report` job in `.github/workflows/ci.yml`.
 
 ## Issue Labels & Their Meanings
 
-OphirPay uses a two-tier label scheme: **plain labels** (semantic) and
+LumenRail uses a two-tier label scheme: **plain labels** (semantic) and
 **emoji labels** (stack-area). Bounty-eligible work is tagged with a
 **`bounty`** label plus a **`Stellar Wave`** program label and a
 **`difficulty:`** estimate.
@@ -123,7 +123,7 @@ OphirPay uses a two-tier label scheme: **plain labels** (semantic) and
 |---|---|---|
 | `frontend` / `🎨 frontend` | UI components, pages, styling | Payment form, dashboard |
 | `backend` / `🔧 backend` | API routes, server logic | `/api/payments`, rate limiting |
-| `contracts` / `📦 contracts` | Soroban Rust contracts | `contracts/ophirpay`, `contracts/emitter` |
+| `contracts` / `📦 contracts` | Soroban Rust contracts | `contracts/lumenrail`, `contracts/emitter` |
 | `security` / `🔒 security` | Auth, RBAC, secrets, audit | `AUTH_SECRET`, governance, multisig |
 | `tests` / `🧪 tests` | Vitest/Playwright coverage | New unit or e2e tests |
 | `ci` | CI/CD pipeline changes | `.github/workflows/ci.yml` |
@@ -142,7 +142,7 @@ OphirPay uses a two-tier label scheme: **plain labels** (semantic) and
 
 ## Bounty Process (Stellar Wave)
 
-OphirPay participates in the **Stellar Wave** bounty program. Bounty-eligible
+LumenRail participates in the **Stellar Wave** bounty program. Bounty-eligible
 issues carry the **`bounty`** + **`Stellar Wave`** labels and a difficulty
 estimate (e.g. `difficulty: medium`). Each bounty issue's acceptance criteria
 are the contract for payout — the PR must satisfy them exactly.

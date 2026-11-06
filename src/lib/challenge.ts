@@ -98,7 +98,7 @@ export function verifyChallengeToken(
  * freshly minted challenge for the same key.
  */
 export function challengeMessage(publicKey: string, challenge: string): string {
-  return `ophirpay:login:${publicKey}:${challenge}`;
+  return `lumenrail:login:${publicKey}:${challenge}`;
 }
 
 // ── Signature verification ────────────────────────────────────

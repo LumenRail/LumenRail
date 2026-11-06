@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ophirpay.fullname" . }}
+  name: {{ include "lumenrail.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "ophirpay.labels" . | nindent 4 }}
+    {{- include "lumenrail.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
@@ -14,15 +14,15 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      {{- include "ophirpay.selectorLabels" . | nindent 6 }}
+      {{- include "lumenrail.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
         {{- toYaml .Values.podAnnotations | nindent 8 }}
       labels:
-        {{- include "ophirpay.selectorLabels" . | nindent 8 }}
+        {{- include "lumenrail.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "ophirpay.serviceAccountName" . }}
+      serviceAccountName: {{ include "lumenrail.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -34,9 +34,9 @@ spec:
               name: http
           envFrom:
             - configMapRef:
-                name: {{ include "ophirpay.fullname" . }}-config
+                name: {{ include "lumenrail.fullname" . }}-config
             - secretRef:
-                name: {{ include "ophirpay.fullname" . }}-secrets
+                name: {{ include "lumenrail.fullname" . }}-secrets
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:

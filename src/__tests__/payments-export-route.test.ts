@@ -98,7 +98,7 @@ describe("GET /api/payments/export", () => {
     expect(res.headers.get("Content-Type")).toBe("text/csv; charset=utf-8");
     expect(res.headers.get("X-Export-Truncated")).toBe("false");
     expect(res.headers.get("Content-Disposition")).toContain(
-      "ophirpay-payments-"
+      "lumenrail-payments-"
     );
 
     const text = await res.text();
@@ -134,7 +134,7 @@ describe("GET /api/payments/export", () => {
     );
 
     expect(res.headers.get("Content-Disposition")).toMatch(
-      /ophirpay-payments-\d{4}-\d{2}-\d{2}\.csv/
+      /lumenrail-payments-\d{4}-\d{2}-\d{2}\.csv/
     );
   });
 

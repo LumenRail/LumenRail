@@ -29,7 +29,7 @@ export function generateMetadata({
       title,
       description,
       url: `${BASE_URL}${path}`,
-      siteName: "OphirPay",
+      siteName: "LumenRail",
       type: "website",
     },
   };

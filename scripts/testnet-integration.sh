@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────────────────────────
-# OphirPay — Testnet Contract Integration Test Runner
+# LumenRail — Testnet Contract Integration Test Runner
 # ─────────────────────────────────────────────────────────────────
 # Runs end-to-end integration tests against live Stellar Testnet RPC.
 # Covers payment, batch, refund, governance, and emitter orchestration.
@@ -19,7 +19,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "============================================"
-echo " OphirPay Testnet Integration Tests"
+echo " LumenRail Testnet Integration Tests"
 echo "============================================"
 echo "RPC: ${SOROBAN_RPC_URL:-https://soroban-testnet.stellar.org}"
 echo "Skip on network error: ${SKIP_ON_NETWORK_ERROR:-true}"

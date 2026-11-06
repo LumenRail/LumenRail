@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/streams/[id] — single stream lookup
- * Reads from OphirPayContract on-chain.
+ * Reads from LumenRailContract on-chain.
  */
 export const GET = withMetrics("GET /api/streams/[id]", withRequestLogging(async function GET(
   request: Request,

@@ -5,7 +5,7 @@
  * Adds schema.org markup for WebApplication, Organization, etc.
  */
 
-interface OphirPayStructuredData {
+interface LumenRailStructuredData {
   "@context": "https://schema.org";
   "@type": "WebApplication";
   name: string;
@@ -21,14 +21,14 @@ interface OphirPayStructuredData {
 }
 
 /**
- * Generate JSON-LD structured data for the OphirPay app.
+ * Generate JSON-LD structured data for the LumenRail app.
  * Include this in the <head> via a <script type="application/ld+json"> tag.
  */
-export function getStructuredData(): OphirPayStructuredData {
+export function getStructuredData(): LumenRailStructuredData {
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "OphirPay",
+    name: "LumenRail",
     description:
       "The Open-Source Payment Orchestration Layer for Stellar — send, batch, schedule, and track blockchain payments.",
     url: process.env.NEXT_PUBLIC_APP_URL || "https://ophirpay.vercel.app",

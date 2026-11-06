@@ -17,7 +17,7 @@ function invalidateProposalCache(proposalId: number) {
 
 /**
  * POST /api/governance/vote — cast a vote on a proposal
- * Calls OphirPayContract.vote_on_proposal() on-chain.
+ * Calls LumenRailContract.vote_on_proposal() on-chain.
  */
 export const POST = withMetrics("POST /api/governance/vote", withRequestLogging(async function POST(request: Request) {
   try {

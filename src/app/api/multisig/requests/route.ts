@@ -7,7 +7,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/multisig/requests — list pending approval requests
- * Reads from OphirPayContract.get_approval_request() on-chain.
+ * Reads from LumenRailContract.get_approval_request() on-chain.
  * Note: contract iteration requires knowing the total count first,
  * then fetching each request by ID. For now, returns latest requests.
  */

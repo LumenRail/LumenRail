@@ -99,7 +99,7 @@ export const lobstrConnector: WalletConnector = {
   async disconnect() {
     lobstrPublicKey = null;
     if (typeof window !== "undefined") {
-      localStorage.removeItem("ophirpay-wallet-connected");
+      localStorage.removeItem("lumenrail-wallet-connected");
     }
   },
 

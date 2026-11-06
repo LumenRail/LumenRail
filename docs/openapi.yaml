@@ -1,8 +1,8 @@
 openapi: "3.1.0"
 info:
-  title: OphirPay API
+  title: LumenRail API
   description: |
-    REST API for the OphirPay Stellar payment platform — batch payments,
+    REST API for the LumenRail Stellar payment platform — batch payments,
     escrow, recurring payments, webhook delivery, multisig governance,
     and real-time event streaming.
 
@@ -13,10 +13,10 @@ info:
     API keys are generated at `POST /api/keys` and shown only once.
   version: 0.1.0
   contact:
-    name: OphirPay Team
+    name: LumenRail Team
   license:
     name: MIT
-    url: https://github.com/ophirpay/ophirpay/blob/main/LICENSE
+    url: https://github.com/lumenrail/lumenrail/blob/main/LICENSE
 
 servers:
   - url: http://localhost:3000

@@ -7,8 +7,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "OphirPay",
-    short_name: "OphirPay",
+    name: "LumenRail",
+    short_name: "LumenRail",
     description: "Stellar-based payment streaming platform",
     start_url: "/",
     display: "standalone",

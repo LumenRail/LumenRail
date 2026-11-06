@@ -10,7 +10,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * POST /api/multisig/execute — execute a fully approved payment
- * Calls OphirPayContract.execute_approved_payment() on-chain.
+ * Calls LumenRailContract.execute_approved_payment() on-chain.
  */
 export const POST = withMetrics("POST /api/multisig/execute", withRequestLogging(async function POST(request: Request) {
   try {

@@ -1,6 +1,6 @@
 ---
 name: ✨ Feature Request
-about: Suggest a new feature for OphirPay
+about: Suggest a new feature for LumenRail
 title: "[FEATURE] "
 labels: ["✨ feature", "triage"]
 assignees: []
@@ -21,7 +21,7 @@ assignees: []
 ## Affected Area
 
 <!-- Check all that apply -->
-- [ ] Smart contracts (OphirPay / Emitter)
+- [ ] Smart contracts (LumenRail / Emitter)
 - [ ] Frontend UI
 - [ ] API / Backend
 - [ ] SDK / Package exports

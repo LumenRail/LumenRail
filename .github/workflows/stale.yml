@@ -25,7 +25,7 @@ jobs:
 
             If this is still relevant, please comment within 14 days to keep it open. Otherwise it will be closed automatically.
 
-            Thank you for your contribution to OphirPay! 💙
+            Thank you for your contribution to LumenRail! 💙
           close-issue-message: |
             🔒 This issue has been closed due to inactivity.
 
@@ -42,7 +42,7 @@ jobs:
 
             If you're still working on this, please comment or push new changes within 7 days. Otherwise it will be closed.
 
-            Thank you for contributing to OphirPay! 💙
+            Thank you for contributing to LumenRail! 💙
           close-pr-message: |
             🔒 This PR has been closed due to inactivity.
 

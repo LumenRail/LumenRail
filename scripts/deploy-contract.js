@@ -1,5 +1,5 @@
 /**
- * Deploy the OphirPay Soroban contract to Stellar Testnet.
+ * Deploy the LumenRail Soroban contract to Stellar Testnet.
  *
  * Usage: node scripts/deploy-contract.js <secret_key>
  *
@@ -77,11 +77,11 @@ async function main() {
     __dirname,
     "..",
     "contracts",
-    "ophirpay",
+    "lumenrail",
     "target",
     "wasm32v1-none",
     "release",
-    "ophirpay_contract.wasm"
+    "lumenrail_contract.wasm"
   );
   const wasmBuffer = fs.readFileSync(wasmPath);
   console.log(`WASM size: ${wasmBuffer.length} bytes`);

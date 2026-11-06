@@ -64,7 +64,7 @@ export function paymentToCsvRow(payment: Payment): PaymentExportRow {
   };
 }
 
-/** Dated filename, e.g. `ophirpay-payments-2026-08-26.csv` (UTC date). */
+/** Dated filename, e.g. `lumenrail-payments-2026-08-26.csv` (UTC date). */
 export function buildPaymentExportFilename(now: Date = new Date()): string {
-  return `ophirpay-payments-${now.toISOString().split("T")[0]}.csv`;
+  return `lumenrail-payments-${now.toISOString().split("T")[0]}.csv`;
 }

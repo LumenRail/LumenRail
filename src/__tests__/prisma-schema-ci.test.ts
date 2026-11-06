@@ -18,7 +18,7 @@ describe("Prisma Schema Validation & Consistency", () => {
       execSync("npx prisma validate", {
         env: {
           ...process.env,
-          DATABASE_URL: process.env.DATABASE_URL || "postgresql://prisma:prisma@localhost:5432/ophirpay",
+          DATABASE_URL: process.env.DATABASE_URL || "postgresql://prisma:prisma@localhost:5432/lumenrail",
         },
         stdio: "pipe",
       });

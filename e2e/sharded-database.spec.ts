@@ -15,19 +15,19 @@ test.describe("E2E: Sharded Database Infrastructure & Lifecycle", () => {
     {
       id: "shard-us-east",
       name: "US East Primary Shard",
-      url: "postgresql://postgres:pass@localhost:5432/ophirpay_shard_east",
+      url: "postgresql://postgres:pass@localhost:5432/lumenrail_shard_east",
       weight: 100,
     },
     {
       id: "shard-eu-west",
       name: "EU West Secondary Shard",
-      url: "postgresql://postgres:pass@localhost:5433/ophirpay_shard_west",
+      url: "postgresql://postgres:pass@localhost:5433/lumenrail_shard_west",
       weight: 100,
     },
     {
       id: "shard-ap-south",
       name: "APAC Tertiary Shard",
-      url: "postgresql://postgres:pass@localhost:5434/ophirpay_shard_south",
+      url: "postgresql://postgres:pass@localhost:5434/lumenrail_shard_south",
       weight: 100,
     },
   ];

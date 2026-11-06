@@ -38,9 +38,9 @@ test.describe("GET /api/metrics", () => {
     expect(res.status()).toBe(200);
 
     const text = await res.text();
-    expect(text).toContain("ophirpay_http_requests_total");
-    expect(text).toContain("ophirpay_payments_created_total");
-    expect(text).toContain("ophirpay_info");
+    expect(text).toContain("lumenrail_http_requests_total");
+    expect(text).toContain("lumenrail_payments_created_total");
+    expect(text).toContain("lumenrail_info");
   });
 });
 

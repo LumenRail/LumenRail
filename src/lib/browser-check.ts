@@ -13,7 +13,7 @@ interface BrowserInfo {
 }
 
 /**
- * Check if the current browser supports all required features for OphirPay.
+ * Check if the current browser supports all required features for LumenRail.
  * Required: Web Crypto API, Clipboard API, Fetch, Blob URL, ES2020+
  */
 export function checkBrowserSupport(): BrowserInfo {

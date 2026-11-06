@@ -1,7 +1,7 @@
-//! OphirPay Formal Verification — Kani Proof Harnesses
+//! LumenRail Formal Verification — Kani Proof Harnesses
 //!
 //! This file contains Kani-compatible proof harnesses for the 8 critical
-//! invariants identified in the OphirPay smart contract. Each harness uses
+//! invariants identified in the LumenRail smart contract. Each harness uses
 //! `kani::any()` to symbolically explore all possible inputs and `kani::assume()`
 //! to constrain inputs to valid ranges.
 //!
@@ -58,7 +58,7 @@ fn model_add_locked(current_locked: i128, delta: i128) -> i128 {
     new_val
 }
 
-/// Models the emergency_withdraw authorization check from OphirPayContract:
+/// Models the emergency_withdraw authorization check from LumenRailContract:
 /// ```ignore
 /// let unlocked = contract_balance.saturating_sub(locked);
 /// if amount > unlocked { return Err(NoTokensToWithdraw); }

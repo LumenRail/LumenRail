@@ -1,8 +1,8 @@
-# OphirPay — Gas Optimization & Benchmarking
+# LumenRail — Gas Optimization & Benchmarking
 
 ## Overview
 
-OphirPay's Soroban contracts are optimized for **ultra-low gas fees** through:
+LumenRail's Soroban contracts are optimized for **ultra-low gas fees** through:
 
 1. **Individual counter keys** instead of a monolithic `ContractStats` struct (40% storage write savings)
 2. **Paginated version histories** capped at 100 entries (prevents unbounded O(n) reads)
@@ -23,7 +23,7 @@ Soroban uses a **resource-fee model** with three cost tiers:
 | **Storage Read** (persistent) | $$ | Fetching a payment by ID (~300 bytes) |
 | **Storage Read** (instance) | $ | Reading a counter (16 bytes) |
 | **Event Emission** | $$ | Publishing a payment event |
-| **Cross-contract Call** | $$$$$ | Pausing the Emitter from OphirPay |
+| **Cross-contract Call** | $$$$$ | Pausing the Emitter from LumenRail |
 | **CPU (Wasm)** | $ | Arithmetic, comparisons, string ops |
 
 ---
@@ -32,7 +32,7 @@ Soroban uses a **resource-fee model** with three cost tiers:
 
 Estimates based on the Soroban resource model (~100 gas/byte write, ~50 gas/byte read, ~30K gas/cross-contract call, ~2K gas/event). Benchmarked on soroban-sdk 27 (protocol 25+); stroop figures are SDK-version-agnostic at this granularity.
 
-### OphirPay Contract
+### LumenRail Contract
 
 | Operation | Storage Writes | Storage Reads | Events | Est. Gas | Optimized vs Baseline |
 |---|---|---|---|---|---|
@@ -108,7 +108,7 @@ Soroban instance storage returns `None` for unset keys. Our counters default to 
 
 - **Security:** Atomicity prevents an attacker from pausing only one contract
 - **Frequency:** Emergency pause is a rare admin action, not a hot-path operation
-- **Alternative:** Without cross-contract pause, an attacker could pause OphirPay but leave the Emitter running, causing event loss
+- **Alternative:** Without cross-contract pause, an attacker could pause LumenRail but leave the Emitter running, causing event loss
 
 **Tradeoff accepted: higher one-time cost for critical security guarantee.**
 
@@ -210,7 +210,7 @@ correct security/gas tradeoff per the Stellar Drips Wave Bot review.
 
 ## Operational Notes
 
-- **Contracterror variant count:** OphirPay's `PaymentError` enum defines 300
+- **Contracterror variant count:** LumenRail's `PaymentError` enum defines 300
   `#[contracterror]` variants and compiles cleanly on soroban-sdk 27. If the
   catalog grows further, consider hierarchical error codes or splitting into
   multiple error enums.
@@ -218,10 +218,10 @@ correct security/gas tradeoff per the Stellar Drips Wave Bot review.
 - **Host test compilation:** Fixed. The `ed25519-dalek` 3.0 / `rand_chacha`
   0.3 trait incompatibility that broke `cargo test` on `soroban-env-host`
   22.1.3 is resolved in soroban-sdk 27 (env-host pins `ed25519-dalek = "2.0.0"`).
-  All 67 contract unit tests (60 ophirpay + 7 emitter) now run in CI via plain
+  All 67 contract unit tests (60 lumenrail + 7 emitter) now run in CI via plain
   `cargo test`.
 
-- **WASM size:** OphirPay contract is 92 KB (94,096 bytes) with `opt-level="z"`.
+- **WASM size:** LumenRail contract is 92 KB (94,096 bytes) with `opt-level="z"`.
   The Soroban mainnet upload limit is ~128 KB (131,072 bytes). Headroom: ~36 KB for future features.
 
 ## Future Optimizations (Not Yet Implemented)
@@ -239,7 +239,7 @@ correct security/gas tradeoff per the Stellar Drips Wave Bot review.
 
 ### v22 migration (historical)
 
-The OphirPay contract was ported from soroban-sdk pre-v22 to v22.0.11 (Rust 1.88.0). Key API changes addressed:
+The LumenRail contract was ported from soroban-sdk pre-v22 to v22.0.11 (Rust 1.88.0). Key API changes addressed:
 
 | Change | Impact | Lines |
 |---|---|---|
@@ -255,7 +255,7 @@ The OphirPay contract was ported from soroban-sdk pre-v22 to v22.0.11 (Rust 1.88
 
 Upgraded both contracts from v22 to **soroban-sdk 27.0.5** (Rust 1.91.0,
 `wasm32v1-none` target). This fixed the env-host dependency conflict that
-blocked `cargo test` — all **67 contract unit tests** (60 ophirpay + 7 emitter)
+blocked `cargo test` — all **67 contract unit tests** (60 lumenrail + 7 emitter)
 now run in CI. It also surfaced and fixed a **critical storage bug**: all record
 types previously shared the same plain `u64` persistent key space, so e.g. the
 first audit entry silently overwrote the first payment. Records are now
@@ -272,10 +272,10 @@ Compiled with Rust 1.91.0, soroban-sdk 27.0.5, `--release`, `wasm32v1-none`, `op
 
 | Contract | Size | Headroom |
 |---|---|---|
-| `ophirpay_contract.wasm` | **94,096 bytes (91.9 KB)** | 36.1 KB (mainnet limit: 128 KB) |
-| `ophirpay_emitter.wasm` | **7,338 bytes (7.2 KB)** | 121 KB (mainnet limit: 128 KB) |
+| `lumenrail_contract.wasm` | **94,096 bytes (91.9 KB)** | 36.1 KB (mainnet limit: 128 KB) |
+| `lumenrail_emitter.wasm` | **7,338 bytes (7.2 KB)** | 121 KB (mainnet limit: 128 KB) |
 
-The OphirPay contract at 92 KB is reasonable for its scope (~5,600 lines, 90+ functions, 21 struct types, 300 error variants). The Emitter at 7 KB shows what a minimal Soroban contract looks like.
+The LumenRail contract at 92 KB is reasonable for its scope (~5,600 lines, 90+ functions, 21 struct types, 300 error variants). The Emitter at 7 KB shows what a minimal Soroban contract looks like.
 
 ---
 
@@ -291,7 +291,7 @@ The OphirPay contract at 92 KB is reasonable for its scope (~5,600 lines, 90+ fu
 | **Storage efficiency** | 16 bytes/counter | 🟢 92% vs monolith |
 | **Locked-funds overhead** | ~2% per op | 🟢 Acceptable |
 
-**Verdict:** The OphirPay contract is production-ready for gas efficiency. All write operations cost under 0.17 XLM, most under 0.10 XLM. The 92 KB WASM leaves ample headroom for future features. The cross-contract emergency pause (~80K gas estimate) is the only operation above 0.20 XLM and is justified by its atomicity guarantee.
+**Verdict:** The LumenRail contract is production-ready for gas efficiency. All write operations cost under 0.17 XLM, most under 0.10 XLM. The 92 KB WASM leaves ample headroom for future features. The cross-contract emergency pause (~80K gas estimate) is the only operation above 0.20 XLM and is justified by its atomicity guarantee.
 
 > **Note:** Contract unit tests run natively with `cargo test` (soroban-sdk 27
 > fixed the `rand_core`/`ed25519-dalek` conflict from env-host 22.1.3). The

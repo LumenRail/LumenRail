@@ -1,14 +1,14 @@
-# OphirPay Integration Guide
+# LumenRail Integration Guide
 
-This guide helps developers integrate OphirPay's payment infrastructure into their own applications.
+This guide helps developers integrate LumenRail's payment infrastructure into their own applications.
 
 ## Quick Start
 
 ### 1. Install Dependencies
 
 ```bash
-git clone https://github.com/OphirPay/OphirPay.git
-cd OphirPay
+git clone https://github.com/Abolax123/OphirPay.git
+cd LumenRail
 npm install
 npx prisma generate
 cp .env.example .env.local
@@ -109,8 +109,8 @@ Your endpoint receives HMAC-SHA256 signed payloads:
 ```http
 POST /hooks HTTP/1.1
 Content-Type: application/json
-X-OphirPay-Signature: <hmac-sha256 hex>
-X-OphirPay-Event: payment_recorded
+X-LumenRail-Signature: <hmac-sha256 hex>
+X-LumenRail-Event: payment_recorded
 
 {
   "event": "payment_recorded",
@@ -122,7 +122,7 @@ X-OphirPay-Event: payment_recorded
 
 The signature is HMAC-SHA256 (hex) over the payload **without** the
 `signature` field, using the secret returned when you registered the
-webhook. The same value is mirrored in the `X-OphirPay-Signature` header for
+webhook. The same value is mirrored in the `X-LumenRail-Signature` header for
 convenience. Verify by recomputing:
 
 ```typescript
@@ -205,7 +205,7 @@ event types when registering a webhook.
 | Function | Description |
 |---|---|
 | `pause` / `unpause` | Circuit breaker |
-| `emergency_pause_all` | Pause both OphirPay + Emitter atomically |
+| `emergency_pause_all` | Pause both LumenRail + Emitter atomically |
 | `transfer_ownership` | Two-step transfer with 24h timelock |
 | `accept_ownership` | Accept pending ownership |
 | `set_fee_config` | Configure platform fees per operation |
@@ -216,7 +216,7 @@ event types when registering a webhook.
 |---|---|---|
 | `NEXT_PUBLIC_STELLAR_RPC_URL` | Yes | Soroban RPC endpoint |
 | `NEXT_PUBLIC_STELLAR_HORIZON_URL` | Yes | Horizon API endpoint |
-| `NEXT_PUBLIC_CONTRACT_ID` | Yes | OphirPay contract address |
+| `NEXT_PUBLIC_CONTRACT_ID` | Yes | LumenRail contract address |
 | `NEXT_PUBLIC_EMITTER_CONTRACT_ID` | Yes | Emitter contract address |
 | `NEXT_PUBLIC_DEMO_MODE` | No | Enable simulated TXs without real funds |
 | `DATABASE_URL` | Yes | PostgreSQL connection string |
@@ -229,11 +229,11 @@ event types when registering a webhook.
 npm test
 
 # Contract unit tests
-cd contracts/ophirpay && cargo test
+cd contracts/lumenrail && cargo test
 cd contracts/emitter && cargo test
 
 # Contract integration tests (Rust test harness)
-cd contracts/ophirpay && cargo test --test integration_tests
+cd contracts/lumenrail && cargo test --test integration_tests
 
 # Live testnet RPC integration test suite
 npm run test:testnet
@@ -245,7 +245,7 @@ npx playwright test
 
 ## Need Help?
 
-- [Open an issue](https://github.com/OphirPay/OphirPay/issues/new?template=bug_report.yml)
+- [Open an issue](https://github.com/Abolax123/OphirPay/issues/new?template=bug_report.yml)
 - [Read the architecture guide](./architecture.md)
 - [View the mainnet deployment guide](./deployment-mainnet.md)
 - [Check SUPPORT.md](../.github/SUPPORT.md)

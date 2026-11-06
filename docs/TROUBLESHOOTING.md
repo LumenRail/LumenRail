@@ -1,7 +1,7 @@
-# 🧰 OphirPay Troubleshooting Guide
+# 🧰 LumenRail Troubleshooting Guide
 
 > Common setup and network errors — with **symptom → cause → fix** for each.
-> If your issue isn't here, search the [issues](https://github.com/OphirPay/OphirPay/issues)
+> If your issue isn't here, search the [issues](https://github.com/Abolax123/OphirPay/issues)
 > and open a new one with the error message, your network (`TESTNET`/`PUBLIC`),
 > and the commands you ran.
 
@@ -124,7 +124,7 @@
 | | |
 |---|---|
 | **Symptom** | The asset is greyed out, or sending fails with a trustline error |
-| **Cause** | The destination/your account has no **trustline** for that asset+issuer. OphirPay checks this via `checkTrustline` before selecting an asset |
+| **Cause** | The destination/your account has no **trustline** for that asset+issuer. LumenRail checks this via `checkTrustline` before selecting an asset |
 | **Fix** | 1. Add a trustline for the asset in Freighter (Assets → Add asset, enter code + issuer). 2. Confirm it registered: check the account balances on Horizon and look for the asset's `asset_code`/`asset_issuer`. 3. Retry the payment. |
 
 ### `would exceed trustline limit` / payment over trustline cap
@@ -231,6 +231,6 @@
 
 <div align="center">
 
-**[← Back to OphirPay README](../README.md)**
+**[← Back to LumenRail README](../README.md)**
 
 </div>

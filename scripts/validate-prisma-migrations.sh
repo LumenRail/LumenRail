@@ -5,14 +5,14 @@
 set -euo pipefail
 
 echo "========================================================"
-echo "  OphirPay Prisma CI: Validation & Drift Check"
+echo "  LumenRail Prisma CI: Validation & Drift Check"
 echo "========================================================"
 
 SCHEMA_FILE="prisma/schema.prisma"
 MIGRATIONS_DIR="prisma/migrations"
 
 # Set a fallback dummy DATABASE_URL if not provided in environment for static validation
-export DATABASE_URL="${DATABASE_URL:-postgresql://prisma:prisma@localhost:5432/ophirpay_ci}"
+export DATABASE_URL="${DATABASE_URL:-postgresql://prisma:prisma@localhost:5432/lumenrail_ci}"
 
 # 1. Check schema file exists
 if [ ! -f "$SCHEMA_FILE" ]; then

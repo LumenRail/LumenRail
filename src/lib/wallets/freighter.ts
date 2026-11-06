@@ -52,7 +52,7 @@ export const freighterConnector: WalletConnector = {
   async disconnect() {
     // Freighter has no explicit disconnect — handled by provider state
     if (typeof window !== "undefined") {
-      localStorage.removeItem("ophirpay-wallet-connected");
+      localStorage.removeItem("lumenrail-wallet-connected");
     }
   },
 

@@ -3,7 +3,7 @@ import { PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Seeding OphirPay database...");
+  console.log("Seeding LumenRail database...");
 
   // Create a default user
   const user = await prisma.user.upsert({
@@ -11,7 +11,7 @@ async function main() {
     update: {},
     create: {
       id: "seed-user-1",
-      name: "OphirPay Demo",
+      name: "LumenRail Demo",
       stellarAddress: "GACZ7ZELCUC5YGJ6JHIVLEZNR3XKYKOVUWD6H3IRFPRZMALNUYJZQM2U",
     },
   });

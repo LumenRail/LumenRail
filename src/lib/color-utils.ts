@@ -4,7 +4,7 @@
  * Color utility functions for charts, badges, and dynamic theming.
  */
 
-/** OphirPay brand color palette. */
+/** LumenRail brand color palette. */
 export const COLORS = {
   primary: "#7B68EE",
   secondary: "#14b7e6",

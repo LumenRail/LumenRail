@@ -1,10 +1,10 @@
-# 📡 OphirPay Live Event Stream (SSE) — Client Integration
+# 📡 LumenRail Live Event Stream (SSE) — Client Integration
 
-> The stream contract for real-time OphirPay payment events. Covers the SSE
+> The stream contract for real-time LumenRail payment events. Covers the SSE
 > endpoint, every event type with its payload schema, heartbeat/error
 > behavior, reconnection semantics, and example client code.
 
-OphirPay streams **live blockchain events** to browsers and integrations via
+LumenRail streams **live blockchain events** to browsers and integrations via
 **Server-Sent Events (SSE)** at `GET /api/events`. The endpoint polls the
 deployed `PaymentEventEmitter` Soroban contract and forwards normalized
 events. A **WebSocket channel** (`/api/events` on port `8787`, see
@@ -91,7 +91,7 @@ shape — identical across SSE and WebSocket transports.
 | `timestamp` | `string` | ISO 8601 UTC (`new Date().toISOString()`) — time of delivery, not on-chain time |
 | `paymentId` | `string` | Application payment id, formatted `evt_<id>` |
 | `status` | `string` | Payment status; currently always `"COMPLETED"` |
-| `emitter` | `string` | Emitter label (defaults to `"OphirPay"`) |
+| `emitter` | `string` | Emitter label (defaults to `"LumenRail"`) |
 | `payer` | `string` | Payer Stellar address (may be empty) |
 | `payee` | `string` | Payee Stellar address (may be empty) |
 | `amount` | `string` | Payment amount as a decimal string (defaults to `"0"`) |
@@ -104,7 +104,7 @@ shape — identical across SSE and WebSocket transports.
   "timestamp": "2026-08-29T09:00:00.000Z",
   "paymentId": "evt_42",
   "status": "COMPLETED",
-  "emitter": "OphirPay",
+  "emitter": "LumenRail",
   "payer": "GABCDEFGHIJKLMNOPQRSTUVWXYZ234567",
   "payee": "GBCDEFGHIJKLMNOPQRSTUVWXYZ2345678",
   "amount": "125.50",
@@ -247,7 +247,7 @@ curl -N https://ophirpay.com/api/events | \
 |---|---|---|
 | `NEXT_PUBLIC_EVENTS_WS_PORT` | `8787` | WebSocket port for the preferred transport |
 | `EVENTS_WS_PORT` | `8787` | Server-side WS listen port (`live-events-ws-server.ts`) |
-| `NEXT_PUBLIC_CONTRACT_ID` | testnet default | Main `OphirPayContract` (for event detail APIs) |
+| `NEXT_PUBLIC_CONTRACT_ID` | testnet default | Main `LumenRailContract` (for event detail APIs) |
 | `NEXT_PUBLIC_EMITTER_CONTRACT_ID` | testnet default | `PaymentEventEmitter` the stream polls |
 | `NEXT_PUBLIC_CHAIN_READ_SOURCE` | — | Public key used for read-only contract simulations |
 
@@ -263,6 +263,6 @@ curl -N https://ophirpay.com/api/events | \
 
 <div align="center">
 
-**[← Back to OphirPay README](../README.md)**
+**[← Back to LumenRail README](../README.md)**
 
 </div>

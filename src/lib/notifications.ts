@@ -315,7 +315,7 @@ export function emitPaymentNotification(raw: RawPaymentEventPayload): PaymentNot
   if (typeof window !== "undefined") {
     try {
       window.dispatchEvent(
-        new CustomEvent<PaymentNotification>("ophirpay:notification", {
+        new CustomEvent<PaymentNotification>("lumenrail:notification", {
           detail: normalized,
         })
       );

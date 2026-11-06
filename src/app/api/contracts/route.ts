@@ -9,7 +9,7 @@ import { withRequestLogging } from "@/lib/request-logging";
 
 /**
  * GET /api/contracts — contract deployment info and version
- * Reads contract version and owner from OphirPayContract on-chain.
+ * Reads contract version and owner from LumenRailContract on-chain.
  */
 export const GET = withMetrics("GET /api/contracts", withRequestLogging(async function GET(request: Request) {
   try {
@@ -30,7 +30,7 @@ export const GET = withMetrics("GET /api/contracts", withRequestLogging(async fu
       rpcUrl: SOROBAN_RPC_URL,
       reachable,
       contracts: {
-        ophirpay: {
+        lumenrail: {
           id: DEFAULT_CONTRACT_ID,
           version: reachable ? versionResult.returnValue : null,
           owner: reachable ? ownerResult.returnValue : null,

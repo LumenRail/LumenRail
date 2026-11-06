@@ -8,7 +8,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://ophirpay:ophirpay@db:5432/ophirpay
+      - DATABASE_URL=postgresql://lumenrail:lumenrail@db:5432/lumenrail
       - NODE_ENV=development
       # Redis-backed rate limiting (shared across instances)
       - REDIS_URL=redis://redis:6379
@@ -25,15 +25,15 @@ services:
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ophirpay
-      POSTGRES_PASSWORD: ophirpay
-      POSTGRES_DB: ophirpay
+      POSTGRES_USER: lumenrail
+      POSTGRES_PASSWORD: lumenrail
+      POSTGRES_DB: lumenrail
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ophirpay"]
+      test: ["CMD-SHELL", "pg_isready -U lumenrail"]
       interval: 5s
       timeout: 5s
       retries: 5

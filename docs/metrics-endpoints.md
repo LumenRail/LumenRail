@@ -22,19 +22,19 @@ series instead of one series per concrete id.
 
 | Metric | Type | Labels | Description |
 | --- | --- | --- | --- |
-| `ophirpay_endpoint_request_duration_seconds` | histogram | `method`, `endpoint`, `status_class`, `le` | Request latency per endpoint + status class |
-| `ophirpay_endpoint_errors_total` | counter | `method`, `endpoint`, `status_class` | Error counts per endpoint + status class |
+| `lumenrail_endpoint_request_duration_seconds` | histogram | `method`, `endpoint`, `status_class`, `le` | Request latency per endpoint + status class |
+| `lumenrail_endpoint_errors_total` | counter | `method`, `endpoint`, `status_class` | Error counts per endpoint + status class |
 
 Example scrape output:
 
 ```
-# HELP ophirpay_endpoint_request_duration_seconds Request latency histogram per endpoint and status class
-# TYPE ophirpay_endpoint_request_duration_seconds histogram
-ophirpay_endpoint_request_duration_seconds_bucket{method="GET",endpoint="/api/payments",status_class="2xx",le="0.1"} 12
-ophirpay_endpoint_request_duration_seconds_bucket{method="GET",endpoint="/api/payments",status_class="2xx",le="+Inf"} 12
-ophirpay_endpoint_request_duration_seconds_sum{method="GET",endpoint="/api/payments",status_class="2xx"} 0.84
-ophirpay_endpoint_request_duration_seconds_count{method="GET",endpoint="/api/payments",status_class="2xx"} 12
-ophirpay_endpoint_errors_total{method="POST",endpoint="/api/payments",status_class="5xx"} 3
+# HELP lumenrail_endpoint_request_duration_seconds Request latency histogram per endpoint and status class
+# TYPE lumenrail_endpoint_request_duration_seconds histogram
+lumenrail_endpoint_request_duration_seconds_bucket{method="GET",endpoint="/api/payments",status_class="2xx",le="0.1"} 12
+lumenrail_endpoint_request_duration_seconds_bucket{method="GET",endpoint="/api/payments",status_class="2xx",le="+Inf"} 12
+lumenrail_endpoint_request_duration_seconds_sum{method="GET",endpoint="/api/payments",status_class="2xx"} 0.84
+lumenrail_endpoint_request_duration_seconds_count{method="GET",endpoint="/api/payments",status_class="2xx"} 12
+lumenrail_endpoint_errors_total{method="POST",endpoint="/api/payments",status_class="5xx"} 3
 ```
 
 ## Usage

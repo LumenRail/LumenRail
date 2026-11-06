@@ -1,7 +1,7 @@
-// OphirPay Service Worker
+// LumenRail Service Worker
 // Caching strategies for PWA offline support
 
-const CACHE_VERSION = "ophirpay-v2";
+const CACHE_VERSION = "lumenrail-v2";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const API_CACHE = `${CACHE_VERSION}-api`;
@@ -107,7 +107,7 @@ self.addEventListener("fetch", (event) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OphirPay — Offline</title>
+  <title>LumenRail — Offline</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -131,7 +131,7 @@ self.addEventListener("fetch", (event) => {
 <body>
   <div class="card">
     <h1>You're Offline</h1>
-    <p>OphirPay requires an internet connection to process payments and sync blockchain data.</p>
+    <p>LumenRail requires an internet connection to process payments and sync blockchain data.</p>
     <button onclick="location.reload()">Try Again</button>
   </div>
 </body>
@@ -157,7 +157,7 @@ self.addEventListener("fetch", (event) => {
 
 self.addEventListener("push", (event) => {
   const data = event.data?.json() ?? {};
-  const title = data.title || "OphirPay";
+  const title = data.title || "LumenRail";
   const options = {
     body: data.body || "New payment event",
     icon: "/icon-192.png",

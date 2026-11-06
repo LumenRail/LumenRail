@@ -7,7 +7,7 @@ describe("normalizeEvent", () => {
   it("maps a raw emitter event into the shared LiveEvent shape", () => {
     const raw = {
       id: 7,
-      emitter: "OphirPay",
+      emitter: "LumenRail",
       payer: "GPAYER",
       payee: "GPAYEE",
       amount: "10000000",
@@ -32,7 +32,7 @@ describe("normalizeEvent", () => {
 
   it("defaults missing optional fields", () => {
     const event = normalizeEvent({}, 1);
-    expect(event.emitter).toBe("OphirPay");
+    expect(event.emitter).toBe("LumenRail");
     expect(event.payer).toBe("");
     expect(event.payee).toBe("");
     expect(event.amount).toBe("0");

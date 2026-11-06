@@ -1,6 +1,6 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────
-# OphirPay Smart Contract Deployment Workflow
+# LumenRail Smart Contract Deployment Workflow
 # Validate PUBLIC config in CI: bash scripts/validate-deploy-config.sh
 # ─────────────────────────────────────────────────────────────
 # Automates the full Soroban contract deployment pipeline:
@@ -18,7 +18,7 @@ RED="\033[0;31m"
 NC="\033[0m"
 
 echo -e "${GREEN}┌──────────────────────────────────────────────┐${NC}"
-echo -e "${GREEN}│   OphirPay Contract Deployment Workflow      │${NC}"
+echo -e "${GREEN}│   LumenRail Contract Deployment Workflow      │${NC}"
 echo -e "${GREEN}└──────────────────────────────────────────────┘${NC}"
 echo ""
 
@@ -42,8 +42,8 @@ else
   FRIENDBOT_ENABLED=true
 fi
 
-CONTRACT_DIR="contracts/ophirpay"
-WASM_PATH="$CONTRACT_DIR/target/wasm32v1-none/release/ophirpay_contract.wasm"
+CONTRACT_DIR="contracts/lumenrail"
+WASM_PATH="$CONTRACT_DIR/target/wasm32v1-none/release/lumenrail_contract.wasm"
 
 # ── Validate inputs ──────────────────────────────────────────
 if [ $# -lt 2 ]; then

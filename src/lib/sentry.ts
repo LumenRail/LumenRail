@@ -17,21 +17,21 @@ export function captureError(error: Error, context?: ErrorContext): void {
   if (process.env.NODE_ENV === "production") {
     // Production: send to error tracking service
     // Sentry.captureException(error, { tags: context?.tags, extra: context?.extra });
-    console.error("[OphirPay]", {
+    console.error("[LumenRail]", {
       name: error.name,
       message: error.message,
       stack: error.stack,
       ...context,
     });
   } else {
-    console.error("[OphirPay Dev]", error);
+    console.error("[LumenRail Dev]", error);
   }
 }
 
 export function captureMessage(message: string, level: "info" | "warning" | "error" = "info"): void {
   if (process.env.NODE_ENV === "production") {
     // Sentry.captureMessage(message, level);
-    console.log(`[OphirPay ${level}]`, message);
+    console.log(`[LumenRail ${level}]`, message);
   }
 }
 

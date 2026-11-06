@@ -1,5 +1,5 @@
 /**
- * OphirPay Demo Video Generator v2.0
+ * LumenRail Demo Video Generator v2.0
  *
  * Creates a ~2.5 minute demo video by:
  * 1. Capturing the live Vercel deployment (ophirpay.vercel.app) via Puppeteer
@@ -38,7 +38,7 @@ const BASE_URL = "https://ophirpay.vercel.app";
 const DEMO_SLIDES = [
   {
     path: "/",
-    label: "OphirPay Dashboard",
+    label: "LumenRail Dashboard",
     description: "Treasury overview with real-time balance, stats, and recent on-chain payments",
   },
   {
@@ -245,7 +245,7 @@ function compileVideo() {
 }
 
 async function main() {
-  console.log("🎥 OphirPay Demo Video Generator v2.0\n");
+  console.log("🎥 LumenRail Demo Video Generator v2.0\n");
   console.log(`   Source: ${BASE_URL}\n`);
 
   await captureFrames();

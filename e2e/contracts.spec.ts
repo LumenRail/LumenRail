@@ -18,12 +18,12 @@ function findWasmPath(candidates: string[]): string | null {
 }
 
 test.describe("Contract WASM Artifacts", () => {
-  test("OphirPay WASM exists and is non-empty", () => {
+  test("LumenRail WASM exists and is non-empty", () => {
     const wasmPath = findWasmPath([
-      join(__dirname, "..", "contracts", "ophirpay", "target", "wasm32v1-none", "release", "ophirpay_contract.wasm"),
-      join(__dirname, "..", "contracts", "ophirpay_contract.wasm"),
-      join(__dirname, "..", "contracts", "ophirpay.wasm"),
-      join(__dirname, "..", "contracts", "target", "wasm32v1-none", "release", "ophirpay_contract.wasm"),
+      join(__dirname, "..", "contracts", "lumenrail", "target", "wasm32v1-none", "release", "lumenrail_contract.wasm"),
+      join(__dirname, "..", "contracts", "lumenrail_contract.wasm"),
+      join(__dirname, "..", "contracts", "lumenrail.wasm"),
+      join(__dirname, "..", "contracts", "target", "wasm32v1-none", "release", "lumenrail_contract.wasm"),
     ]);
     expect(wasmPath).not.toBeNull();
 
@@ -34,15 +34,15 @@ test.describe("Contract WASM Artifacts", () => {
     expect(wasm[1]).toBe(0x61);
     expect(wasm[2]).toBe(0x73);
     expect(wasm[3]).toBe(0x6d);
-    console.log(`OphirPay WASM: ${wasm.length} bytes`);
+    console.log(`LumenRail WASM: ${wasm.length} bytes`);
   });
 
   test("Emitter WASM exists and is non-empty", () => {
     const wasmPath = findWasmPath([
-      join(__dirname, "..", "contracts", "emitter", "target", "wasm32v1-none", "release", "ophirpay_emitter.wasm"),
-      join(__dirname, "..", "contracts", "ophirpay_emitter.wasm"),
+      join(__dirname, "..", "contracts", "emitter", "target", "wasm32v1-none", "release", "lumenrail_emitter.wasm"),
+      join(__dirname, "..", "contracts", "lumenrail_emitter.wasm"),
       join(__dirname, "..", "contracts", "emitter.wasm"),
-      join(__dirname, "..", "contracts", "target", "wasm32v1-none", "release", "ophirpay_emitter.wasm"),
+      join(__dirname, "..", "contracts", "target", "wasm32v1-none", "release", "lumenrail_emitter.wasm"),
     ]);
     expect(wasmPath).not.toBeNull();
 
@@ -55,12 +55,12 @@ test.describe("Contract WASM Artifacts", () => {
     console.log(`Emitter WASM: ${wasm.length} bytes`);
   });
 
-  test("OphirPay WASM is within size budget (< 128 KB protocol limit)", () => {
+  test("LumenRail WASM is within size budget (< 128 KB protocol limit)", () => {
     const wasmPath = findWasmPath([
-      join(__dirname, "..", "contracts", "ophirpay", "target", "wasm32v1-none", "release", "ophirpay_contract.wasm"),
-      join(__dirname, "..", "contracts", "ophirpay_contract.wasm"),
-      join(__dirname, "..", "contracts", "ophirpay.wasm"),
-      join(__dirname, "..", "contracts", "target", "wasm32v1-none", "release", "ophirpay_contract.wasm"),
+      join(__dirname, "..", "contracts", "lumenrail", "target", "wasm32v1-none", "release", "lumenrail_contract.wasm"),
+      join(__dirname, "..", "contracts", "lumenrail_contract.wasm"),
+      join(__dirname, "..", "contracts", "lumenrail.wasm"),
+      join(__dirname, "..", "contracts", "target", "wasm32v1-none", "release", "lumenrail_contract.wasm"),
     ]);
     expect(wasmPath).not.toBeNull();
     const wasm = readFileSync(wasmPath!);

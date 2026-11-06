@@ -100,6 +100,6 @@ export const DEMO_MULTISIG = {
 
 /** Demo governance proposals */
 export const DEMO_PROPOSALS = [
-  { id: 1, title: "Upgrade to v3", description: "Proposal to upgrade OphirPay contract to version 3 with atomic check-and-spend", action_type: "upgrade", proposer: "GABC...", yes_votes: 12, no_votes: 3, voting_ends_at: Math.floor(Date.now() / 1000) + 3600, executed: false },
+  { id: 1, title: "Upgrade to v3", description: "Proposal to upgrade LumenRail contract to version 3 with atomic check-and-spend", action_type: "upgrade", proposer: "GABC...", yes_votes: 12, no_votes: 3, voting_ends_at: Math.floor(Date.now() / 1000) + 3600, executed: false },
   { id: 2, title: "Reduce Fee to 10bps", description: "Lower the platform fee from 50bps to 10bps for payment operations", action_type: "set_fee_config", proposer: "GDEF...", yes_votes: 8, no_votes: 5, voting_ends_at: Math.floor(Date.now() / 1000) + 7200, executed: false },
 ];

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * Sharded Database Router & Pool Manager for OphirPay E2E Test Environments
+ * Sharded Database Router & Pool Manager for LumenRail E2E Test Environments
  *
  * Implements consistent hashing & range-based shard routing, connection pooling,
  * cross-shard transaction coordination, and lifecycle management for E2E testing.
