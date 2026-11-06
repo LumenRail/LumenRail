@@ -16,6 +16,14 @@ Thank you for your interest in contributing! LumenRail is an open-source payment
 > WASM, Freighter, memo, trustline, path payments, sponsored reserves, and
 > more).
 
+## Finding a good first contribution
+
+Start with issues labelled `good first issue`, `help wanted`, or `documentation`.
+For sprint-sized work, use the **Sprint task** issue template. Before coding, comment
+on the issue with your intended approach and wait for assignment when the task is
+reserved for a contributor cycle. The project's review expectations are collected in
+[`docs/maintainer-readiness.md`](docs/maintainer-readiness.md).
+
 ## Development Workflow
 
 - **Branch naming**: `feat/feature-name`, `fix/bug-description`, `docs/what-changed`, `ci/what-changed`, `test/what-changed`

@@ -1,0 +1,79 @@
+name: Sprint task
+description: A scoped task that can be completed during a contributor sprint
+title: "[Task]: "
+labels:
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping LumenRail. Keep this task focused enough to review in one pull request.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What user, contributor, or maintainer problem does this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: List the files, modules, or behavior that should change. Also state what is out of scope.
+      placeholder: |
+        In scope:
+        - ...
+
+        Out of scope:
+        - ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Write objective checks a reviewer can verify.
+      placeholder: |
+        - [ ] ...
+        - [ ] A regression test covers ...
+        - [ ] Documentation is updated ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Frontend
+        - API / backend
+        - Soroban contracts
+        - Database
+        - Testing
+        - Documentation
+        - Security
+        - CI / DevOps
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Suggested difficulty
+      options:
+        - Small
+        - Medium
+        - Large
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification plan
+      description: Which commands, tests, screenshots, or contract checks should be run?
+    validations:
+      required: true
