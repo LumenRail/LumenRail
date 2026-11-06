@@ -76,7 +76,6 @@
 - [🌟 New to Stellar?](docs/STELLAR_101.md)
 - [📊 Testing & Quality](#-testing--quality)
 - [🔄 CI/CD Pipeline](#-cicd-pipeline)
-- [📸 Screenshots](#-screenshots)
 - [🛠 Tech Stack](#-tech-stack)
 - [📊 Database Schema](docs/SCHEMA.md)
 - [🚀 Deployment Guide](docs/DEPLOYMENT.md)
@@ -678,36 +677,6 @@ Every push to `main` triggers **22 jobs** across six tracks:
 ![CI/CD Pipeline](./public/screenshots/ci-pipeline.png)
 
 ---
-
-## 📸 Screenshots
-
-<div align="center">
-
-### 🎥 [Watch the Pitch Video (3 min)](https://www.loom.com/share/0d59c50285c04224a4857720b3640018)
-
-*11 scenes: Problem → Live Dashboard → Vercel Deployment → Soroban Contracts → Send Payment → Real-Time Events → GitHub README → CI Pipeline → Multisig Security → Open Source → Outro*
-
-**▶️ [Watch on Loom](https://www.loom.com/share/0d59c50285c04224a4857720b3640018)** · [Download MP4](./public/demo.mp4)
-
-> Screenshots below are captured live from the production deployment on Vercel, with a connected wallet.
-
-| Dashboard | Send Payment |
-|---|---|
-| ![Dashboard](./public/screenshots/dashboard.png) | ![Send Payment](./public/screenshots/send-payment.png) |
-
-| Payments | Contracts |
-|---|---|
-| ![Payments](./public/screenshots/payments.png) | ![Contracts](./public/screenshots/contracts.png) |
-
-| Analytics | Multisig |
-|---|---|
-| ![Analytics](./public/screenshots/analytics.png) | ![Multisig](./public/screenshots/multisig.png) |
-
-| Governance | Mobile Responsive |
-|---|---|
-| ![Governance](./public/screenshots/governance.png) | ![Mobile](./public/screenshots/mobile-responsive.png) |
-
-</div>
 
 ---
 
