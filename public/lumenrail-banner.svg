@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#111133;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1a0a2e;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#07110f;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10231d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#173d35;stop-opacity:1" />
     </linearGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#d9ff62;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#35d6c1;stop-opacity:1" />
     </linearGradient>
     <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#c4b5fd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d9ff62;stop-opacity:1" />
     </linearGradient>
     <filter id="glow">
       <feGaussianBlur stdDeviation="3" result="blur" />
@@ -41,9 +41,9 @@
   </g>
 
   <!-- Decorative circles -->
-  <circle cx="1050" cy="80" r="120" fill="#7B68EE" opacity="0.04" />
-  <circle cx="100" cy="320" r="80" fill="#00d4aa" opacity="0.04" />
-  <circle cx="600" cy="200" r="180" fill="#7B68EE" opacity="0.02" />
+  <circle cx="1050" cy="80" r="120" fill="#d9ff62" opacity="0.08" />
+  <circle cx="100" cy="320" r="80" fill="#35d6c1" opacity="0.08" />
+  <circle cx="600" cy="200" r="180" fill="#35d6c1" opacity="0.03" />
 
   <!-- Bank/treasury icon -->
   <g transform="translate(100, 100)" filter="url(#glow)">
@@ -64,8 +64,8 @@
   <!-- Text content -->
   <text x="280" y="155" font-family="system-ui,-apple-system,sans-serif" font-size="52" font-weight="800" letter-spacing="-1" fill="white">LumenRail</text>
 
-  <text x="280" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="20" font-weight="400" fill="#a5a5c8" letter-spacing="1">
-    The Open-Source Payment Orchestration Layer for Stellar
+  <text x="280" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="20" font-weight="400" fill="#b6d2c8" letter-spacing="1">
+    Payment rails for the Stellar economy
   </text>
 
   <!-- Accent line -->

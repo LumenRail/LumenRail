@@ -11,12 +11,14 @@ export function Header() {
   const isDark = resolved === "dark";
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 z-30 h-20 bg-[#f4f7f2]/85 dark:bg-[#08110f]/85 backdrop-blur-xl border-b border-[#dce7df] dark:border-[#20352f]">
       <div className="flex items-center justify-between h-full px-4 md:px-6">
         {/* Left: Page title / breadcrumb area */}
         <div className="flex items-center gap-4">
           <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 hidden md:block">
-            Financial Operations Platform
+            <span className="text-[#718278] dark:text-[#91a69b]">Workspace</span>
+            <span className="text-[#c1cec4] dark:text-[#40594e]">/</span>
+            <span className="text-[#12201c] dark:text-[#e8f0e8]">Operations</span>
           </h2>
         </div>
 

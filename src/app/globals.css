@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ophir-50: #eef7ff;
-  --color-ophir-100: #d9edff;
-  --color-ophir-200: #bce0ff;
-  --color-ophir-300: #8eccff;
-  --color-ophir-400: #59b0ff;
-  --color-ophir-500: #338cff;
-  --color-ophir-600: #1b6cf5;
-  --color-ophir-700: #1456e1;
-  --color-ophir-800: #1746b6;
-  --color-ophir-900: #193d8f;
-  --color-ophir-950: #142757;
+  --color-ophir-50: #f4ffe0;
+  --color-ophir-100: #e9ffc0;
+  --color-ophir-200: #d9ff62;
+  --color-ophir-300: #c3f33e;
+  --color-ophir-400: #a9dc28;
+  --color-ophir-500: #83b91c;
+  --color-ophir-600: #638f14;
+  --color-ophir-700: #4d7113;
+  --color-ophir-800: #3d5814;
+  --color-ophir-900: #334915;
+  --color-ophir-950: #1e2b12;
 
-  --color-stellar: #14b7e6;
-  --color-stellar-dark: #0e8db3;
-  --color-stellar-light: #5ed5f7;
+  --color-stellar: #35d6c1;
+  --color-stellar-dark: #159b91;
+  --color-stellar-light: #8af3df;
 }
 
 /* ── Base ────────────────────────────────────────────────────── */
@@ -32,6 +32,24 @@ body {
   font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f4f7f2;
+  color: #12201c;
+}
+
+.dark body {
+  background: #08110f;
+  color: #e8f0e8;
+}
+
+.dashboard-shell {
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 85% -10%, rgba(53, 214, 193, 0.14), transparent 32rem),
+    radial-gradient(circle at 20% 100%, rgba(217, 255, 98, 0.1), transparent 28rem);
+}
+
+.dark .dashboard-shell {
+  background-image: radial-gradient(circle at 85% -10%, rgba(53, 214, 193, 0.12), transparent 32rem),
+    radial-gradient(circle at 20% 100%, rgba(217, 255, 98, 0.06), transparent 28rem);
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────── */
@@ -107,7 +125,7 @@ body {
 /* ── Focus visible ──────────────────────────────────────────── */
 
 *:focus-visible {
-  outline: 2px solid #7B68EE;
+  outline: 2px solid #35d6c1;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -125,3 +143,8 @@ body {
   background: rgba(17, 24, 39, 0.7);
   border: 1px solid rgba(55, 65, 81, 0.3);
 }
+
+.dark .bg-gray-950 { background-color: #08110f; }
+.dark .bg-gray-900 { background-color: #0d1916; }
+.dark .bg-gray-800 { background-color: #14231f; }
+.dark .border-gray-800 { border-color: #20352f; }

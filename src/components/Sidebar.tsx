@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "@/components/BrandMark";
 import {
   DashboardIcon,
   SendIcon,
@@ -167,7 +168,7 @@ export function Sidebar() {
   });
 
   const footer = (
-    <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-800">
+      <div className="px-6 py-4 border-t border-[#dce7df] dark:border-[#20352f]">
       <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-stellar opacity-75" />
@@ -198,14 +199,12 @@ export function Sidebar() {
       )}
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 z-40 flex-col">
-        <div className="flex items-center gap-3 px-6 h-16 border-b border-gray-200 dark:border-gray-800">
-          <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-ophir-600 to-stellar flex items-center justify-center shadow-lg shadow-ophir-500/30">
-            <span className="text-white font-bold text-lg">O</span>
-          </div>
+      <aside className="hidden lg:flex fixed left-0 top-0 h-full w-64 bg-[#f8fbf7] dark:bg-[#0b1714] border-r border-[#dce7df] dark:border-[#20352f] z-40 flex-col">
+        <div className="flex items-center gap-3 px-6 h-20 border-b border-[#dce7df] dark:border-[#20352f]">
+          <BrandMark />
           <div>
-            <h1 className="text-lg font-bold text-gray-900 dark:text-white leading-none">LumenRail</h1>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Stellar Payments</p>
+            <h1 className="text-lg font-bold tracking-tight text-[#12201c] dark:text-white leading-none">LumenRail</h1>
+            <p className="text-[11px] uppercase tracking-[0.16em] text-[#718278] dark:text-[#91a69b] mt-1">Payment rails</p>
           </div>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">{links}</nav>
@@ -217,11 +216,9 @@ export function Sidebar() {
         "lg:hidden fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 z-40 flex-col transition-transform duration-300",
         mobileOpen ? "translate-x-0 flex" : "-translate-x-full"
       )}>
-        <div className="flex items-center gap-3 px-6 h-16 border-b border-gray-200 dark:border-gray-800">
-          <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-ophir-600 to-stellar flex items-center justify-center shadow-lg shadow-ophir-500/30">
-            <span className="text-white font-bold text-lg">O</span>
-          </div>
-          <div><h1 className="text-lg font-bold text-gray-900 dark:text-white leading-none">LumenRail</h1></div>
+        <div className="flex items-center gap-3 px-6 h-20 border-b border-[#dce7df] dark:border-[#20352f]">
+          <BrandMark />
+          <div><h1 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white leading-none">LumenRail</h1></div>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">{links}</nav>
         {footer}

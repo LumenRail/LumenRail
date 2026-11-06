@@ -19,11 +19,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <ToastProvider>
           <OfflineBanner />
           <InstallPrompt />
-          <div className="flex min-h-screen">
+          <div className="dashboard-shell flex min-h-screen">
             <Sidebar />
             <div className="flex-1 lg:ml-64">
               <Header />
-              <main id="main-content" className="p-4 md:p-6">{children}</main>
+              <main id="main-content" className="p-4 md:p-8 max-w-[1600px]">{children}</main>
             </div>
           </div>
         </ToastProvider>
