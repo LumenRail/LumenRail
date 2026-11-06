@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/lumenrail-banner.svg" alt="LumenRail Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/Abolax123/LumenRail/main/public/lumenrail-banner.svg" alt="LumenRail Banner" width="100%" />
 
   <h1>🏦 LumenRail</h1>
 
@@ -22,7 +22,7 @@
   </p>
 
   <p>
-    <a href="https://github.com/Abolax123/OphirPay/actions/workflows/ci.yml">
+    <a href="https://github.com/Abolax123/LumenRail/actions/workflows/ci.yml">
       <img src="https://img.shields.io/github/actions/workflow/status/LumenRail/LumenRail/ci.yml?label=CI%20(22%20jobs)&logo=githubactions&logoColor=white" alt="CI — 22 jobs" />
     </a>
     <a href="#-testing--quality">
@@ -40,7 +40,7 @@
     <a href="docs/GAS.md">
       <img src="https://img.shields.io/badge/gas-optimized-brightgreen.svg?logo=stellar" alt="Gas Optimized" />
     </a>
-    <a href="https://ophirpay.vercel.app">
+    <a href="https://LumenRail.vercel.app">
       <img src="https://img.shields.io/badge/vercel-live-black.svg?logo=vercel" alt="Live on Vercel" />
     </a>
     <a href="https://www.loom.com/share/0d59c50285c04224a4857720b3640018">
@@ -55,7 +55,7 @@
     <a href="LICENSE">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
     </a>
-    <a href="https://github.com/Abolax123/OphirPay/releases">
+    <a href="https://github.com/Abolax123/LumenRail/releases">
       <img src="https://img.shields.io/badge/version-v0.1.0-blue.svg" alt="v0.1.0" />
     </a>
   </p>
@@ -141,20 +141,20 @@ Most blockchain payment tools are either developer-facing SDKs or complex enterp
 
 <div align="center">
 
-### 🔗 **[ophirpay.vercel.app](https://ophirpay.vercel.app)**
+### 🔗 **[LumenRail.vercel.app](https://LumenRail.vercel.app)**
 
 *Deployed on Vercel — automatic builds from `main` on every push. PostgreSQL (Neon), Soroban testnet contracts, and a live wallet flow are all wired in.*
 
 ### 🎥 Pitch Video (3 min)
 
-<video src="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/demo.mp4" controls width="720" poster="https://raw.githubusercontent.com/Abolax123/OphirPay/main/public/lumenrail-banner.svg" style="max-width:100%;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15)">
+<video src="https://raw.githubusercontent.com/Abolax123/LumenRail/main/public/demo.mp4" controls width="720" poster="https://raw.githubusercontent.com/Abolax123/LumenRail/main/public/lumenrail-banner.svg" style="max-width:100%;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15)">
   Your browser does not support embedded video.
-  <a href="https://ophirpay.vercel.app/demo.mp4">Watch on Vercel →</a>
+  <a href="https://LumenRail.vercel.app/demo.mp4">Watch on Vercel →</a>
 </video>
 
 *11 scenes: Problem → Live Dashboard → Vercel Deployment → Soroban Contracts → Send Payment → Real-Time Events → GitHub README → CI Pipeline → Multisig Security → Open Source → Outro*
 
-**▶️ Watch on [Loom](https://www.loom.com/share/0d59c50285c04224a4857720b3640018)** · [Watch on Vercel](https://ophirpay.vercel.app/demo.mp4)
+**▶️ Watch on [Loom](https://www.loom.com/share/0d59c50285c04224a4857720b3640018)** · [Watch on Vercel](https://LumenRail.vercel.app/demo.mp4)
 
 </div>
 
@@ -219,7 +219,7 @@ Most blockchain payment tools are either developer-facing SDKs or complex enterp
 ## ⚡ Hackathon Quickstart (60 seconds)
 
 ```bash
-git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
+git clone https://github.com/Abolax123/LumenRail.git && cd LumenRail
 npm install && npx prisma db push && npx prisma generate
 cp .env.example .env && npm run dev
 ```
@@ -250,7 +250,7 @@ bash scripts/demo-test.sh
 
 ```bash
 # 1. Clone & enter
-git clone https://github.com/Abolax123/OphirPay.git && cd LumenRail
+git clone https://github.com/Abolax123/LumenRail.git && cd LumenRail
 
 # 2. Install everything
 npm install
@@ -673,7 +673,7 @@ Every push to `main` triggers **22 jobs** across six tracks:
 | Gitleaks | Secrets scanning on every push |
 | PR Labeler | Auto-labels PRs by changed paths |
 
-**→ [View latest CI run](https://github.com/Abolax123/OphirPay/actions/workflows/ci.yml)**
+**→ [View latest CI run](https://github.com/Abolax123/LumenRail/actions/workflows/ci.yml)**
 
 ![CI/CD Pipeline](./public/screenshots/ci-pipeline.png)
 
@@ -913,8 +913,8 @@ LumenRail is engineered for predictable on-chain costs and fast reads:
 
 | Channel | Link |
 |---|---|
-| **GitHub Discussions** | [github.com/Abolax123/OphirPay/discussions](https://github.com/Abolax123/OphirPay/discussions) |
-| **Issue Tracker** | [github.com/Abolax123/OphirPay/issues](https://github.com/Abolax123/OphirPay/issues) |
+| **GitHub Discussions** | [github.com/Abolax123/LumenRail/discussions](https://github.com/Abolax123/LumenRail/discussions) |
+| **Issue Tracker** | [github.com/Abolax123/LumenRail/issues](https://github.com/Abolax123/LumenRail/issues) |
 | **Security Reports** | [SECURITY.md](SECURITY.md) — Bug bounty program available |
 | **Stellar Ecosystem** | [stellar.org](https://stellar.org) · [Soroban Docs](https://soroban.stellar.org) |
 
@@ -941,7 +941,7 @@ Special thanks to the **Stellar Development Foundation** for their excellent doc
 
 <div align="center">
 
-**[🐛 Report a Bug](https://github.com/Abolax123/OphirPay/issues)** · **[💡 Request a Feature](https://github.com/Abolax123/OphirPay/issues)** · **[📖 Read the Docs](https://github.com/Abolax123/OphirPay#readme)**
+**[🐛 Report a Bug](https://github.com/Abolax123/LumenRail/issues)** · **[💡 Request a Feature](https://github.com/Abolax123/LumenRail/issues)** · **[📖 Read the Docs](https://github.com/Abolax123/LumenRail#readme)**
 
 <br />
 
