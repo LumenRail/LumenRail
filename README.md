@@ -66,7 +66,6 @@
 ## 📑 Table of Contents
 
 - [✨ Why LumenRail?](#-why-lumenrail)
-- [🚀 Live Demo](#-live-demo)
 - [🧭 System Architecture](#-system-architecture)
 - [⚡ Quick Start](#-quick-start)
 - [🛠 Local Development Guide](docs/LOCAL_DEV.md)
@@ -91,8 +90,6 @@
 - [🛡️ Security Audit](#️-security-audit)
 - [🔒 Security](#-security)
 - [⚡ Performance & Gas](#-performance--gas)
-- [🌐 Community](#-community)
-- [📄 License & Credits](#-license--credits)
 
 ---
 
