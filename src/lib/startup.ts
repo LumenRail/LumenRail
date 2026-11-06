@@ -11,6 +11,18 @@ import { initRateLimitStore } from "@/lib/rate-limit";
 export async function bootstrap(): Promise<void> {
   const start = Date.now();
 
+  // Preview deployments can render the dashboard in demo mode without a
+  // database or deployed contracts. Live routes still validate their own
+  // configuration before signing or persisting anything.
+  if (
+    !process.env.DATABASE_URL ||
+    !process.env.NEXT_PUBLIC_CONTRACT_ID ||
+    !process.env.NEXT_PUBLIC_EMITTER_CONTRACT_ID
+  ) {
+    logger.warn("LumenRail running in preview mode: production services are not configured");
+    return;
+  }
+
   // Validate environment variables with Zod schema (fails fast with clear messages)
   try {
     const env = validateEnv();

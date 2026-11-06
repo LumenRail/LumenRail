@@ -8,7 +8,8 @@ import {
   TransactionBuilder,
   xdr,
 } from "@stellar/stellar-sdk";
-import { getHorizonServer, getSorobanServer, NETWORK_PASSPHRASE } from "@/lib/stellar";
+import { getHorizonServer, getSorobanServer, NETWORK_PASSPHRASE, XLM_STROOPS } from "@/lib/stellar";
+import { DEMO_PAYMENTS, isDemoMode } from "@/lib/demo-mode";
 
 // ── Contract Configuration ─────────────────────────────────────
 
@@ -433,6 +434,19 @@ export async function fetchOnChainPayments(
   limit = 20,
   sourcePublicKey?: string
 ): Promise<{ payments: OnChainPayment[]; total: number }> {
+  if (isDemoMode() && !LUMENRAIL_CONTRACT_ID) {
+    const payments = DEMO_PAYMENTS.slice(0, limit).map((payment) => ({
+      id: payment.id,
+      payer: "GDEMO...LUMEN",
+      payee: payment.payee,
+      amountStroops: Math.round(Number(payment.amount) * XLM_STROOPS),
+      txHash: payment.txHash,
+      timestamp: Math.floor(payment.timestamp / 1000),
+      metadata: "DEMO",
+    }));
+    return { payments, total: payments.length };
+  }
+
   const src = sourcePublicKey || CHAIN_READ_SOURCE;
   const contractId = LUMENRAIL_CONTRACT_ID;
   const server = getSorobanServer();

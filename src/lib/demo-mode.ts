@@ -9,7 +9,12 @@
  * Perfect for hackathon demos, CI previews, and reviewer walkthroughs.
  */
 
-const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+// A preview deployment without production configuration should still render
+// safely. It must never pretend to be connected to a live contract.
+const DEMO_MODE =
+  process.env.NEXT_PUBLIC_DEMO_MODE === "true" ||
+  !process.env.NEXT_PUBLIC_CONTRACT_ID ||
+  !process.env.NEXT_PUBLIC_EMITTER_CONTRACT_ID;
 
 /** Check if demo mode is active */
 export function isDemoMode(): boolean {
